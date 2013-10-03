@@ -10,4 +10,15 @@ describe Script do
 
   end
 
+  describe 'save' do
+    before do
+      @script = Script.new(name: 'name')
+      @script.save
+    end
+
+    subject { @script }
+
+    its(:guid) { should_not be_blank }
+  end
+
 end
