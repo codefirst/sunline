@@ -10,6 +10,11 @@ class ScriptsController < ApplicationController
   # GET /scripts/1
   # GET /scripts/1.json
   def show
+    respond_to do |format|
+      format.html { render action: 'show' }
+      format.json { render action: 'show', status: :show, location: @script }
+      format.sh { render text: @script.body }
+    end
   end
 
   # GET /scripts/new
