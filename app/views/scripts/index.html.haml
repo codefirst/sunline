@@ -1,0 +1,29 @@
+%h1 Listing scripts
+
+%table
+  %tr
+    %th Name
+    %th Body
+    %th Created by
+    %th Updated by
+    %th Guid
+    %th Archived
+    %th
+    %th
+    %th
+
+  - @scripts.each do |script|
+    %tr
+      %td= script.name
+      %td= script.body
+      %td= script.created_by
+      %td= script.updated_by
+      %td= script.guid
+      %td= script.archived
+      %td= link_to 'Show', script
+      %td= link_to 'Edit', edit_script_path(script)
+      %td= link_to 'Destroy', script, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Script', new_script_path

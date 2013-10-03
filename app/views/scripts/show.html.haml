@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @script.name
+%p
+  %b Body:
+  = @script.body
+%p
+  %b Created by:
+  = @script.created_by
+%p
+  %b Updated by:
+  = @script.updated_by
+%p
+  %b Guid:
+  = @script.guid
+%p
+  %b Archived:
+  = @script.archived
+
+= link_to 'Edit', edit_script_path(@script)
+\|
+= link_to 'Back', scripts_path
