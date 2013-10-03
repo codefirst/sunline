@@ -3,8 +3,8 @@ class CreateScripts < ActiveRecord::Migration
     create_table :scripts do |t|
       t.string :name
       t.text :body
-      t.integer :created_by
-      t.integer :updated_by
+      t.integer :created_by_id
+      t.integer :updated_by_id
       t.string :guid
       t.boolean :archived
 

@@ -29,7 +29,7 @@ class ScriptsController < ApplicationController
   # POST /scripts
   # POST /scripts.json
   def create
-    @script = Script.new(script_params)
+    @script = Script.new(script_params.merge(created_by: current_user, updated_by: current_user))
 
     respond_to do |format|
       if @script.save
@@ -46,7 +46,7 @@ class ScriptsController < ApplicationController
   # PATCH/PUT /scripts/1.json
   def update
     respond_to do |format|
-      if @script.update(script_params)
+      if @script.update(script_params.merge(updated_by: current_user))
         format.html { redirect_to @script, notice: 'Script was successfully updated.' }
         format.json { head :no_content }
       else
@@ -74,6 +74,6 @@ class ScriptsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def script_params
-      params.require(:script).permit(:name, :body, :created_by, :updated_by, :guid, :archived)
+      params.require(:script).permit(:name, :body, :archived)
     end
 end

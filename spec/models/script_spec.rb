@@ -21,4 +21,26 @@ describe Script do
     its(:guid) { should_not be_blank }
   end
 
+  describe 'creater' do
+    context 'user exists' do
+      subject { Script.new(created_by: User.new(name: 'test user')) }
+      its(:creater_name) { should == 'test user' }
+    end
+    context 'user not exists' do
+      subject { Script.new }
+      its(:creater_name) { should be_blank }
+    end
+  end
+
+  describe 'updater' do
+    context 'user exists' do
+      subject { Script.new(updated_by: User.new(name: 'test user')) }
+      its(:updater_name) { should == 'test user' }
+    end
+    context 'user not exists' do
+      subject { Script.new }
+      its(:updater_name) { should be_blank }
+    end
+  end
+
 end
