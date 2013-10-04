@@ -27,6 +27,7 @@ a.btn-primary:visited {
 }
 
 footer {
+  color: #999;
   border-top: 1px solid #ccc;
   margin-top: 10px;
   padding-top: 5px;
