@@ -23,7 +23,7 @@
       .navbar-inner
         .container
           %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-          = link_to 'Sunline', {controller: 'top'}, class: 'brand'
+          = link_to image_tag(asset_path('sunline-logo-white.png')), {controller: 'top'}, class: 'brand'
           .container.nav-collapse
             - if user_signed_in?
               %ul.nav.pull-right
