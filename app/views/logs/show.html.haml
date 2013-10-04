@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Host:
+  = @log.host
+%p
+  %b Result:
+  = @log.result
+%p
+  %b Script:
+  = @log.script_id
+
+= link_to 'Edit', edit_log_path(@log)
+\|
+= link_to 'Back', logs_path
