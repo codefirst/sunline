@@ -15,9 +15,11 @@
 %p
   %b Guid:
   = @script.guid
-%p
-  %b Archived:
-  = @script.archived
+
+- @script.logs.each do |log|
+  %p
+    = link_to log.host, log_path(log)
+    = log.created_at
 
 = link_to 'Edit', edit_script_path(@script)
 \|

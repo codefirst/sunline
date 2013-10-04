@@ -5,10 +5,10 @@
   = @log.host
 %p
   %b Result:
-  = @log.result
+  %pre= @log.result
 %p
   %b Script:
-  = @log.script_id
+  = @log.script.name
 
 = link_to 'Edit', edit_log_path(@log)
 \|
