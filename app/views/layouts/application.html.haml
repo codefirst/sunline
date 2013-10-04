@@ -23,7 +23,7 @@
       .navbar-inner
         .container
           %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-          = link_to 'Sunline', {controller: 'top'}, class: 'brand', method: :post
+          = link_to 'Sunline', {controller: 'top'}, class: 'brand'
           .container.nav-collapse
             - if user_signed_in?
               %ul.nav.pull-right
@@ -36,7 +36,7 @@
                       = form_tag destroy_user_session_path, class: 'signout-form', :method => 'post' do |f|
                         %button.btn.btn-primary
                           %i.icon-signout
-                          Logout
+                          Sign out
 
     .container
       .row
