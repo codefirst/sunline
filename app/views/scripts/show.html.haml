@@ -18,8 +18,8 @@
   %dd= @script.updater_name
 
 %p.text-center
-  %span.btn= link_to 'Back', scripts_path
-  %span.btn= link_to 'Edit', edit_script_path(@script)
+  %span= link_to 'Back', scripts_path, class: 'btn'
+  %span= link_to 'Edit', edit_script_path(@script), class: 'btn'
 
 %h2 Results
 %table.table.table-striped
