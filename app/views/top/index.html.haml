@@ -2,6 +2,7 @@
   .content
     .text-center
       %h1 Sunline
+      %h2 A lightweight script and log management tool
       = form_tag user_omniauth_authorize_path(Settings.omniauth.provider.to_sym), :method => 'post' do |f|
         %button.btn.btn-primary.btn-large
           %i.icon-signout
