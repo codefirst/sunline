@@ -1,15 +1,18 @@
 %p#notice= notice
 
-%p
-  %b Host:
-  = @log.host
-%p
-  %b Result:
-  %pre= @log.result
-%p
-  %b Script:
-  = @log.script.name
+%h1 Log
 
-= link_to 'Edit', edit_log_path(@log)
-\|
-= link_to 'Back', logs_path
+%dl.dl-horizontal
+
+  %dt Uploaded:
+  %dd= @log.created_at
+
+  %dt Host:
+  %dd= @log.host
+
+  %dt Result:
+  %dd
+    %pre= @log.result
+
+.text-center
+  = link_to 'Back', logs_path, class: 'btn'

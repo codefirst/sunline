@@ -1,26 +1,33 @@
 %p#notice= notice
 
-%p
-  %b Name:
-  = @script.name
-%p
-  %b Body:
-  = @script.body
-%p
-  %b Created by:
-  = @script.creater_name
-%p
-  %b Updated by:
-  = @script.updater_name
-%p
-  %b Guid:
-  = @script.guid
+%h1= @script.name
 
-- @script.logs.each do |log|
-  %p
-    = link_to log.host, log_path(log)
-    = log.created_at
+%dl.dl-horizontal
 
-= link_to 'Edit', edit_script_path(@script)
-\|
-= link_to 'Back', scripts_path
+  %dt Script:
+  %dd
+    %pre= @script.body
+
+  %dt GUID:
+  %dd= @script.guid
+
+  %dt Created by:
+  %dd= @script.creater_name
+
+  %dt Updated by:
+  %dd= @script.updater_name
+
+
+%h2 Uploaded Results
+%table.table.table-striped
+  %tr
+    %th Host
+    %th Uploaded
+  - @script.logs.each do |log|
+    %tr
+      %td= link_to log.host, log_path(log)
+      %td= log.created_at
+
+%p.text-center
+  %span.btn= link_to 'Back', scripts_path
+  %span.btn= link_to 'Edit', edit_script_path(@script)
