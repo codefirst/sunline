@@ -7,6 +7,7 @@ gem 'thin'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github'
+gem 'omniauth-redmine', :github => 'suer/omniauth-redmine'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
