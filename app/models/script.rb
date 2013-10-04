@@ -5,6 +5,8 @@ class Script < ActiveRecord::Base
 
   before_create :generate_guid
 
+  validates :name, presence: true
+
   def generate_guid
     self.guid = SecureRandom.uuid
   end
