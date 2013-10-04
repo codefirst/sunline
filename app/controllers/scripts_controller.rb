@@ -1,5 +1,6 @@
 class ScriptsController < ApplicationController
-  before_action :set_script, only: [:show, :edit, :update, :destroy]
+  before_action :set_script, only: [:edit, :update, :destroy]
+  skip_filter :authenticate_user!, only: [:show]
 
   # GET /scripts
   # GET /scripts.json
@@ -10,10 +11,21 @@ class ScriptsController < ApplicationController
   # GET /scripts/1
   # GET /scripts/1.json
   def show
+    if params[:format] == 'sh'
+      @script = Script.where(guid: params[:id]).first
+      if @script
+        render text: @script.body
+      else
+        render text: "echo 'script not found'", status: 404
+      end
+      return
+    end
+
+    authenticate_user!
+    @script = Script.find(params[:id])
     respond_to do |format|
       format.html { render action: 'show' }
       format.json { render action: 'show', status: :show, location: @script }
-      format.sh { render text: @script.body }
     end
   end
 
