@@ -15,4 +15,4 @@
     %pre= @log.result
 
 .text-center
-  = link_to 'Back', logs_path, class: 'btn'
+  = link_to 'Back', script_path(@log.script.id), class: 'btn'
