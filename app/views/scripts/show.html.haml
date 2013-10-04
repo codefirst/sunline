@@ -17,8 +17,11 @@
   %dt Updated by:
   %dd= @script.updater_name
 
+%p.text-center
+  %span.btn= link_to 'Back', scripts_path
+  %span.btn= link_to 'Edit', edit_script_path(@script)
 
-%h2 Uploaded Results
+%h2 Results
 %table.table.table-striped
   %tr
     %th Host
@@ -28,6 +31,3 @@
       %td= link_to log.host, log_path(log)
       %td= log.created_at
 
-%p.text-center
-  %span.btn= link_to 'Back', scripts_path
-  %span.btn= link_to 'Edit', edit_script_path(@script)

@@ -1,4 +1,7 @@
-%h1 Listing scripts
+%h1 Scripts
+
+.btn.pull-right= link_to 'New Script', new_script_path
+.clearfix
 
 %table.table.table-striped
   %tr
@@ -13,7 +16,3 @@
       %td= script.creater_name
       %td= script.updater_name
       %td= script.updated_at
-
-%br
-
-.btn= link_to 'New Script', new_script_path

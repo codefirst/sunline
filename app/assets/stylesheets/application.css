@@ -13,5 +13,28 @@
  */
 
 .row {
-  margin-top: 40px;
+  margin-top: 50px;
+  padding-left: 20px;
+}
+
+a.btn-primary:visited {
+  color: #fff;
+}
+
+footer {
+  border-top: 1px solid #ccc;
+  margin-top: 10px;
+  padding-top: 5px;
+  text-align: center;
+}
+
+.logout {
+  float: right;
+  font-size: 16px;
+  text-shadow: 0 -1px 0;
+  padding: 10px 20px 0px;
+}
+
+.table {
+  margin-top: 10px;
 }

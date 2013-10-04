@@ -1,7 +1,7 @@
 Sunline::Application.routes.draw do
   resources :scripts
 
-  root 'scripts#index'
+  root 'top#index'
 
   resources :logs
   post 'scripts/:guid/log', controller: 'logs', action: 'create'
