@@ -8,7 +8,9 @@ class Script < ActiveRecord::Base
   validates :name, presence: true
 
   def generate_guid
-    self.guid = SecureRandom.uuid
+    uuid = SecureRandom.uuid.split('-').first
+    uuid << Time.now.strftime("%Y%m%d%H%M%S%L") unless Script.where(guid: uuid).first.nil?
+    self.guid = uuid
   end
 
   def creater_name
