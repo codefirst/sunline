@@ -1,5 +1,9 @@
 %h3= @script.name
 
+.pull-right
+  %span= link_to 'Edit', edit_script_path(@script), class: 'btn'
+.clearfix
+
 %dl.dl-horizontal
 
   %dt Script:
@@ -17,7 +21,6 @@
 
 %p.text-center
   %span= link_to 'Back', scripts_path, class: 'btn'
-  %span= link_to 'Edit', edit_script_path(@script), class: 'btn'
 
 %h4 Results
 %table.table.table-striped

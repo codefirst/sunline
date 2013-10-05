@@ -14,7 +14,7 @@ class ScriptsController < ApplicationController
     if params[:format] == 'sh'
       @script = Script.where(guid: params[:id]).first
       if @script
-        render text: @script.body
+        render text: @script.body.gsub("\r", "")
       else
         render text: "echo 'script not found'", status: 404
       end
