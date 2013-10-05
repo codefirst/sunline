@@ -20,10 +20,11 @@
   %dd= @script.updater_name
 
   %dt Run:
-  %dd= "curl #{root_url}scripts/#{@script.guid}.sh | sh > sunline.log"
-
-  %dt Upload Log:
-  %dd= "curl #{root_url}scripts/#{@script.guid}/log.json -X POST -F host=`hostname` -F log_file=@sunline.log"
+  %dd
+    %pre
+      = "curl #{root_url}scripts/#{@script.guid}.sh | sh > sunline.log"
+      %br
+      = "curl #{root_url}scripts/#{@script.guid}/log.json -X POST -F host=`hostname` -F log_file=@sunline.log"
 
 
 %p.text-center
