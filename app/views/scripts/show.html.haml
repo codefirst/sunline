@@ -19,10 +19,17 @@
   %dt Updated by:
   %dd= @script.updater_name
 
+  %dt Run:
+  %dd= "curl #{root_url}scripts/#{@script.guid}.sh | sh > sunline.log"
+
+  %dt Upload Log:
+  %dd= "curl #{root_url}scripts/#{@script.guid}/log.json -X POST -F host=`hostname` -F log_file=@sunline.log"
+
+
 %p.text-center
   %span= link_to 'Back', scripts_path, class: 'btn'
 
-%h4 Results
+%h4 Logs
 %table.table.table-striped
   %tr
     %th Host
