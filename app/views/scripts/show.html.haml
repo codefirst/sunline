@@ -1,4 +1,7 @@
-%h3= @script.name
+%h3
+  = link_to "Scripts", scripts_path
+  &raquo;
+  = @script.name
 
 .pull-right
   %span= link_to 'Edit', edit_script_path(@script), class: 'btn'
@@ -25,10 +28,6 @@
       = "curl #{root_url}scripts/#{@script.guid}.sh | sh > sunline.log"
       %br
       = "curl #{root_url}scripts/#{@script.guid}/log.json -X POST -F host=`hostname` -F log_file=@sunline.log"
-
-
-%p.text-center
-  %span= link_to 'Back', scripts_path, class: 'btn'
 
 %h4 Logs
 %table.table.table-striped

@@ -1,4 +1,9 @@
-%h3 Editing script
+%h3
+  = link_to "Scripts", scripts_path
+  &raquo;
+  = link_to @script.name, script_path(@script)
+  &raquo;
+  Edit
 
 = render 'form'
 

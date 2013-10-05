@@ -1,4 +1,9 @@
-%h3 Log
+%h3
+  = link_to "Scripts", scripts_path
+  &raquo;
+  = link_to @log.script.name, script_path(@log.script)
+  &raquo;
+  Log
 
 %dl.dl-horizontal
 
@@ -11,6 +16,3 @@
   %dt Result:
   %dd
     %pre= @log.result
-
-.text-center
-  = link_to 'Back', script_path(@log.script.id), class: 'btn'
