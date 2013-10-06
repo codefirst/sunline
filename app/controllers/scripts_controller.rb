@@ -5,7 +5,7 @@ class ScriptsController < ApplicationController
   # GET /scripts
   # GET /scripts.json
   def index
-    @scripts = Script.all
+    @scripts = Script.order("updated_at desc").all
   end
 
   # GET /scripts/1
