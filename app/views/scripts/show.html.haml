@@ -1,7 +1,10 @@
 %h3
-  = link_to t(:title_scripts), scripts_path
-  &raquo;
-  = @script.name
+  %ul.breadcrumb
+    %li
+      = link_to t(:title_scripts), scripts_path
+      %span.divider &raquo;
+    %li= @script.name
+
 
 .pull-right
   %span= link_to t(:button_edit), edit_script_path(@script), class: 'btn'

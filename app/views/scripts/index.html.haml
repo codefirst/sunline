@@ -1,4 +1,6 @@
-%h3= t(:title_scripts)
+%h3
+  %ul.breadcrumb
+    %li= t(:title_scripts)
 
 .pull-right= link_to t(:button_new_script), new_script_path, class: 'btn'
 .clearfix

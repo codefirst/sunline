@@ -1,9 +1,12 @@
 %h3
-  = link_to t(:title_scripts), scripts_path
-  &raquo;
-  = link_to @script.name, script_path(@script)
-  &raquo;
-  = t(:title_edit)
+  %ul.breadcrumb
+    %li
+      = link_to t(:title_scripts), scripts_path
+      %span.divider &raquo;
+    %li
+      = link_to @script.name, script_path(@script)
+      %span.divider &raquo;
+    %li= t(:title_edit)
 
 = render 'form'
 
