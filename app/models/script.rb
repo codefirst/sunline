@@ -2,6 +2,7 @@ class Script < ActiveRecord::Base
   belongs_to :created_by, class_name: 'User'
   belongs_to :updated_by, class_name: 'User'
   has_many :logs
+  has_many :attachments, :dependent => :destroy
 
   before_create :generate_guid
 

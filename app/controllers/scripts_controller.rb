@@ -42,6 +42,11 @@ class ScriptsController < ApplicationController
   # POST /scripts.json
   def create
     @script = Script.new(script_params.merge(created_by: current_user, updated_by: current_user))
+    if params[:attachments]
+      params[:attachments].each do |attachment|
+        @script.attachments << Attachment.new(attachment)
+      end
+    end
 
     respond_to do |format|
       if @script.save
@@ -86,6 +91,6 @@ class ScriptsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def script_params
-      params.require(:script).permit(:name, :body, :archived)
+      params.require(:script).permit(:name, :body, :archived, attachments: [:upload])
     end
 end
