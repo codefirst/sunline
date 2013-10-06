@@ -23,3 +23,7 @@ en:
   button_new_script: New Script
   button_edit: Edit
   button_save: Save
+  button_remove: Remove
+  button_change: Change
+  button_select_file: Select file
+

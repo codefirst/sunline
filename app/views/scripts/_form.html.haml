@@ -24,7 +24,7 @@
           )
           %label.checkbox
             = check_box_tag "delete_attachments[]", attachment.id
-            Remove
+            = t(:button_remove)
 
     .fileupload.fileupload-new{:'data-provides' => 'fileupload'}
       .input-append
@@ -32,11 +32,11 @@
           %i.icon-file.fileupload-exists
           %span.fileupload-preview
         %span.btn.btn-file
-          %span.fileupload-new= 'Select file'
+          %span.fileupload-new= t(:button_select_file)
           %span.fileupload-exists
-            = 'Change'
+            = t(:button_change)
           = file_field_tag 'attachments[][upload]', :class => 'input-file'
-        = link_to 'Remove', '#', {:'data-dismiss' => 'fileupload', :class => 'btn fileupload-exists'}
+        = link_to t(:button_remove), '#', {:'data-dismiss' => 'fileupload', :class => 'btn fileupload-exists'}
 
   .actions
     = f.submit t(:button_save), class: 'btn btn-primary'
