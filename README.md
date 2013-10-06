@@ -21,6 +21,7 @@ Run:
     $ export OMNIAUTH_PROVIDER=github
     $ export OMNIAUTH_ARGS="['Client ID','Client Secret']"
     $ export SUNLINE_LOCALE=ja    # in japanese only
+    $ export SUNLINE_TIMEZONE=Tokyo    # rake time:zones:all
     $ bundle exec rails s -e production
 
 and access to http://localhost:3000/

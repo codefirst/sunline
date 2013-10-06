@@ -37,5 +37,5 @@
   - @script.logs.each do |log|
     %tr
       %td= link_to log.host, log_path(log)
-      %td= log.created_at
+      %td= log.formatted_created_at
 
