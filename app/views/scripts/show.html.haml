@@ -22,7 +22,7 @@
   %dt= t(:field_updated_by)
   %dd= @script.updater_name
 
-  %dt t(:field_run)
+  %dt= t(:field_run)
   %dd
     %pre
       = "curl #{root_url}scripts/#{@script.guid}.sh | sh > sunline.log"
