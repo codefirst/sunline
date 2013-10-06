@@ -37,7 +37,7 @@
   %tr
     %th= t(:field_host)
     %th= t(:field_uploaded)
-  - @script.logs.each do |log|
+  - @script.logs.order('created_at desc').each do |log|
     %tr
       %td= link_to log.host, log_path(log)
       %td= log.formatted_created_at
