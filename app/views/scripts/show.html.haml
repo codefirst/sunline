@@ -44,7 +44,13 @@
               = number_to_human_size(attachment.upload.instance.upload_file_size)
               )
 
-%h4= t(:field_run)
+.navbar.navbar-h4
+  .container
+    %h4= t(:field_run)
+    .pull-right
+      = link_to '#', :class => 'copy-button btn btn-info', :'data-clipboard-text' => "#{@script.remote_script(root_url)}", :title => t(:copy_to_clipboard), :'data-placement' => 'left' do
+        %i.icon-paper-clip
+
 %pre.run
   = @script.remote_script(root_url)
 
@@ -58,4 +64,20 @@
       %tr
         %td= link_to log.host, log_path(log)
         %td= log.formatted_created_at
+
+:javascript
+  $(function() {
+    var clip = new ZeroClipboard($('.copy-button'), {
+      moviePath: "#{asset_path("ZeroClipboard.swf")}"
+    } );
+    clip.on('complete', function(client, args) {
+      var self = $(this);
+      self.attr('title', '#{t(:copied)}');
+      self.tooltip('show');
+      setTimeout(function() {
+        self.attr('title', '#{t(:copy_to_clipboard)}');
+        self.tooltip('destroy');
+      }, 3000);
+    } );
+  });
 
