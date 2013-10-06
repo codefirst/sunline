@@ -89,3 +89,7 @@ ul.attachments {
 ul.attachments label {
   margin-left: 1em;
 }
+
+.fileuploads-more {
+  margin-bottom: 20px;
+}
