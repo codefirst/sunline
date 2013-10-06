@@ -42,11 +42,7 @@ class ScriptsController < ApplicationController
   # POST /scripts.json
   def create
     @script = Script.new(script_params.merge(created_by: current_user, updated_by: current_user))
-    if params[:attachments]
-      params[:attachments].each do |attachment|
-        @script.attachments << Attachment.new(attachment)
-      end
-    end
+    add_attachments
 
     respond_to do |format|
       if @script.save
@@ -62,6 +58,9 @@ class ScriptsController < ApplicationController
   # PATCH/PUT /scripts/1
   # PATCH/PUT /scripts/1.json
   def update
+    add_attachments
+    Attachment.delete params[:delete_attachments] if params[:delete_attachments]
+
     respond_to do |format|
       if @script.update(script_params.merge(updated_by: current_user))
         format.html { redirect_to @script, notice: 'Script was successfully updated.' }
@@ -92,5 +91,13 @@ class ScriptsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def script_params
       params.require(:script).permit(:name, :body, :archived, attachments: [:upload])
+    end
+
+    def add_attachments
+      if params[:attachments]
+        params[:attachments].each do |attachment|
+          @script.attachments << Attachment.new(attachment)
+        end
+      end
     end
 end

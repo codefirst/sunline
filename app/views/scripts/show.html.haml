@@ -27,9 +27,14 @@
 
   %dt= t(:field_attachments)
   %dd
-    %ul
+    %ul.attachments
       - @script.attachments.each do |attachment|
-        %li= link_to attachment.upload.instance.upload_file_name, attachment.upload.url
+        %li
+          %i.icon-file
+          = link_to attachment.upload.instance.upload_file_name, attachment.upload.url
+          (
+          = number_to_human_size(attachment.upload.instance.upload_file_size)
+          )
 
   %dt= t(:field_run)
   %dd

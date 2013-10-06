@@ -80,3 +80,12 @@ footer {
 .field_with_errors label {
   color: #b94a48;
 }
+
+ul.attachments {
+  list-style-type: none;
+  margin-left: 0;
+}
+
+ul.attachments label {
+  margin-left: 1em;
+}
