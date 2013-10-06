@@ -16,6 +16,9 @@ ja:
   field_uploaded: アップロード日時
   field_log: ログ
 
+  button_sign_in: サインイン
+  button_sign_out: サインアウト
+  button_account: アカウント
   button_new_script: 新規スクリプト
   button_edit: 編集
   button_save: 保存

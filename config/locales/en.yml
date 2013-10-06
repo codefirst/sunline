@@ -16,6 +16,9 @@ en:
   field_uploaded: Uploaded
   field_log: Log
 
+  button_sign_in: Sign in
+  button_sign_out: Sign out
+  button_account: Account
   button_new_script: New Script
   button_edit: Edit
   button_save: Save

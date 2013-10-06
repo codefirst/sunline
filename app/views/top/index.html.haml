@@ -6,6 +6,6 @@
       = form_tag user_omniauth_authorize_path(Settings.omniauth.provider.to_sym), :method => 'post' do |f|
         %button.btn.btn-primary.btn-large
           %i.icon-signout
-          = "Sign in"
+          = t(:button_sign_in)
 
 
