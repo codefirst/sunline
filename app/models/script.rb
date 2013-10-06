@@ -33,4 +33,11 @@ class Script < ActiveRecord::Base
     return self.updated_at.strftime("%Y-%m-%d %H:%M:%S") if self.updated_at
     ''
   end
+
+  def remote_script(root_url)
+    [
+      "curl #{root_url}scripts/#{guid}.sh | sh > sunline.log",
+       "curl #{root_url}scripts/#{guid}/log.json -X POST -F host=`hostname` -F log_file=@sunline.log"
+    ].join(";")
+  end
 end

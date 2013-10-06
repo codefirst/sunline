@@ -46,9 +46,7 @@
 
 %h4= t(:field_run)
 %pre.run
-  = "curl #{root_url}scripts/#{@script.guid}.sh | sh > sunline.log"
-  %br
-  = "curl #{root_url}scripts/#{@script.guid}/log.json -X POST -F host=`hostname` -F log_file=@sunline.log"
+  = @script.remote_script(root_url)
 
 - unless @script.logs.empty?
   %h4= t(:title_logs)
