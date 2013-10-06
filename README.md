@@ -20,6 +20,7 @@ Run:
 
     $ export OMNIAUTH_PROVIDER=github
     $ export OMNIAUTH_ARGS="['Client ID','Client Secret']"
+    $ export SUNLINE_LOCALE=ja    # in japanese only
     $ bundle exec rails s -e production
 
 and access to http://localhost:3000/

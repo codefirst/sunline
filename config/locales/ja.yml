@@ -1,0 +1,21 @@
+ja:
+  title_scripts: スクリプト
+  title_logs: ログ
+  title_new_script: 新規スクリプト
+  title_edit: 編集
+  title_log: ログ
+
+  field_name: 名前
+  field_created_by: 作成者
+  field_updated_by: 更新者
+  field_last_update: 更新日時
+  field_body: スクリプト
+  field_guid: GUID
+  field_run: 実行方法
+  field_host: ホスト
+  field_uploaded: アップロード日時
+  field_log: ログ
+
+  button_new_script: 新規スクリプト
+  button_edit: 編集
+  button_save: 保存
