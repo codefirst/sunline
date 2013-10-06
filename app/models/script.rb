@@ -36,7 +36,7 @@ class Script < ActiveRecord::Base
 
   def remote_script(root_url)
     [
-      "curl #{root_url}scripts/#{guid}.sh | sh > sunline.log",
+      "curl #{root_url}scripts/#{guid}.sh | sh > sunline.log 2>&1",
        "curl #{root_url}scripts/#{guid}/log.json -X POST -F host=`hostname` -F log_file=@sunline.log"
     ].join(";")
   end
