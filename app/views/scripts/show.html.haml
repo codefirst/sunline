@@ -20,8 +20,7 @@
     = @script.creater_name
     %span.muted
       (
-      = time_ago_in_words @script.created_at
-      = 'ago'
+      = time_ago_in_words(@script.created_at) + t(:ago)
       )
 
   %dt= t(:field_updated_by)
@@ -29,8 +28,7 @@
     = @script.updater_name
     %span.muted
       (
-      = time_ago_in_words @script.updated_at
-      = 'ago'
+      = time_ago_in_words(@script.updated_at) + t(:ago)
       )
 
   - unless @script.attachments.empty?
@@ -46,7 +44,7 @@
               = number_to_human_size(attachment.upload.instance.upload_file_size)
               )
 
-%h4 Run
+%h4= t(:field_run)
 %pre.run
   = "curl #{root_url}scripts/#{@script.guid}.sh | sh > sunline.log"
   %br

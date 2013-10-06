@@ -4,6 +4,7 @@ en:
   title_new_script: New Script
   title_edit: Edit
   title_log: Log
+  title_run: Run
 
   field_name: Name
   field_created_by: Created by
@@ -27,4 +28,6 @@ en:
   button_change: Change
   button_select_file: Select file
   button_more_attachment: More attachment
+
+  ago: " ago"
 
