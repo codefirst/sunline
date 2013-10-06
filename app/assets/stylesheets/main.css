@@ -1,0 +1,96 @@
+/*
+ * =require bootstrap_and_overrides
+ */
+
+body {
+  padding-top: 60px;
+}
+@media (max-width: 980px) {
+  body {
+    padding-top: 0;
+  }
+}
+
+.brand img {
+  height: 20px;
+  padding: 10px 20px 10px;
+}
+.navbar .brand {
+  padding: 0;
+}
+
+.navbar .container h3 {
+  display: inline;
+}
+
+pre.run {
+  margin-bottom: 20px;
+}
+
+footer {
+  color: #aaa;
+  border-top: 1px solid #dfdfdf;
+  margin-top: 40px;
+  padding-top: 5px;
+  text-align: center;
+}
+
+.signout-form {
+  text-align: center;
+  margin: 0;
+}
+
+.table {
+  margin-top: 10px;
+}
+
+#notice {
+  color: green;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 1px solid #b94a48;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 0px 5px 0px 5px;
+  font-size: 14px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #b94a48;
+  border-color: #000;
+  color: #fff;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+.field_with_errors input[type="text"] {
+  border-color: #b94a48;
+}
+
+.field_with_errors label {
+  color: #b94a48;
+}
+
+ul.attachments {
+  list-style-type: none;
+  margin-left: 0;
+}
+
+ul.attachments label {
+  margin-left: 1em;
+}
+
+.fileuploads-more {
+  margin-bottom: 20px;
+}

@@ -10,7 +10,6 @@
     /[if lt IE 9]
       = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
     = stylesheet_link_tag "application", :media => "all"
-    = favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144'
     = favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114'
     = favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72'
     = favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png'
@@ -22,26 +21,23 @@
     .navbar.navbar-fixed-top.navbar-inverse
       .navbar-inner
         .container
-          %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
           = link_to image_tag(asset_path('sunline-logo-white.png')), {controller: 'top'}, class: 'brand'
-          .container.nav-collapse
-            - if user_signed_in?
-              %ul.nav.pull-right
-                %li.dropdown
-                  %a.dropdown-toggle(data-toggle="dropdown" role="button" href="#")
-                    = t(:button_account)
-                    %i.icon-caret-down
-                  %ul.dropdown-menu(role="menu")
-                    %li
-                      = form_tag destroy_user_session_path, class: 'signout-form', :method => 'post' do |f|
-                        %button.btn.btn-primary
-                          %i.icon-signout
-                          = t(:button_sign_out)
+          - if user_signed_in?
+            %ul.nav.pull-right
+              %li.dropdown
+                %a.dropdown-toggle(data-toggle="dropdown" role="button" href="#")
+                  = t(:button_account)
+                  %i.icon-caret-down
+                %ul.dropdown-menu(role="menu")
+                  %li
+                    = form_tag destroy_user_session_path, class: 'signout-form', :method => 'post' do |f|
+                      %button.btn.btn-primary
+                        %i.icon-signout
+                        = t(:button_sign_out)
 
     .container
-      .row
-        = bootstrap_flash
-        = yield
+      = bootstrap_flash
+      = yield
 
       %footer
         %p &copy; codefirst.org

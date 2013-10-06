@@ -1,12 +1,13 @@
-%h3
-  %ul.breadcrumb
-    %li
-      = link_to t(:title_scripts), scripts_path
-      %span.divider &raquo;
-    %li
-      = link_to @log.script.name, script_path(@log.script)
-      %span.divider &raquo;
-    %li= t(:title_log)
+%ul.breadcrumb
+  %li
+    = link_to t(:title_scripts), scripts_path
+    %span.divider /
+  %li
+    = link_to @log.script.name, script_path(@log.script)
+    %span.divider /
+  %li.active= t(:title_log)
+
+%h3= t(:title_log)
 
 %dl.dl-horizontal
 

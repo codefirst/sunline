@@ -8,7 +8,7 @@
 
   .field
     = f.label :name
-    = f.text_field :name
+    = f.text_field :name, class: 'input-xlarge'
   .field
     = f.label :body
     = f.text_area :body, class: 'input-xxlarge script-area', rows: 15
@@ -19,9 +19,10 @@
         %li
           %i.icon-file
           = attachment.upload.instance.upload_file_name
-          (
-          = number_to_human_size(attachment.upload.instance.upload_file_size)
-          )
+          %span.muted
+            (
+            = number_to_human_size(attachment.upload.instance.upload_file_size)
+            )
           %label.checkbox
             = check_box_tag "delete_attachments[]", attachment.id
             = t(:button_remove)

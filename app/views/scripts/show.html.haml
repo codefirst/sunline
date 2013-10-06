@@ -1,14 +1,13 @@
-%h3
-  %ul.breadcrumb
-    %li
-      = link_to t(:title_scripts), scripts_path
-      %span.divider &raquo;
-    %li= @script.name
+%ul.breadcrumb
+  %li
+    = link_to t(:title_scripts), scripts_path
+    %span.divider /
+  %li.active= @script.name
 
-
-.pull-right
-  %span= link_to t(:button_edit), edit_script_path(@script), class: 'btn'
-.clearfix
+.navbar
+  .container
+    %h3{:style => 'display:inline'}= @script.name
+    .pull-right= link_to t(:button_edit), edit_script_path(@script), class: 'btn'
 
 %dl.dl-horizontal
 
@@ -16,40 +15,51 @@
   %dd
     %pre= @script.body
 
-  %dt= t(:field_guid)
-  %dd= @script.guid
-
   %dt= t(:field_created_by)
-  %dd= @script.creater_name
+  %dd
+    = @script.creater_name
+    %span.muted
+      (
+      = time_ago_in_words @script.created_at
+      = 'ago'
+      )
 
   %dt= t(:field_updated_by)
-  %dd= @script.updater_name
-
-  %dt= t(:field_attachments)
   %dd
-    %ul.attachments
-      - @script.attachments.each do |attachment|
-        %li
-          %i.icon-file
-          = link_to attachment.upload.instance.upload_file_name, attachment.upload.url
-          (
-          = number_to_human_size(attachment.upload.instance.upload_file_size)
-          )
+    = @script.updater_name
+    %span.muted
+      (
+      = time_ago_in_words @script.updated_at
+      = 'ago'
+      )
 
-  %dt= t(:field_run)
-  %dd
-    %pre
-      = "curl #{root_url}scripts/#{@script.guid}.sh | sh > sunline.log"
-      %br
-      = "curl #{root_url}scripts/#{@script.guid}/log.json -X POST -F host=`hostname` -F log_file=@sunline.log"
+  - unless @script.attachments.empty?
+    %dt= t(:field_attachments)
+    %dd
+      %ul.attachments
+        - @script.attachments.each do |attachment|
+          %li
+            %i.icon-file
+            = link_to attachment.upload.instance.upload_file_name, attachment.upload.url
+            %span.muted
+              (
+              = number_to_human_size(attachment.upload.instance.upload_file_size)
+              )
 
-%h4= t(:title_logs)
-%table.table.table-striped
-  %tr
-    %th= t(:field_host)
-    %th= t(:field_uploaded)
-  - @script.logs.order('created_at desc').each do |log|
+%h4 Run
+%pre.run
+  = "curl #{root_url}scripts/#{@script.guid}.sh | sh > sunline.log"
+  %br
+  = "curl #{root_url}scripts/#{@script.guid}/log.json -X POST -F host=`hostname` -F log_file=@sunline.log"
+
+- unless @script.logs.empty?
+  %h4= t(:title_logs)
+  %table.table.table-striped
     %tr
-      %td= link_to log.host, log_path(log)
-      %td= log.formatted_created_at
+      %th= t(:field_host)
+      %th= t(:field_uploaded)
+    - @script.logs.order('created_at desc').each do |log|
+      %tr
+        %td= link_to log.host, log_path(log)
+        %td= log.formatted_created_at
 

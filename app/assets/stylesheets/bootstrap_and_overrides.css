@@ -6,11 +6,3 @@
   =require twitter-bootstrap-static/fontawesome
   */
 
-.navbar .brand {
-  padding: 0;
-}
-
-.breadcrumb {
-  padding-left: 0;
-  background-color: #fff;
-}

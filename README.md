@@ -40,7 +40,7 @@ For developers
 
 Setup database:
 
-    $ bundle exec db:migrate RAILS_ENV=test
+    $ bundle exec rake db:migrate RAILS_ENV=test
 
 Run tests:
 

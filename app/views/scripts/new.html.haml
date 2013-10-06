@@ -1,8 +1,9 @@
-%h3
-  %ul.breadcrumb
-    %li
-      = link_to t(:title_scripts), scripts_path
-      %span.divider &raquo;
-    %li= t(:title_new_script)
+%ul.breadcrumb
+  %li
+    = link_to t(:title_scripts), scripts_path
+    %span.divider /
+  %li.active= t(:title_new_script)
+
+%h3= t(:title_new_script)
 
 = render 'form'
