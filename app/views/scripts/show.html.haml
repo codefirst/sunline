@@ -25,6 +25,12 @@
   %dt= t(:field_updated_by)
   %dd= @script.updater_name
 
+  %dt= t(:field_attachments)
+  %dd
+    %ul
+      - @script.attachments.each do |attachment|
+        %li= link_to attachment.upload.instance.upload_file_name, attachment.upload.url
+
   %dt= t(:field_run)
   %dd
     %pre

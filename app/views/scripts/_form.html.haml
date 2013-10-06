@@ -13,6 +13,24 @@
     = f.label :body
     = f.text_area :body, class: 'input-xxlarge script-area', rows: 15
   .field
-    = file_field_tag 'attachments[][upload]'
+    = label_tag t(:field_attachments)
+    .fileupload.fileupload-new{:'data-provides' => 'fileupload'}
+      .input-append
+        .uneditable-input.span3
+          %i.icon-file.fileupload-exists
+          %span.fileupload-preview
+        %span.btn.btn-file
+          %span.fileupload-new= 'Select file'
+          %span.fileupload-exists
+            = 'Change'
+          = file_field_tag 'attachments[][upload]', :class => 'input-file'
+        = link_to 'Remove', '#', {:'data-dismiss' => 'fileupload', :class => 'btn fileupload-exists'}
+
   .actions
     = f.submit t(:button_save), class: 'btn btn-primary'
+
+:javascript
+  $(function() {
+    $('.input-file').on('change', function() {
+    });
+  });

@@ -15,6 +15,7 @@ en:
   field_host: Host
   field_uploaded: Uploaded
   field_log: Log
+  field_attachments: Attachments
 
   button_sign_in: Sign in
   button_sign_out: Sign out
