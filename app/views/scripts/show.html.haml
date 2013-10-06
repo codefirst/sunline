@@ -1,39 +1,39 @@
 %h3
-  = link_to "Scripts", scripts_path
+  = link_to t(:title_scripts), scripts_path
   &raquo;
   = @script.name
 
 .pull-right
-  %span= link_to 'Edit', edit_script_path(@script), class: 'btn'
+  %span= link_to t(:button_edit), edit_script_path(@script), class: 'btn'
 .clearfix
 
 %dl.dl-horizontal
 
-  %dt Script:
+  %dt= t(:field_body)
   %dd
     %pre= @script.body
 
-  %dt GUID:
+  %dt= t(:field_guid)
   %dd= @script.guid
 
-  %dt Created by:
+  %dt= t(:field_created_by)
   %dd= @script.creater_name
 
-  %dt Updated by:
+  %dt= t(:field_updated_by)
   %dd= @script.updater_name
 
-  %dt Run:
+  %dt t(:field_run)
   %dd
     %pre
       = "curl #{root_url}scripts/#{@script.guid}.sh | sh > sunline.log"
       %br
       = "curl #{root_url}scripts/#{@script.guid}/log.json -X POST -F host=`hostname` -F log_file=@sunline.log"
 
-%h4 Logs
+%h4= t(:title_logs)
 %table.table.table-striped
   %tr
-    %th Host
-    %th Uploaded
+    %th= t(:field_host)
+    %th= t(:field_uploaded)
   - @script.logs.each do |log|
     %tr
       %td= link_to log.host, log_path(log)

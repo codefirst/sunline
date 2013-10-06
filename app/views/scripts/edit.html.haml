@@ -1,9 +1,9 @@
 %h3
-  = link_to "Scripts", scripts_path
+  = link_to t(:title_scripts), scripts_path
   &raquo;
   = link_to @script.name, script_path(@script)
   &raquo;
-  Edit
+  = t(:title_edit)
 
 = render 'form'
 

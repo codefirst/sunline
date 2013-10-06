@@ -1,14 +1,14 @@
-%h3 Scripts
+%h3= t(:title_scripts)
 
-.pull-right= link_to 'New Script', new_script_path, class: 'btn'
+.pull-right= link_to t(:button_new_script), new_script_path, class: 'btn'
 .clearfix
 
 %table.table.table-striped
   %tr
-    %th Name
-    %th Created by
-    %th Updated by
-    %th Last Updated
+    %th= t(:field_name)
+    %th= t(:field_created_by)
+    %th= t(:field_updated_by)
+    %th= t(:field_last_update)
 
   - @scripts.each do |script|
     %tr

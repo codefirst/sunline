@@ -1,18 +1,18 @@
 %h3
-  = link_to "Scripts", scripts_path
+  = link_to t(:title_scripts), scripts_path
   &raquo;
   = link_to @log.script.name, script_path(@log.script)
   &raquo;
-  Log
+  = t(:title_log)
 
 %dl.dl-horizontal
 
-  %dt Host:
+  %dt= t(:field_host)
   %dd= @log.host
 
-  %dt Uploaded:
+  %dt= t(:field_uploaded)
   %dd= @log.created_at
 
-  %dt Result:
+  %dt= t(:field_log)
   %dd
     %pre= @log.result
