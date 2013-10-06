@@ -24,12 +24,12 @@ class Script < ActiveRecord::Base
   end
 
   def formatted_created_at
-    return self.created_at.to_s(:db) if self.created_at
+    return self.created_at.strftime("%Y-%m-%d %H:%M:%S") if self.created_at
     ''
   end
 
   def formatted_updated_at
-    return self.updated_at.to_s(:db) if self.updated_at
+    return self.updated_at.strftime("%Y-%m-%d %H:%M:%S") if self.updated_at
     ''
   end
 end
