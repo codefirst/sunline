@@ -2,6 +2,7 @@ class AuthenticationController < ApplicationController
   skip_before_filter :authenticate_user!
 
   def login
+    redirect_to root_path
   end
 
   define_method Settings.omniauth.provider do
