@@ -4,7 +4,7 @@ rvm:
   - 2.0.0
 
 script:
-  - bundle exec rake setup db:create db:migrate spec
+  - bundle exec rake db:migrate spec
 
 notifications:
   webhooks: http://dashbozu.herokuapp.com/hook/travisci
