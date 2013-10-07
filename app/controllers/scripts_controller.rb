@@ -1,5 +1,5 @@
 class ScriptsController < ApplicationController
-  before_action :set_script, only: [:edit, :update, :destroy, :archive]
+  before_action :set_script, only: [:edit, :update, :destroy, :archive, :activate]
   skip_filter :authenticate_user!, only: [:sh]
 
   # GET /scripts
@@ -87,6 +87,12 @@ class ScriptsController < ApplicationController
 
   def archive
     @script.archived = true
+    @script.save
+    redirect_to action: 'show', id: params[:id]
+  end
+
+  def activate
+    @script.archived = false
     @script.save
     redirect_to action: 'show', id: params[:id]
   end

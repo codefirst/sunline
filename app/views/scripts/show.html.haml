@@ -8,7 +8,10 @@
   .container
     %h3{:style => 'display:inline'}= @script.name
     .pull-right
-      = link_to t(:button_archive), archive_script_path(@script), class: 'btn btn-danger', method: :post
+      - if @script.archived
+        = link_to t(:button_activate), activate_script_path(@script), class: 'btn btn-primary', method: :post
+      - else
+        = link_to t(:button_archive), archive_script_path(@script), class: 'btn btn-danger', method: :post
       = link_to t(:button_edit), edit_script_path(@script), class: 'btn'
 
 %dl.dl-horizontal
