@@ -6,6 +6,7 @@ Sunline::Application.routes.draw do
 
   resources :logs
   post 'scripts/:guid/log', controller: 'logs', action: 'create'
+  post 'scripts/archive/:id', controller: 'scripts', action: 'archive', as: :archive_script
 
   devise_for :users, controllers: { omniauth_callbacks: 'authentication' }
   devise_scope :user do

@@ -26,6 +26,7 @@ en:
   button_edit: Edit
   button_save: Save
   button_remove: Remove
+  button_archive: Archive
   button_change: Change
   button_select_file: Select file
   button_more_attachment: More attachment
