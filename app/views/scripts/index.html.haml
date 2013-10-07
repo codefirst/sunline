@@ -2,7 +2,12 @@
 .navbar
   .container
     %h3= t(:title_scripts)
-    .pull-right= link_to t(:button_new_script), new_script_path, class: 'btn'
+    .pull-right
+      - if params[:archived] == 'true'
+        = link_to t(:link_active_scripts), scripts_path
+      - else
+        = link_to t(:link_archived_scripts), scripts_path(archived: true)
+      = link_to t(:button_new_script), new_script_path, class: 'btn'
 
 %table.table.table-striped
   %tr

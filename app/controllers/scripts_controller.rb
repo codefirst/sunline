@@ -5,7 +5,11 @@ class ScriptsController < ApplicationController
   # GET /scripts
   # GET /scripts.json
   def index
-    @scripts = Script.order("updated_at desc").all
+    @scripts = if params[:archived] == 'true'
+      Script.where(archived: true).order("updated_at desc")
+    else
+      Script.where(archived: false).order("updated_at desc")
+    end
   end
 
   # GET /scripts/guid.sh

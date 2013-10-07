@@ -31,6 +31,9 @@ en:
   button_select_file: Select file
   button_more_attachment: More attachment
 
+  link_archived_scripts: Show archived scripts
+  link_active_scripts: Show active scripts
+
   ago: " ago"
   copy_to_clipboard: Copy to clipboard
   copied: Copied!
