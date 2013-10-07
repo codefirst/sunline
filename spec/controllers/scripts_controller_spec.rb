@@ -40,11 +40,11 @@ describe ScriptsController do
     its(:archived) { should be_true }
   end
 
-  context 'activate' do
+  context 'unarchive' do
     before do
       @script = Script.new(name: 'name', archived: true)
       @script.save
-      post :activate, id: @script.id
+      post :unarchive, id: @script.id
     end
     subject { Script.find(@script.id) }
     its(:archived) { should be_false }
