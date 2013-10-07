@@ -1,4 +1,5 @@
 Sunline::Application.routes.draw do
+  get 'scripts/:guid.sh', controller: 'scripts', action: 'sh'
   resources :scripts
 
   root 'top#index'

@@ -1,6 +1,6 @@
 class ScriptsController < ApplicationController
   before_action :set_script, only: [:edit, :update, :destroy]
-  skip_filter :authenticate_user!, only: [:show]
+  skip_filter :authenticate_user!, only: [:sh]
 
   # GET /scripts
   # GET /scripts.json
@@ -8,20 +8,19 @@ class ScriptsController < ApplicationController
     @scripts = Script.order("updated_at desc").all
   end
 
+  # GET /scripts/guid.sh
+  def sh
+    script = Script.where(guid: params[:guid]).first
+    if script
+      render text: script.body_lf
+    else
+      render text: "echo 'script not found'", status: 404
+    end
+  end
+
   # GET /scripts/1
   # GET /scripts/1.json
   def show
-    if params[:format] == 'sh'
-      @script = Script.where(guid: params[:id]).first
-      if @script
-        render text: @script.body_lf
-      else
-        render text: "echo 'script not found'", status: 404
-      end
-      return
-    end
-
-    authenticate_user!
     @script = Script.find(params[:id])
     respond_to do |format|
       format.html { render action: 'show' }
