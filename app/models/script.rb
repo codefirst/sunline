@@ -40,4 +40,9 @@ class Script < ActiveRecord::Base
        "curl #{root_url}scripts/#{guid}/log.json -X POST -F host=`hostname` -F log_file=@sunline.log"
     ].join(";")
   end
+
+  def body_lf
+    body.gsub("\r", "")
+  end
+
 end

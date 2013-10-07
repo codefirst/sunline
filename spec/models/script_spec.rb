@@ -35,4 +35,11 @@ describe Script do
     end
   end
 
+  describe 'body_lf' do
+    context 'contains cr' do
+      subject { Script.new(body: "new\r\nline") }
+      its(:body_lf) { should == "new\nline" }
+    end
+  end
+
 end
