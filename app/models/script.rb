@@ -8,6 +8,9 @@ class Script < ActiveRecord::Base
 
   validates :name, presence: true
 
+  scope :archived, lambda { where(archived: true) }
+  scope :active, lambda { where('archived is null or archived = ?', false) }
+
   def generate_guid
     uuid = SecureRandom.uuid.split('-').first
     uuid << Time.now.strftime("%Y%m%d%H%M%S%L") unless Script.where(guid: uuid).first.nil?
