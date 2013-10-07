@@ -55,15 +55,22 @@
   = @script.remote_script(root_url)
 
 - unless @script.logs.empty?
-  %h4= t(:title_logs)
+  .navbar.navbar-h4
+    .container
+      %h4= t(:title_logs)
+      .pull-right.muted
+        = @script.logs.length
+        = t(:logs_count)
   %table.table.table-striped
     %tr
       %th= t(:field_host)
       %th= t(:field_uploaded)
+      %th= t(:field_log_size)
     - @script.logs.order('created_at desc').each do |log|
       %tr
         %td= link_to log.host, log_path(log)
         %td= log.formatted_created_at
+        %td= number_to_human_size log.result.bytesize
 
 :javascript
   $(function() {

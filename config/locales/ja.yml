@@ -51,6 +51,7 @@ ja:
   field_uploaded: アップロード日時
   field_log: ログ
   field_attachments: 添付ファイル
+  field_log_size: サイズ
 
   button_sign_in: サインイン
   button_sign_out: サインアウト
@@ -66,4 +67,5 @@ ja:
   ago: 前
   copy_to_clipboard: クリップボードにコピー
   copied: コピーしました
+  logs_count: 件
 
