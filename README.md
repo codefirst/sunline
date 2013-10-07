@@ -1,6 +1,8 @@
 Sunline
 ===================
 
+[![Build Status](https://secure.travis-ci.org/codefirst/sunline.png?branch=master)](http://travis-ci.org/codefirst/sunline)
+
 Install
 ----------------
 
