@@ -17,8 +17,7 @@
 %dl.dl-horizontal
 
   %dt= t(:field_body)
-  %dd
-    %pre= @script.body
+  %dd= text_area_tag :body, @script.body, class: 'input-xxlarge script-area', rows: 15
 
   %dt= t(:field_created_by)
   %dd
@@ -91,5 +90,8 @@
         self.tooltip('destroy');
       }, 3000);
     } );
+    $('.script-area').each(function() {
+      CodeMirror.fromTextArea(this, {mode: "shell", lineNumbers: true, readOnly: true});
+    });
   });
 

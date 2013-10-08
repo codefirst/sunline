@@ -16,4 +16,6 @@
 //= require bootstrap-fileupload
 //= require turbolinks
 //= require ZeroClipboard
+//= require codemirror
+//= require codemirror/modes/shell
 //= require_tree .

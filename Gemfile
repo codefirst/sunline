@@ -37,6 +37,7 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'settingslogic'
 gem 'paperclip'
+gem 'codemirror-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

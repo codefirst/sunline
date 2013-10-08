@@ -54,4 +54,7 @@
       fileupload.clone(true).insertAfter(fileupload);
       return false;
     });
+    $('.script-area').each(function() {
+      CodeMirror.fromTextArea(this, {mode: "shell", lineNumbers: true});
+    });
   });

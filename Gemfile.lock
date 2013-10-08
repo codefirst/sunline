@@ -46,6 +46,8 @@ GEM
       activesupport (>= 3.0)
     cocaine (0.5.2)
       climate_control (>= 0.0.3, < 1.0)
+    codemirror-rails (3.16)
+      railties (>= 3.0, < 5)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0.beta, < 5.0)
@@ -203,6 +205,7 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk
+  codemirror-rails
   coffee-rails (~> 4.0.0)
   devise
   haml-rails

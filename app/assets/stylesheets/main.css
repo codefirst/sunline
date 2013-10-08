@@ -101,3 +101,8 @@ ul.attachments label {
 .fileuploads-more {
   margin-bottom: 20px;
 }
+
+.CodeMirror {
+  height: auto;
+  border: 1px solid #ddd;
+}
