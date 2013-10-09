@@ -88,13 +88,13 @@ class ScriptsController < ApplicationController
   def archive
     @script.archived = true
     @script.save
-    redirect_to action: 'show', id: params[:id]
+    redirect_to script_path(params[:id]), notice: "Script was successfully archived."
   end
 
   def unarchive
     @script.archived = false
     @script.save
-    redirect_to action: 'show', id: params[:id]
+    redirect_to script_path(params[:id]), notice: "Script was successfully unarchived."
   end
 
   private
