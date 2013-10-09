@@ -44,6 +44,16 @@ class Script < ActiveRecord::Base
     ].join(";")
   end
 
+  def runnable_script(root_url)
+    script = []
+    script << "set -ev"
+    script += attachments.map do |attachment|
+      attachment.download_command(root_url)
+    end
+    script << self.body_lf
+    script.join("\n")
+  end
+
   def body_lf
     body.gsub("\r", "")
   end

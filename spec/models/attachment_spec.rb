@@ -1,5 +1,33 @@
 require 'spec_helper'
 
 describe Attachment do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "download_command" do
+    context "local filesystem" do
+      before do
+        upload = mock
+        upload.stub(:url) { "/filename.txt" }
+        instance = mock
+        instance.stub(:upload_file_name) { "filename.txt" }
+        upload.stub(:instance) { instance }
+        @attachment = Attachment.new
+        @attachment.stub(:upload) { upload }
+      end
+      subject { @attachment.download_command("http://example.com") }
+      it { should == "curl -o 'filename.txt' 'http://example.com/filename.txt'" }
+    end
+
+    context "s3" do
+      before do
+        upload = mock
+        upload.stub(:url) { "http://foo.s3.amazonaws.com/attachments/uploads/000/000/000/original/filename.txt?00000000" }
+        instance = mock
+        instance.stub(:upload_file_name) { "filename.txt" }
+        upload.stub(:instance) { instance }
+        @attachment = Attachment.new
+        @attachment.stub(:upload) { upload }
+      end
+      subject { @attachment.download_command("http://example.com") }
+      it { should == "curl -o 'filename.txt' 'http://foo.s3.amazonaws.com/attachments/uploads/000/000/000/original/filename.txt?00000000'" }
+    end
+  end
 end

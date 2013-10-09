@@ -16,7 +16,7 @@ class ScriptsController < ApplicationController
   def sh
     script = Script.where(guid: params[:guid]).first
     if script
-      render text: script.body_lf
+      render text: script.runnable_script(root_url)
     else
       render text: "echo 'script not found'", status: 404
     end
