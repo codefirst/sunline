@@ -1,0 +1,35 @@
+%ul.breadcrumb
+  %li
+    = link_to t(:title_scripts), scripts_path
+    %span.divider /
+  %li
+    = link_to @log.script.name, script_path(@log.script)
+    %span.divider /
+  %li.active= t(:title_log)
+
+%h3= t(:title_log)
+
+%dl.dl-horizontal
+
+  %dt= t(:field_host)
+  %dd= @log.host
+
+  %dt= t(:field_uploaded)
+  %dd= @log.formatted_created_at
+
+  %dt= t(:field_log)
+  %dd
+    %pre= @log.result
+
+  = form_for @log do |f|
+    - if @log.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@log.errors.count, "error")} prohibited this script from being saved:"
+        %ul
+          - @log.errors.full_messages.each do |msg|
+            %li= msg
+    %dt= t(:field_memo)
+    %dd= f.text_area :memo, class: 'input-xxlarge script-area', rows: 15
+    %dd= f.submit t(:button_save), class: 'btn btn-primary'
+
+
