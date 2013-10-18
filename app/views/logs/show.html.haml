@@ -27,4 +27,5 @@
 
   %dt= t(:field_memo)
   %dd
-    %pre= @log.memo
+    - unless @log.memo.blank?
+      %pre= @log.memo
