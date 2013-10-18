@@ -36,6 +36,15 @@ class LogsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @log.memo = params[:log][:memo]
+    @log.save
+    redirect_to log_path
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_log

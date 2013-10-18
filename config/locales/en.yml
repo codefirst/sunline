@@ -18,6 +18,7 @@ en:
   field_log: Log
   field_attachments: Attachments
   field_log_size: Size
+  field_memo: Memo
 
   button_sign_in: Sign in
   button_sign_out: Sign out

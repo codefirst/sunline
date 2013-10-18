@@ -7,7 +7,11 @@
     %span.divider /
   %li.active= t(:title_log)
 
-%h3= t(:title_log)
+.navbar
+  .container
+    %h3= t(:title_log)
+    .pull-right
+      = link_to t(:button_edit), edit_log_path, class: 'btn'
 
 %dl.dl-horizontal
 
@@ -20,3 +24,7 @@
   %dt= t(:field_log)
   %dd
     %pre= @log.result
+
+  %dt= t(:field_memo)
+  %dd
+    %pre= @log.memo
