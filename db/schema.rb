@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131017235247) do
+ActiveRecord::Schema.define(version: 20140104125937) do
 
   create_table "attachments", force: true do |t|
     t.integer  "script_id"
@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(version: 20131017235247) do
     t.string   "upload_content_type"
     t.integer  "upload_file_size"
     t.datetime "upload_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "hooks", force: true do |t|
+    t.string   "url"
+    t.integer  "script_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -17,6 +17,7 @@ en:
   field_uploaded: Uploaded
   field_log: Log
   field_attachments: Attachments
+  field_hooks: Hooks
   field_log_size: Size
   field_memo: Memo
 
@@ -32,6 +33,7 @@ en:
   button_change: Change
   button_select_file: Select file
   button_more_attachment: More attachment
+  button_more_hook: More hook
 
   link_archived_scripts: Show archived scripts
   link_active_scripts: Show active scripts
