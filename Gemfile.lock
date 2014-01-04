@@ -208,6 +208,7 @@ DEPENDENCIES
   codemirror-rails
   coffee-rails (~> 4.0.0)
   devise
+  faraday
   haml-rails
   jbuilder (~> 1.2)
   jquery-rails

@@ -1,4 +1,6 @@
 class LogsController < ApplicationController
+  include LogsHelper
+
   before_action :set_log, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:create]
   skip_before_action :verify_authenticity_token, only: [:create]
@@ -34,6 +36,8 @@ class LogsController < ApplicationController
         format.json { render json: @log.errors, status: :unprocessable_entity }
       end
     end
+
+    post_hooks(@log)
   end
 
   def edit
