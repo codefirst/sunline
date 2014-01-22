@@ -6,7 +6,7 @@ class Log < ActiveRecord::Base
     ''
   end
 
-  def hook_json
-    {script: self.script, log: self}.to_json(except: [:id, :guid, :script_id])
+  def hook_json(url)
+    {script: self.script, log: self, url: url}.to_json(except: [:id, :guid, :script_id])
   end
 end
