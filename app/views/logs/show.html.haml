@@ -25,6 +25,9 @@
   %dd
     %pre= @log.result
 
+  %dt= t(:field_log_size)
+  %dd= number_to_human_size @log.result.bytesize
+
   %dt= t(:field_memo)
   %dd
     - unless @log.memo.blank?
