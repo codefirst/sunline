@@ -81,12 +81,23 @@ footer {
   list-style: square;
 }
 
+.field {
+  margin-bottom: 17px;
+}
+.field label {
+  font-weight: bold;
+}
+
 .field_with_errors input[type="text"] {
   border-color: #b94a48;
 }
 
 .field_with_errors label {
   color: #b94a48;
+}
+
+.fileupload {
+  margin-bottom: 0;
 }
 
 ul.attachments {
@@ -96,10 +107,6 @@ ul.attachments {
 
 ul.attachments label {
   margin-left: 1em;
-}
-
-.fileuploads-more {
-  margin-bottom: 20px;
 }
 
 .CodeMirror {

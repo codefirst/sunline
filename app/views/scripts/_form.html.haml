@@ -55,7 +55,7 @@
 
       .hook
         = text_field_tag 'hooks[][url]', '', class: 'input-xlarge'
-        = check_box_tag "hooks[][delete]"
+        = check_box_tag "hooks[][delete]", class: 'checkbox'
         = t(:button_remove)
 
     .hooks-more
