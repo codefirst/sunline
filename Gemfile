@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '4.0.2'
 gem 'thin'
 
 gem 'devise'
@@ -10,7 +10,7 @@ gem 'omniauth-github'
 gem 'omniauth-redmine', :github => 'suer/omniauth-redmine'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails', '~> 4.0.1'
 
 gem 'twitter-bootstrap-rails'
 
@@ -21,7 +21,7 @@ gem 'haml-rails'
 gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.0.1'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -53,7 +53,7 @@ end
 group :production do
   gem 'pg'
 end
-  gem 'aws-sdk'
+gem 'aws-sdk'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
