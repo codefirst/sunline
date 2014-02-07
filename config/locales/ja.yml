@@ -34,6 +34,18 @@ ja:
         one:   "%{count}年以上"
         other: "%{count}年以上"
 
+  activerecord:
+    attributes:
+      script:
+        name: 名前
+        body: スクリプト
+    errors:
+      models:
+        script:
+          attributes:
+            name:
+              blank: は必須項目です。
+
   title_scripts: スクリプト
   title_logs: ログ
   title_new_script: スクリプトを追加

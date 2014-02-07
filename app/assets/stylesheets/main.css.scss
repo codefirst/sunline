@@ -11,21 +11,23 @@ body {
   }
 }
 
-.brand img {
-  height: 20px;
-  padding: 10px 20px 10px;
-}
-.navbar .brand {
-  padding: 0;
+.navbar {
+  .brand {
+    padding: 0;
+    img {
+      height: 20px;
+      padding: 10px 20px 10px;
+    }
+  }
+  .container h3, .container h4 {
+    display: inline;
+  }
 }
 
-.navbar .container h3,
-.navbar .container h4 {
-  display: inline;
-}
 .navbar-h4 {
   margin-bottom: 2px;
 }
+
 .copy-button {
   padding: 2px 6px;
 }
@@ -62,38 +64,37 @@ footer {
   padding-bottom: 0;
   margin-bottom: 20px;
   background-color: #f0f0f0;
-}
-
-#error_explanation h2 {
-  text-align: left;
-  font-weight: bold;
-  padding: 0px 5px 0px 5px;
-  font-size: 14px;
-  margin: -7px;
-  margin-bottom: 0px;
-  background-color: #b94a48;
-  border-color: #000;
-  color: #fff;
-}
-
-#error_explanation ul li {
-  font-size: 12px;
-  list-style: square;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 0px 5px 0px 5px;
+    font-size: 14px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #b94a48;
+    border-color: #000;
+    color: #fff;
+  }
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
 }
 
 .field {
   margin-bottom: 17px;
-}
-.field label {
-  font-weight: bold;
-}
-
-.field_with_errors input[type="text"] {
-  border-color: #b94a48;
+  label {
+    font-weight: bold;
+  }
 }
 
-.field_with_errors label {
-  color: #b94a48;
+.field_with_errors {
+  input[type="text"] {
+    border-color: #b94a48;
+  }
+  label {
+    color: #b94a48;
+  }
 }
 
 .fileupload {
@@ -103,10 +104,9 @@ footer {
 ul.attachments {
   list-style-type: none;
   margin-left: 0;
-}
-
-ul.attachments label {
-  margin-left: 1em;
+  label {
+    margin-left: 1em;
+  }
 }
 
 .CodeMirror {
