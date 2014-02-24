@@ -4,9 +4,9 @@ describe Attachment do
   describe "download_command" do
     context "local filesystem" do
       before do
-        upload = mock
+        upload = double
         upload.stub(:url) { "/filename.txt" }
-        instance = mock
+        instance = double
         instance.stub(:upload_file_name) { "filename.txt" }
         upload.stub(:instance) { instance }
         @attachment = Attachment.new
@@ -18,9 +18,9 @@ describe Attachment do
 
     context "s3" do
       before do
-        upload = mock
+        upload = double
         upload.stub(:url) { "http://foo.s3.amazonaws.com/attachments/uploads/000/000/000/original/filename.txt?00000000" }
-        instance = mock
+        instance = double
         instance.stub(:upload_file_name) { "filename.txt" }
         upload.stub(:instance) { instance }
         @attachment = Attachment.new
