@@ -6,6 +6,6 @@ class Attachment < ActiveRecord::Base
       url = self.upload.url
       url = root_url + url if url.start_with?('/')
       filename = self.upload.instance.upload_file_name
-      "curl -o '#{filename}' '#{url}'"
+      "curl -s -o '#{filename}' '#{url}'"
   end
 end

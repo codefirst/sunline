@@ -13,7 +13,7 @@ describe Attachment do
         @attachment.stub(:upload) { upload }
       end
       subject { @attachment.download_command("http://example.com") }
-      it { should == "curl -o 'filename.txt' 'http://example.com/filename.txt'" }
+      it { should == "curl -s -o 'filename.txt' 'http://example.com/filename.txt'" }
     end
 
     context "s3" do
@@ -27,7 +27,7 @@ describe Attachment do
         @attachment.stub(:upload) { upload }
       end
       subject { @attachment.download_command("http://example.com") }
-      it { should == "curl -o 'filename.txt' 'http://foo.s3.amazonaws.com/attachments/uploads/000/000/000/original/filename.txt?00000000'" }
+      it { should == "curl -s -o 'filename.txt' 'http://foo.s3.amazonaws.com/attachments/uploads/000/000/000/original/filename.txt?00000000'" }
     end
   end
 end
