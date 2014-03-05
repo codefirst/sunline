@@ -36,7 +36,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem 'settingslogic'
-gem 'paperclip'
+gem 'paperclip', '~> 3.5.4'
 gem 'codemirror-rails'
 
 group :doc do

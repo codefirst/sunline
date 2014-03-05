@@ -120,7 +120,7 @@ GEM
       oauth2 (~> 0.9.3)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
-    paperclip (4.0.0)
+    paperclip (3.5.4)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
@@ -220,7 +220,7 @@ DEPENDENCIES
   omniauth
   omniauth-github
   omniauth-redmine!
-  paperclip
+  paperclip (~> 3.5.4)
   pg
   quiet_assets
   rails (= 4.0.3)
