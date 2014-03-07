@@ -1,0 +1,7 @@
+.navbar
+  .container
+    %h3{:style => 'display:inline'}= t(:error_404)
+
+= t(:not_found, path: @path)
+
+%p= link_to t(:button_back), :back

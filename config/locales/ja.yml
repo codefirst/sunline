@@ -80,6 +80,7 @@ ja:
   button_select_file: ファイルを選択
   button_more_attachment: ファイルを追加
   button_more_hook: フックを追加
+  button_back: 戻る
 
   link_archived_scripts: アーカイブ
   link_active_scripts: 有効なスクリプト
@@ -89,3 +90,5 @@ ja:
   copied: コピーしました
   logs_count: 件
 
+  error_404: 404 エラー
+  not_found: "%{path} は存在しません"

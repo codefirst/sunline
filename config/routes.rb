@@ -15,4 +15,6 @@ Sunline::Application.routes.draw do
     post 'sign_out', to: 'authentication#logout', as: :destroy_user_session
   end
   get ':controller/:action', controller: 'authentication'
+
+  get '*not_found' => 'application#render_404'
 end

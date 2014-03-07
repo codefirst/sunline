@@ -34,6 +34,7 @@ en:
   button_select_file: Select file
   button_more_attachment: More attachment
   button_more_hook: More hook
+  button_back: Back
 
   link_archived_scripts: Show archived scripts
   link_active_scripts: Show active scripts
@@ -43,3 +44,5 @@ en:
   copied: Copied!
   logs_count: logs
 
+  error_404: 404 Error
+  not_found: "%{path} is not found"
