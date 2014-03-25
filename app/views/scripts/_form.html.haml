@@ -15,7 +15,7 @@
   .field
     = label_tag t(:field_attachments)
     %ul.attachments
-      - @script.attachments.each do |attachment|
+      - @script.attachments.order(:upload_file_name).each do |attachment|
         %li
           %i.icon-file
           = attachment.upload.instance.upload_file_name

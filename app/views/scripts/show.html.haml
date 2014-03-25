@@ -39,7 +39,7 @@
     %dt= t(:field_attachments)
     %dd
       %ul.attachments
-        - @script.attachments.each do |attachment|
+        - @script.attachments.order(:upload_file_name).each do |attachment|
           %li
             %i.icon-file
             = link_to attachment.upload.instance.upload_file_name, attachment.upload.url
