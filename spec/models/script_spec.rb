@@ -2,6 +2,18 @@ require 'spec_helper'
 
 describe Script do
 
+  describe '' do
+    before do
+      @script = Script.new(name: 'foo')
+      @script.save
+      @guid = @script.guid
+    end
+
+    subject { @script.remote_script("http://localhost:3000/") }
+
+    it { should eq "curl -s http://localhost:3000/scripts/#{@guid}.sh | sh > sunline.log 2>&1;curl -s http://localhost:3000/scripts/#{@guid}/log -X POST -F host=`hostname` -F log_file=@sunline.log" }
+  end
+
   describe 'save' do
     before do
       @script = Script.new(name: 'name')
