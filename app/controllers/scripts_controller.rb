@@ -108,14 +108,16 @@ class ScriptsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def script_params
-      params.require(:script).permit(:name, :body, :archived, attachments: [:upload])
+      params.require(:script).permit(:name, :body, :archived)
+    end
+
+    def attachment_params
+      params.permit(attachments: [:upload])
     end
 
     def add_attachments
-      if params[:attachments]
-        params[:attachments].each do |attachment|
-          @script.attachments << Attachment.new(attachment)
-        end
+      (attachment_params[:attachments] || []).each do |attachment|
+        @script.attachments << Attachment.new(attachment)
       end
     end
 
