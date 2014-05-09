@@ -11,7 +11,7 @@ describe Script do
 
     subject { @script.remote_script("http://localhost:3000/") }
 
-    it { should eq "curl -s http://localhost:3000/scripts/#{@guid}.sh | sh > sunline.log 2>&1;curl -s http://localhost:3000/scripts/#{@guid}/log -X POST -F host=`hostname` -F log_file=@sunline.log" }
+    it { should eq "curl -s http://localhost:3000/scripts/#{@guid}.sh | sh 2>&1 | tee sunline.log;curl -s http://localhost:3000/scripts/#{@guid}/log -X POST -F host=`hostname` -F log_file=@sunline.log" }
   end
 
   describe 'save' do
