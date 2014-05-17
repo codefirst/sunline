@@ -9,4 +9,8 @@ class Log < ActiveRecord::Base
   def hook_json(url)
     {script: self.script, log: self, url: url}.to_json(except: [:id, :guid, :script_id])
   end
+
+  def self.all_hosts
+    self.distinct.pluck(:host)
+  end
 end

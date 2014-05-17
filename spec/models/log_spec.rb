@@ -10,4 +10,15 @@ describe Log do
     subject { @script.logs }
     its(:size) { should == 1 }
   end
+
+  context "get all hosts" do
+    before do
+      Log.delete_all
+      Log.create(host: 'a.example.net')
+      Log.create(host: 'a.example.net')
+      Log.create(host: 'b.example.net')
+    end
+    subject { Log.all_hosts }
+    it { should =~ ['a.example.net', 'b.example.net'] }
+  end
 end
