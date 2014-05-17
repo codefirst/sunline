@@ -1,6 +1,7 @@
 en:
   title_scripts: Scripts
   title_logs: Logs
+  title_hosts: Hosts
   title_new_script: New Script
   title_edit: Edit
   title_log: Log

@@ -1,0 +1,9 @@
+.navbar
+  .container
+    %h3= t(:title_hosts)
+
+%table.table.table-striped
+  - @hosts.each do |host|
+    %tr
+      %td= host
+
