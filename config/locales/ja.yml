@@ -67,6 +67,8 @@ ja:
   field_hooks: フック
   field_log_size: サイズ
   field_memo: 備考
+  field_script_name: スクリプト名
+  field_created: 作成日時
 
   button_sign_in: サインイン
   button_sign_out: サインアウト

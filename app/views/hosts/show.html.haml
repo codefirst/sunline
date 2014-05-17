@@ -1,0 +1,16 @@
+%ul.breadcrumb
+  %li
+    = link_to t(:title_hosts), hosts_path
+    %span.divider /
+  %li.active= params[:hostname]
+
+%table.table.table-striped
+  %tr
+    %th= t(:field_script_name)
+    %th= t(:field_created)
+
+  - @logs.each do |log|
+    %tr
+      %td= link_to log.script.name, script_path(log.script.id)
+      %td= link_to log.formatted_created_at, log_path(log.id)
+

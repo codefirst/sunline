@@ -1,7 +1,9 @@
 Sunline::Application.routes.draw do
-  resources :hosts
   get 'scripts/:guid.sh', controller: 'scripts', action: 'sh'
   resources :scripts
+
+  get 'hosts', controller: 'hosts', action: 'index', as: :hosts
+  get 'hosts/:hostname', controller: 'hosts', action: 'show', hostname: /.+/, as: :host
 
   root 'top#index'
 

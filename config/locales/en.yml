@@ -21,6 +21,8 @@ en:
   field_hooks: Hooks
   field_log_size: Size
   field_memo: Memo
+  field_script_name: Script Name
+  field_created: Created
 
   button_sign_in: Sign in
   button_sign_out: Sign out

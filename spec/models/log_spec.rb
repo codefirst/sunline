@@ -21,4 +21,15 @@ describe Log do
     subject { Log.all_hosts }
     it { should =~ ['a.example.net', 'b.example.net'] }
   end
+
+  context "select by host" do
+    before do
+      Log.delete_all
+      Log.create(host: 'a.example.net')
+      Log.create(host: 'a.example.net')
+      Log.create(host: 'b.example.net')
+    end
+    subject { Log.by_host('a.example.net') }
+    it { should have(2).items }
+  end
 end
