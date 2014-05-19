@@ -15,6 +15,6 @@ class Log < ActiveRecord::Base
   end
 
   def self.all_hosts
-    self.distinct.pluck(:host)
+    self.distinct.order(:host).pluck(:host)
   end
 end
