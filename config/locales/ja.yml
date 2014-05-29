@@ -95,3 +95,4 @@ ja:
 
   error_404: 404 エラー
   not_found: "%{path} は存在しません"
+  error_authentication_failed: 認証に失敗しました

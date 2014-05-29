@@ -49,3 +49,4 @@ en:
 
   error_404: 404 Error
   not_found: "%{path} is not found"
+  error_authentication_failed: Authentication failed
