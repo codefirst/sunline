@@ -6,19 +6,23 @@
   "env": {
     "PAPERCLIP_STORAGE_TYPE": {
       "description": "paperclip strage type",
-      "value": "s3"
+      "value": "s3",
+      "required": false
     },
     "AWS_BUCKET": {
       "description": "bucket name of S3",
-      "value": "backet name"
+      "value": "backet name",
+      "required": false
     },
     "AWS_ACCESS_KEY_ID": {
       "description": "access key of S3",
-      "value": "access key"
+      "value": "access key",
+      "required": false
     },
     "AWS_SECRET_ACCESS_KEY": {
       "description": "secret key of S3",
-      "value": "secret key"
+      "value": "secret key",
+      "required": false
     },
     "OMNIAUTH_PROVIDER": {
       "description": "omniauth provider",
