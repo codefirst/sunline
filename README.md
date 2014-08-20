@@ -1,6 +1,8 @@
 Sunline
 ===================
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 [![Build Status](https://secure.travis-ci.org/codefirst/sunline.png?branch=master)](http://travis-ci.org/codefirst/sunline)
 [![Code Climate](https://codeclimate.com/github/codefirst/sunline.png)](https://codeclimate.com/github/codefirst/sunline)
 [![wercker status](https://app.wercker.com/status/97d6b83aa52d6abb800f96eb37115c20/s/ "wercker status")](https://app.wercker.com/project/bykey/97d6b83aa52d6abb800f96eb37115c20)

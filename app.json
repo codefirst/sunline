@@ -1,0 +1,46 @@
+{
+  "name": "sunlilne",
+  "description": "A lightweight script and log management tool",
+  "repository": "https://github.com/codefirst/sunline/",
+  "logo": "https://raw.githubusercontent.com/codefirst/sunline/master/app/assets/images/apple-touch-icon-114x114-precomposed.png",
+  "env": {
+    "PAPERCLIP_STORAGE_TYPE": {
+      "description": "paperclip strage type",
+      "value": "s3"
+    },
+    "AWS_BUCKET": {
+      "description": "bucket name of S3",
+      "value": "backet name"
+    },
+    "AWS_ACCESS_KEY_ID": {
+      "description": "access key of S3",
+      "value": "access key"
+    },
+    "AWS_SECRET_ACCESS_KEY": {
+      "description": "secret key of S3",
+      "value": "secret key"
+    },
+    "OMNIAUTH_PROVIDER": {
+      "description": "omniauth provider",
+      "value": "github"
+    },
+    "OMNIAUTH_ARGS": {
+      "description": "omniauth args",
+      "value": "['Client ID','Client Secret']"
+    },
+    "SUNLINE_LOCALE": {
+      "description": "locale",
+      "value": "ja"
+    },
+    "SUNLINE_TIMEZONE": {
+      "description": "timezone",
+      "value": "Tokyo"
+    }
+  },
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate RAILS_ENV=production"
+  }
+}
