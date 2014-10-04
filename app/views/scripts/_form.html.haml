@@ -28,17 +28,8 @@
             = t(:button_remove)
 
     .fileuploads
-      .fileupload.fileupload-new{:'data-provides' => 'fileupload'}
-        .input-append
-          .uneditable-input.span3
-            %i.icon-file.fileupload-exists
-            %span.fileupload-preview
-          %span.btn.btn-file
-            %span.fileupload-new= t(:button_select_file)
-            %span.fileupload-exists
-              = t(:button_change)
-            = file_field_tag 'attachments[][upload]', :class => 'input-file'
-          = link_to t(:button_remove), '#', {:'data-dismiss' => 'fileupload', :class => 'btn fileupload-exists'}
+      = render 'form_upload', :display => 'none'
+      = render 'form_upload', :display => 'block'
     .fileuploads-more
       = link_to '#', :class => 'attachment-more btn' do
         %i.icon-plus
@@ -74,7 +65,8 @@
   $(function() {
     $('.attachment-more').on('click', function(e) {
       var fileupload = $('.fileuploads .fileupload:first-child');
-      fileupload.clone(true).insertAfter(fileupload);
+      var lastupload = $('.fileuploads .fileupload:last-child');
+      fileupload.clone(true).toggle().insertAfter(lastupload);
       return false;
     });
     $('.hook-more').on('click', function(e) {

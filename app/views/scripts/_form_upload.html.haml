@@ -1,0 +1,12 @@
+.fileupload.fileupload-new{:'data-provides' => 'fileupload', :style => "display:#{display}"}
+  .input-append
+    .uneditable-input.span3
+      %i.icon-file.fileupload-exists
+      %span.fileupload-preview
+    %span.btn.btn-file
+      %span.fileupload-new= t(:button_select_file)
+      %span.fileupload-exists
+        = t(:button_change)
+      = file_field_tag 'attachments[][upload]', :class => 'input-file'
+    = link_to t(:button_remove), '#', {:'data-dismiss' => 'fileupload', :class => 'btn fileupload-exists'}
+
