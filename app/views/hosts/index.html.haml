@@ -1,6 +1,9 @@
 .navbar
   .container
     %h3= t(:title_hosts)
+    .pull-right.muted.h3-right
+      = @hosts.length
+      = t(:hosts_count)
 
 %table.table.table-striped
   - @hosts.each do |host|

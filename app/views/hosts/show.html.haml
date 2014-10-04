@@ -2,7 +2,14 @@
   %li
     = link_to t(:title_hosts), hosts_path
     %span.divider /
-  %li.active= params[:hostname]
+  %li.active= @hostname
+
+.navbar
+  .container
+    %h4= @hostname
+    .pull-right.muted
+      = @logs.length
+      = t(:logs_count)
 
 %table.table.table-striped
   %tr

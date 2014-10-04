@@ -92,6 +92,7 @@ ja:
   copy_to_clipboard: クリップボードにコピー
   copied: コピーしました
   logs_count: 件
+  hosts_count: ホスト
 
   error_404: 404 エラー
   not_found: "%{path} は存在しません"

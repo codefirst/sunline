@@ -4,6 +4,7 @@ class HostsController < ApplicationController
   end
 
   def show
-    @logs = Log.by_host(params[:hostname])
+    @hostname = params[:hostname]
+    @logs = Log.by_host(@hostname)
   end
 end

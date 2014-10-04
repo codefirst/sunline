@@ -46,6 +46,7 @@ en:
   copy_to_clipboard: Copy to clipboard
   copied: Copied!
   logs_count: logs
+  hosts_count: hosts
 
   error_404: 404 Error
   not_found: "%{path} is not found"
