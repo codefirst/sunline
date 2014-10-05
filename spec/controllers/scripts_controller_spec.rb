@@ -50,12 +50,21 @@ describe ScriptsController do
     its(:archived) { should be_false }
   end
 
-  context 'remote_script' do
+  context 'runnable_script' do
     before do
       @script = Script.new(name: 'name', body: 'ls -l')
       @script.save
       get :sh, guid: @script.guid
     end
     it { response.body.should be_include 'ls -l' }
+  end
+
+  context 'remote_script' do
+    before do
+      @script = Script.new(name: 'name', body: 'ls -l')
+      @script.save
+      get :wrapped_sh, guid: @script.guid
+    end
+    it { response.body.should be_include 'tee' }
   end
 end

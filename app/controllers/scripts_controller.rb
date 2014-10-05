@@ -12,6 +12,16 @@ class ScriptsController < ApplicationController
     end
   end
 
+  # GET /scripts/wrapped/guid.sh
+  def wrapped_sh
+    script = Script.where(guid: params[:guid]).first
+    if script
+      render text: script.remote_script(root_url)
+    else
+      render text: "echo 'script not found'", status: 404
+    end
+  end
+
   # GET /scripts/guid.sh
   def sh
     script = Script.where(guid: params[:guid]).first
