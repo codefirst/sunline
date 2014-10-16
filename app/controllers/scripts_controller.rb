@@ -1,6 +1,6 @@
 class ScriptsController < ApplicationController
   before_action :set_script, only: [:edit, :update, :destroy, :archive, :unarchive]
-  skip_filter :authenticate_user!, only: [:sh]
+  skip_filter :authenticate_user!, only: [:sh, :wrapped_sh]
 
   # GET /scripts
   # GET /scripts.json
