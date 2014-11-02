@@ -52,6 +52,7 @@ end
 
 group :production do
   gem 'pg'
+  gem 'heroku-rack-ssl-enforcer-rails'
 end
 gem 'aws-sdk'
 

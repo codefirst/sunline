@@ -66,6 +66,9 @@ GEM
       haml (>= 3.1, < 5.0)
       railties (>= 4.0.1)
     hashie (2.0.5)
+    heroku-rack-ssl-enforcer-rails (0.1.0)
+      rack-ssl-enforcer
+      railties
     hike (1.2.3)
     i18n (0.6.11)
     jbuilder (1.5.3)
@@ -122,6 +125,7 @@ GEM
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
+    rack-ssl-enforcer (0.2.8)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.0.11)
@@ -203,6 +207,7 @@ DEPENDENCIES
   devise
   faraday
   haml-rails
+  heroku-rack-ssl-enforcer-rails
   jbuilder (~> 1.2)
   jquery-rails
   omniauth
