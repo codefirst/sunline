@@ -30,7 +30,7 @@
     },
     "OMNIAUTH_ARGS": {
       "description": "omniauth args",
-      "value": "['Client ID','Client Secret']"
+      "value": "[\"Client ID\",\"Client Secret\"]"
     },
     "SUNLINE_LOCALE": {
       "description": "locale",
