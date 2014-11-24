@@ -1,5 +1,5 @@
 class ScriptsController < ApplicationController
-  before_action :set_script, only: [:edit, :update, :destroy, :archive, :unarchive]
+  before_action :set_script, only: [:edit, :update, :destroy, :archive, :unarchive, :grep]
   skip_filter :authenticate_user!, only: [:sh, :wrapped_sh]
 
   # GET /scripts
@@ -108,6 +108,10 @@ class ScriptsController < ApplicationController
     @script.archived = false
     @script.save
     redirect_to script_path(params[:id]), notice: "Script was successfully unarchived."
+  end
+
+  def grep
+    render json: @script.grep_logs(params[:keyword])
   end
 
   private

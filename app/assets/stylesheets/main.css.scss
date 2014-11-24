@@ -111,3 +111,14 @@ ul.attachments {
   height: auto;
   border: 1px solid #ddd;
 }
+
+.grep-log-form {
+  display: inline;
+}
+.auto-width {
+  width: 100px;
+}
+.auto-width:focus {
+  width: 300px;
+  transition-property: width;
+}

@@ -59,4 +59,9 @@ class Script < ActiveRecord::Base
     body.gsub("\r", "")
   end
 
+  def grep_logs(keyword)
+    return [] if keyword.blank?
+    logs.where(Log.arel_table[:result].matches("%#{keyword}%")).pluck(:id)
+  end
+
 end

@@ -67,13 +67,15 @@
       .pull-right.muted
         = @script.logs.length
         = t(:logs_count)
+        = form_tag grep_path(@script), method: 'get', class: 'grep-log-form' do
+          = text_field_tag :keyword, '', class: 'form-control auto-width', placeholder: 'Grep logs'
   %table.table.table-striped
     %tr
       %th= t(:field_host)
       %th= t(:field_uploaded)
       %th= t(:field_log_size)
     - @script.logs.order('created_at desc').each do |log|
-      %tr
+      %tr{:id => "log-#{log.id}", :class => 'logs'}
         %td= link_to log.host, log_path(log)
         %td= log.formatted_created_at
         %td= number_to_human_size log.result.bytesize
@@ -94,6 +96,21 @@
     } );
     $('.script-area').each(function() {
       CodeMirror.fromTextArea(this, {mode: "shell", lineNumbers: true, readOnly: true});
+    });
+    $('.grep-log-form').on('submit', function(e) {
+      $.ajax({
+        type: 'GET',
+        url: $('.grep-log-form').attr('action'),
+        data: { keyword: $('#keyword').val() },
+        datatype: 'json',
+        success: function(json) {
+          $('.logs').removeClass('success');
+          $.each(json, function(i, id) {
+            $('#log-' + id).addClass('success');
+          });
+        }
+      });
+      return false;
     });
   });
 
