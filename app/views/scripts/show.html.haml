@@ -54,6 +54,8 @@
     .pull-right
       = link_to '#', :class => 'copy-button btn btn-info', :'data-clipboard-text' => "#{@script.remote_script(root_url)}", :title => t(:copy_to_clipboard), :'data-placement' => 'left' do
         %i.icon-paper-clip
+      = link_to '#', :class => 'copy-button btn btn-info', :'data-clipboard-text' => "#{wrapped_sh_url(@script.guid)}", :title => t(:copy_to_clipboard), :'data-placement' => 'left' do
+        = t(:button_wrapped)
 
 %pre.run
   = @script.remote_script(root_url)

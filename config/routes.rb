@@ -1,6 +1,6 @@
 Sunline::Application.routes.draw do
   get 'scripts/:guid.sh', controller: 'scripts', action: 'sh'
-  get 'scripts/wrapped/:guid.sh', controller: 'scripts', action: 'wrapped_sh'
+  get 'scripts/wrapped/:guid.sh', controller: 'scripts', action: 'wrapped_sh', as: :wrapped_sh
   resources :scripts
 
   get 'hosts', controller: 'hosts', action: 'index', as: :hosts
