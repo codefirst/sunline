@@ -80,6 +80,9 @@ GEM
     json (1.8.1)
     jwt (0.1.11)
       multi_json (>= 1.5)
+    kaminari (0.16.2)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.4.3)
@@ -210,6 +213,7 @@ DEPENDENCIES
   heroku-rack-ssl-enforcer-rails
   jbuilder (~> 1.2)
   jquery-rails
+  kaminari
   omniauth
   omniauth-github
   omniauth-redmine

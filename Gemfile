@@ -68,4 +68,5 @@ gem 'aws-sdk'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'kaminari'
 gem 'faraday'
