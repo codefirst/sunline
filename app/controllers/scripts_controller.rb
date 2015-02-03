@@ -6,9 +6,9 @@ class ScriptsController < ApplicationController
   # GET /scripts.json
   def index
     if params[:archived] == 'true'
-      @scripts = Script.archived.order("updated_at desc").page params[:page]
+      @scripts = Script.includes(:created_by, :updated_by).archived.order("updated_at desc").page params[:page]
     else
-      @scripts = Script.active.order("updated_at desc").page params[:page]
+      @scripts = Script.includes(:created_by, :updated_by).active.order("updated_at desc").page params[:page]
     end
   end
 
