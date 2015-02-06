@@ -4,7 +4,6 @@ services:
 build:
     steps:
         - rvm-use:
-            version: ruby-2.1.5
             version: ruby-2.2.0
         - bundle-install
         - rails-database-yml:
