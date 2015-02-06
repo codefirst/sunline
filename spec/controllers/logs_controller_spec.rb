@@ -18,7 +18,7 @@ require 'spec_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-describe LogsController do
+describe LogsController, type: :controller do
 
   # This should return the minimal set of attributes required to create a valid
   # Log. As you add validations to Log, be sure to
@@ -40,7 +40,7 @@ describe LogsController do
     it "assigns the requested log as @log" do
       log = Log.create! valid_attributes
       get :show, {:id => log.to_param}, valid_session
-      assigns(:log).should eq(log)
+      expect(assigns(:log)).to eq(log)
     end
   end
 end

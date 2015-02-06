@@ -8,7 +8,7 @@ describe Log do
       @script.logs << @log
     end
     subject { @script.logs }
-    its(:size) { should == 1 }
+    its(:size) { is_expected.to eq 1 }
   end
 
   context "get all hosts" do
@@ -19,7 +19,7 @@ describe Log do
       Log.create(host: 'b.example.net')
     end
     subject { Log.all_hosts }
-    it { should =~ ['a.example.net', 'b.example.net'] }
+    it { is_expected.to match_array ['a.example.net', 'b.example.net'] }
   end
 
   context "select by host" do
@@ -30,6 +30,6 @@ describe Log do
       Log.create(host: 'b.example.net')
     end
     subject { Log.by_host('a.example.net') }
-    it { should have(2).items }
+    it { is_expected.to have(2).items }
   end
 end

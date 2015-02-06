@@ -46,7 +46,9 @@ end
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '3.2.0'
+  gem 'rspec-its'
+  gem 'rspec-collection_matchers'
   gem 'quiet_assets'
 end
 

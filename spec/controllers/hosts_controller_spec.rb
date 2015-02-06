@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe HostsController do
+describe HostsController, type: :controller do
 
   before do
     user = User.new(name: 'name', nickname: 'nickname')
@@ -11,7 +11,7 @@ describe HostsController do
   describe "GET 'index'" do
     it "returns http success" do
       get 'index'
-      response.should be_success
+      expect(response).to be_success
     end
   end
 

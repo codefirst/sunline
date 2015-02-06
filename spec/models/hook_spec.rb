@@ -8,6 +8,6 @@ describe Hook do
       @script.hooks << @hook
     end
     subject { @script.hooks.first }
-    it { should eq @hook }
+    it { is_expected.to eq @hook }
   end
 end

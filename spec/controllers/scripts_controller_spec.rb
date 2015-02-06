@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ScriptsController do
+describe ScriptsController, type: :controller  do
 
   before do
     user = User.new(name: 'name', nickname: 'nickname')
@@ -16,7 +16,7 @@ describe ScriptsController do
         get :index, archived: 'true'
       end
       subject { assigns[:scripts].find {|script| script.id == @script.id } }
-      it { should_not be_nil }
+      it { is_expected.not_to be_nil }
     end
 
     context 'active scripts' do
@@ -26,7 +26,7 @@ describe ScriptsController do
         get :index
       end
       subject { assigns[:scripts].find {|script| script.id == @script.id } }
-      it { should_not be_nil }
+      it { is_expected.not_to be_nil }
     end
   end
 
@@ -37,7 +37,7 @@ describe ScriptsController do
       post :archive, id: @script.id
     end
     subject { Script.find(@script.id) }
-    its(:archived) { should be_true }
+    its(:archived) { is_expected.to be_truthy }
   end
 
   context 'unarchive' do
@@ -47,7 +47,7 @@ describe ScriptsController do
       post :unarchive, id: @script.id
     end
     subject { Script.find(@script.id) }
-    its(:archived) { should be_false }
+    its(:archived) { is_expected.to be_falsy }
   end
 
   context 'runnable_script' do
@@ -56,7 +56,7 @@ describe ScriptsController do
       @script.save
       get :sh, guid: @script.guid
     end
-    it { response.body.should be_include 'ls -l' }
+    it { expect(response.body).to be_include 'ls -l' }
   end
 
   context 'remote_script' do
@@ -65,6 +65,6 @@ describe ScriptsController do
       @script.save
       get :wrapped_sh, guid: @script.guid
     end
-    it { response.body.should be_include 'tee' }
+    it { expect(response.body).to be_include 'tee' }
   end
 end
