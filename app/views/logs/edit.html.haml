@@ -1,3 +1,6 @@
+- content_for :title do
+  = "#{@log.script.name} - #{t(:title_log)} - #{t(:title_edit)}"
+
 %ul.breadcrumb
   %li
     = link_to t(:title_scripts), scripts_path
