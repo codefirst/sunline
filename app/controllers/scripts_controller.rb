@@ -36,6 +36,8 @@ class ScriptsController < ApplicationController
   # GET /scripts/1.json
   def show
     @script = Script.find(params[:id])
+    @keyword = params[:keyword] || ''
+    @highlights = @script.grep_logs(@keyword)
     respond_to do |format|
       format.html { render action: 'show' }
       format.json { render action: 'show', status: :show, location: @script }
