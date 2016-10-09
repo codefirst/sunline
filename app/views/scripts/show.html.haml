@@ -67,16 +67,22 @@
   .navbar.navbar-h4
     .container
       %h4= t(:title_logs)
-      .pull-right.muted
-        = @script.logs.length
-        = t(:logs_count)
-        = form_tag script_path(@script), method: 'get', class: 'grep-log-form' do
-          = text_field_tag :keyword, @keyword, class: 'form-control auto-width', placeholder: 'Grep logs'
-  %table.table.table-striped
-    %tr
-      %th= t(:field_host)
-      %th= t(:field_uploaded)
-      %th= t(:field_log_size)
+      .pull-right.muted.logs-toolbar
+        %form.form-inline
+          %span#logs-count= @script.logs.length
+          = t(:logs_count)
+          %label.checkbox
+            = check_box_tag(:logs_auto_reload)
+            = t(:auto_reload)
+          = form_tag script_path(@script), method: 'get', class: 'grep-log-form' do
+            = text_field_tag :keyword, @keyword, class: 'form-control auto-width', placeholder: 'Grep logs'
+  %table.table.table-striped#logs-table
+    %thead
+      %tr
+        %th= t(:field_host)
+        %th= t(:field_uploaded)
+        %th= t(:field_log_size)
+    %tbody
     - @script.logs.order('created_at desc').each do |log|
       %tr{:id => "log-#{log.id}", :class => "logs #{@highlights.include?(log.id) ? 'success' : ''}"}
         %td= link_to log.host, log_path(log)
@@ -100,5 +106,12 @@
     $('.script-area').each(function() {
       CodeMirror.fromTextArea(this, {mode: "shell", lineNumbers: true, readOnly: true});
     });
+    setInterval(function() {
+      if ($('#logs_auto_reload').is(':checked')) {
+        $("#logs-table").empty().load(window.location + ' #logs-table', function() {
+          $('#logs-count').text($('#logs-table tbody tr').size());
+        });
+      }
+    }, 15 * 1000);
   });
 

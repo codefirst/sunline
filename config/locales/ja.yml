@@ -93,6 +93,7 @@ ja:
   copied: コピーしました
   logs_count: 件
   hosts_count: ホスト
+  auto_reload: 自動更新
 
   error_404: 404 エラー
   not_found: "%{path} は存在しません"

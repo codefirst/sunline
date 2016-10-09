@@ -48,6 +48,7 @@ en:
   copied: Copied!
   logs_count: logs
   hosts_count: hosts
+  auto_reload: Auto reload
 
   error_404: 404 Error
   not_found: "%{path} is not found"
