@@ -1,4 +1,6 @@
 class Log < ActiveRecord::Base
+  include SlackNotify
+
   belongs_to :script
 
   scope :by_host, lambda {|host|

@@ -31,6 +31,12 @@ if you use S3 as storage, set several environment variables.
     $ export AWS_ACCESS_KEY_ID=access key
     $ export AWS_SECRET_ACCESS_KEY=secret access key
 
+Slack integration
+
+if you want to notify logs to a Slack channel.
+
+    $ export SLACK_WEBHOOK_URL=https://hooks.slack.com/services/xxx/yyy/zzz
+
 Run:
 
     $ export OMNIAUTH_PROVIDER=github

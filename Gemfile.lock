@@ -178,6 +178,7 @@ GEM
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
     settingslogic (2.0.9)
+    slack-notifier (1.5.1)
     sprockets (2.12.4)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -237,6 +238,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.1)
   sdoc
   settingslogic
+  slack-notifier
   sqlite3
   thin
   turbolinks

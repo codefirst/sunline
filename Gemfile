@@ -38,6 +38,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'settingslogic'
 gem 'paperclip', '~> 3.5.4'
 gem 'codemirror-rails'
+gem 'slack-notifier'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
