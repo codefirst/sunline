@@ -2,8 +2,8 @@ box: ruby:2.3
 services:
   - id: postgres
     env:
-      POSTGRES_PASSWORD: ourlittlesecret
-      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: $DATABASE_PASSWORD
+      POSTGRES_USER: $APP_POSTGRES_USER
 build:
     steps:
         - bundle-install
@@ -16,8 +16,11 @@ build:
                 echo "from location $(which ruby)"
                 echo -p "gem list: $(gem list)"
         - script:
+            name: db:migrate
+            code: RAILS_ENV=test bundle exec rake db:migrate
+        - script:
             name: rspec
-            code: bundle exec rake spec
+            code: RAILS_ENV=test bundle exec rake spec
     after-steps:
         - mzp/http-notify:
             url: $DASHBOZU_URL
