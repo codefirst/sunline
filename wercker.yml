@@ -7,6 +7,16 @@ services:
 build:
     steps:
         - bundle-install
+        - script:
+            name: create postgres env vars
+            code: |
+              export WERCKER_POSTGRESQL_ADAPTER=postgresql
+              export WERCKER_POSTGRESQL_DATABASE=sunline_test
+              export TEST_ENV_NUMBER=
+              export WERCKER_POSTGRESQL_USERNAME=$POSTGRES_ENV_POSTGRES_USER
+              export WERCKER_POSTGRESQL_PASSWORD=$POSTGRES_ENV_POSTGRES_PASSWORD
+              export WERCKER_POSTGRESQL_HOST=$POSTGRES_PORT_5432_TCP_ADDR
+              export WERCKER_POSTGRESQL_PORT=$POSTGRES_PORT_5432_TCP_PORT
         - rails-database-yml:
             service: postgresql
         - script:
