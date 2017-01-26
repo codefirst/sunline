@@ -2,8 +2,7 @@ box: ruby:2.3
 services:
   - id: postgres
     env:
-      POSTGRES_PASSWORD: $DATABASE_PASSWORD
-      POSTGRES_USER: $APP_POSTGRES_USER
+      POSTGRES_PASSWORD: ourlittlesecret
 build:
     steps:
         - bundle-install
