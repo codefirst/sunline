@@ -6,8 +6,6 @@ services:
       POSTGRES_USER: myuser
 build:
     steps:
-        - rvm-use:
-            version: ruby-2.2.3
         - bundle-install
         - rails-database-yml:
             service: postgresql
