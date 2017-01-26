@@ -3,6 +3,7 @@ services:
   - id: postgres
     env:
       POSTGRES_PASSWORD: ourlittlesecret
+      POSTGRES_USER: myuser
 build:
     steps:
         - bundle-install
