@@ -1,6 +1,9 @@
-box: wercker/rvm
+box: ruby:2.3
 services:
-  - wercker/postgresql
+  - id: postgres
+    env:
+      POSTGRES_PASSWORD: ourlittlesecret
+      POSTGRES_USER: myuser
 build:
     steps:
         - rvm-use:
@@ -21,9 +24,8 @@ build:
         - mzp/http-notify:
             url: $DASHBOZU_URL
 deploy:
-    steps:
-        - heroku-deploy:
-            install-toolbelt: true
-        - script:
-            name: Update database
-            code: heroku run rake db:migrate --app $APP_NAME
+  steps:
+    - heroku-deploy:
+        key: $HEROKU_KEY
+        user: $HEROKU_USER
+        app-name: $HEROKU_APP_NAME
