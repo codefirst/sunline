@@ -58,7 +58,6 @@ class ScriptsController < ApplicationController
   def create
     @script = Script.new(script_params.merge(created_by: current_user, updated_by: current_user))
     add_attachments
-    update_hooks
 
     respond_to do |format|
       if @script.save
@@ -76,8 +75,6 @@ class ScriptsController < ApplicationController
   def update
     add_attachments
     Attachment.delete params[:delete_attachments] if params[:delete_attachments]
-
-    update_hooks
 
     respond_to do |format|
       if @script.update(script_params.merge(updated_by: current_user))
@@ -137,15 +134,4 @@ class ScriptsController < ApplicationController
       end
     end
 
-    def update_hooks
-      @script.hooks.each do |hook|
-        hook.destroy
-      end
-      if params[:hooks]
-        params[:hooks].each do |hook|
-          next if hook[:url].blank? or hook[:delete]
-          @script.hooks << Hook.new(url: hook[:url])
-        end
-      end
-    end
 end

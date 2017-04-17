@@ -35,29 +35,6 @@
         %i.icon-plus
         =t(:button_more_attachment)
 
-  .field
-    .hooks
-      = label_tag t(:field_hooks)
-      - @script.hooks.each do |hook|
-        .hook
-          .input-append
-            = text_field_tag 'hooks[][url]', hook.url, class: 'input-xlarge'
-            %span.add-on
-              = check_box_tag "hooks[][delete]", hook.id
-              = t(:button_remove)
-
-      .hook
-        .input-append
-          = text_field_tag 'hooks[][url]', '', class: 'input-xlarge'
-          %span.add-on
-            = check_box_tag "hooks[][delete]", class: 'checkbox'
-            = t(:button_remove)
-
-    .hooks-more
-      = link_to '#', :class => 'hook-more btn' do
-        %i.icon-plus
-        =t(:button_more_hook)
-
   .actions
     = f.submit t(:button_save), class: 'btn btn-primary'
 
@@ -67,13 +44,6 @@
       var fileupload = $('.fileuploads .fileupload:first-child');
       var lastupload = $('.fileuploads .fileupload:last-child');
       fileupload.clone(true).toggle().insertAfter(lastupload);
-      return false;
-    });
-    $('.hook-more').on('click', function(e) {
-      var hook = $('.hooks .hook:last-child');
-      var cloned = hook.clone(true)
-      cloned.insertAfter(hook);
-      cloned.find('input').val('');
       return false;
     });
     $('.script-area').each(function() {

@@ -64,7 +64,6 @@ ja:
   field_uploaded: アップロード日時
   field_log: ログ
   field_attachments: 添付ファイル
-  field_hooks: フック
   field_log_size: サイズ
   field_memo: 備考
   field_script_name: スクリプト名
@@ -82,7 +81,6 @@ ja:
   button_change: 変更
   button_select_file: ファイルを選択
   button_more_attachment: ファイルを追加
-  button_more_hook: フックを追加
   button_back: 戻る
 
   link_archived_scripts: アーカイブ

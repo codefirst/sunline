@@ -18,7 +18,6 @@ en:
   field_uploaded: Uploaded
   field_log: Log
   field_attachments: Attachments
-  field_hooks: Hooks
   field_log_size: Size
   field_memo: Memo
   field_script_name: Script Name
@@ -36,7 +35,6 @@ en:
   button_change: Change
   button_select_file: Select file
   button_more_attachment: More attachment
-  button_more_hook: More hook
   button_back: Back
   button_wrapped: Wrapped
 
