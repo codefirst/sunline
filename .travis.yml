@@ -3,12 +3,11 @@ sudo: false
 rvm:
   - 1.9.3
   - 2.0.0
-  - 2.1.5
-  - 2.2.0
+  - 2.1.9
+  - 2.2.7
+  - 2.3.4
+  - 2.4.1
 
 script:
   - bundle exec rake db:migrate spec
 
-notifications:
-  webhooks:
-    secure: "Bt3TqsQgUB8kKKr0+fNQRRLA0hBBDGIzriRPuOQPxsJJvDUiJpRr3nJ0Wz/uWD/nPJyrT7lcC8awApDqlaPXH5B2Od4maVAHGesu0bY3ubCTRKkoATT9kj3KlsOg3oFRKWqH1KXSrYdeFAeRDXlPv/mcencYksR4kvOcV61N0yM="
