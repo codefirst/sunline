@@ -1,3 +1,5 @@
+require 'csv'
+
 class Script < ActiveRecord::Base
   belongs_to :created_by, class_name: 'User'
   belongs_to :updated_by, class_name: 'User'
@@ -63,4 +65,12 @@ class Script < ActiveRecord::Base
     logs.where(Log.arel_table[:result].matches("%#{keyword}%")).pluck(:id)
   end
 
+  def logs_as_csv
+    headers = %W(#{I18n.t(:field_host)} #{I18n.t(:field_uploaded)} #{I18n.t(:field_log_size)})
+    CSV.generate(headers: headers, write_headers: true) do |csv|
+      logs.each do |log|
+        csv << log.as_csv_row
+      end
+    end
+  end
 end

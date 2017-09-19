@@ -15,4 +15,8 @@ class Log < ActiveRecord::Base
   def self.all_hosts
     self.distinct.order(:host).pluck(:host)
   end
+
+  def as_csv_row
+    [host, formatted_created_at, number_to_human_size(result.bytesize)]
+  end
 end

@@ -44,6 +44,11 @@ class ScriptsController < ApplicationController
     end
   end
 
+  def csv
+    script = Script.find(params[:id])
+    send_data script.logs_as_csv, type: 'text/csv; charset=UTF-8', filename: 'logs.csv'
+  end
+
   # GET /scripts/new
   def new
     @script = Script.new
