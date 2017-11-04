@@ -75,7 +75,13 @@
             = check_box_tag(:logs_auto_reload)
             = t(:auto_reload)
           = form_tag script_path(@script), method: 'get', class: 'grep-log-form' do
-            = text_field_tag :keyword, @keyword, class: 'form-control auto-width', placeholder: 'Grep logs'
+            = text_field_tag :keyword, @keyword, class: 'form-control auto-width', placeholder: t(:grep_logs)
+            .dropdown{style: 'display:inline'}
+              = link_to '#', class: 'btn dropdown-toggle', 'data-toggle': 'dropdown', style: 'margin-top:0' do
+                %i.icon-ellipsis-vertical
+              %ul.dropdown-menu.pull-right
+                %li
+                  = link_to t(:button_export_csv), logs_csv_path(@script)
   %table.table.table-striped#logs-table
     %thead
       %tr

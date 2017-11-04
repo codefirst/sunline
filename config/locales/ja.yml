@@ -82,6 +82,8 @@ ja:
   button_select_file: ファイルを選択
   button_more_attachment: ファイルを追加
   button_back: 戻る
+  button_wrapped: ラップ URL
+  button_export_csv: CSV エクスポート
 
   link_archived_scripts: アーカイブ
   link_active_scripts: 有効なスクリプト
@@ -92,6 +94,7 @@ ja:
   logs_count: 件
   hosts_count: ホスト
   auto_reload: 自動更新
+  grep_logs: ログを検索
 
   error_404: 404 エラー
   not_found: "%{path} は存在しません"
