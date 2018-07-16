@@ -13,7 +13,7 @@ class Script < ActiveRecord::Base
   scope :archived, lambda { where(archived: true) }
   scope :active, lambda { where('archived is null or archived = ?', false) }
 
-  scope :search, -> (keyword) { keyword.blank? ? Script.none : where('body like ?', "%#{keyword}%") }
+  scope :search, lambda { |keyword| keyword.blank? ? Script.none : where('body like ?', "%#{keyword}%") }
 
   def generate_guid
     uuid = SecureRandom.uuid.split('-').first
