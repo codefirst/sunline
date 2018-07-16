@@ -1,0 +1,48 @@
+- content_for :title do
+  = t(:title_search)
+
+.navbar
+  .container
+    %h3= t(:title_search)
+    .pull-right
+      - if params[:archived] == 'true'
+        = link_to search_path(keyword: @keyword), class: 'btn btn-inverse' do
+          %i.icon-archive{:title => t(:link_active_scripts)}
+      - else
+        = link_to search_path(keyword: @keyword, archived: true), class: 'btn' do
+          %i.icon-archive{:title => t(:link_archived_scripts)}
+  .container.search-box
+    %form{action: search_path, method: :get}
+      .input-append
+        = text_field_tag :keyword, @keyword, class: 'input-xlarge'
+        = submit_tag t(:title_search), class: 'btn'
+
+.search-results
+  - @scripts.each do |script|
+    .search-result
+      .search-result-title-box
+        %span.search-result-title= link_to script.name, script
+        .pull-right
+          = script.updater_name
+          %span.muted
+            (
+            = time_ago_in_words(script.updated_at) + t(:ago)
+            )
+      .search-result-body= text_area_tag :body,
+        script.body.split("\n").find { |l| l.include?(@keyword) },
+        class: 'input-xxlarge script-area',
+        rows: 1,
+        'data-first-line-number': script.body.split("\n").index { |l| l.include?(@keyword) } + 1
+
+.text-center
+  = paginate @scripts
+
+:javascript
+  $(function() {
+    $('.script-area').each(function() {
+      var firstLineNumber = $(this).data('first-line-number');
+      CodeMirror.fromTextArea(this, {"mode": "shell", "readOnly": true, "lineNumbers": true, "firstLineNumber": firstLineNumber});
+    });
+    $('[name="keyword"]').focus();
+  });
+

@@ -2,6 +2,7 @@ Sunline::Application.routes.draw do
   get 'scripts/:guid.sh', controller: 'scripts', action: 'sh'
   get 'scripts/wrapped/:guid.sh', controller: 'scripts', action: 'wrapped_sh', as: :wrapped_sh
   get 'scripts/grep/:id', controller: 'scripts', action: 'grep', as: :grep
+  get 'scripts/search', controller: 'scripts', action: 'search', as: :search
   get 'scripts/:id/logs.csv', controller: 'scripts', action: 'csv', as: 'logs_csv'
   resources :scripts
 

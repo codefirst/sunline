@@ -13,6 +13,8 @@ class Script < ActiveRecord::Base
   scope :archived, lambda { where(archived: true) }
   scope :active, lambda { where('archived is null or archived = ?', false) }
 
+  scope :search, -> (keyword) { keyword.blank? ? Script.none : where('body like ?', "%#{keyword}%") }
+
   def generate_guid
     uuid = SecureRandom.uuid.split('-').first
     uuid << Time.now.strftime("%Y%m%d%H%M%S%L") unless Script.where(guid: uuid).first.nil?
@@ -73,4 +75,5 @@ class Script < ActiveRecord::Base
       end
     end
   end
+
 end

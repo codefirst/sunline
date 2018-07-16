@@ -2,6 +2,7 @@ en:
   title_scripts: Scripts
   title_logs: Logs
   title_hosts: Hosts
+  title_search: Search
   title_new_script: New Script
   title_edit: Edit
   title_log: Log

@@ -54,4 +54,12 @@ describe Script do
     end
   end
 
+  describe 'search' do
+    script = Script.new(name: "ls", body: "ls -la")
+    script.save
+
+    subject { Script.search("ls").first }
+    its(:body) { is_expected.to include "ls" }
+  end
+
 end

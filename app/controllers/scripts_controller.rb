@@ -118,6 +118,25 @@ class ScriptsController < ApplicationController
     render json: @script.grep_logs(params[:keyword])
   end
 
+  def search
+    @keyword = params[:keyword]
+    if params[:archived] == 'true'
+      @scripts = Script.includes(:created_by, :updated_by)
+                       .archived
+                       .search(@keyword)
+                       .order("updated_at desc")
+                       .page(params[:page])
+                       .per(5)
+    else
+      @scripts = Script.includes(:created_by, :updated_by)
+                       .active
+                       .search(@keyword)
+                       .order("updated_at desc")
+                       .page(params[:page])
+                       .per(5)
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_script
