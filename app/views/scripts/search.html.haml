@@ -29,10 +29,10 @@
             = time_ago_in_words(script.updated_at) + t(:ago)
             )
       .search-result-body= text_area_tag :body,
-        script.body.split("\n").find { |l| l.include?(@keyword) },
+        script.body.split("\n").find { |l| @keyword.split(/[[:blank:]]+/).any? { |word| l.include?(word) } },
         class: 'input-xxlarge script-area',
         rows: 1,
-        'data-first-line-number': script.body.split("\n").index { |l| l.include?(@keyword) } + 1
+        'data-first-line-number': script.body.split("\n").index { |l| @keyword.split(/[[:blank:]]+/).any? { |word| l.include?(word) } } + 1
 
 .text-center
   = paginate @scripts

@@ -62,4 +62,12 @@ describe Script do
     its(:body) { is_expected.to include "ls" }
   end
 
+  describe 'search by multi word' do
+    script = Script.new(name: "ls", body: "ls -la\nbundle install")
+    script.save
+
+    subject { Script.search("ls bundle").first }
+    its(:body) { is_expected.to include "ls" }
+  end
+
 end
