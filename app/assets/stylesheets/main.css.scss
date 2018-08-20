@@ -51,6 +51,21 @@ footer {
   margin-top: 10px;
 }
 
+@-webkit-keyframes fadein {
+	0%{
+		opacity:0;
+	}
+	75%{
+		opacity:0.5;
+	}
+	100% {
+		opacity:1;
+	}
+}
+#logs-table {
+  -webkit-animation: fadein 300ms linear 0s 1;
+}
+
 #notice {
   color: green;
 }

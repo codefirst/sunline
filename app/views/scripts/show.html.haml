@@ -82,18 +82,19 @@
               %ul.dropdown-menu.pull-right
                 %li
                   = link_to t(:button_export_csv), logs_csv_path(@script)
-  %table.table.table-striped#logs-table
-    %thead
-      %tr
-        %th= t(:field_host)
-        %th= t(:field_uploaded)
-        %th= t(:field_log_size)
-    %tbody
-    - @script.logs.order('created_at desc').each do |log|
-      %tr{:id => "log-#{log.id}", :class => "logs #{@highlights.include?(log.id) ? 'success' : ''}"}
-        %td= link_to log.host, log_path(log)
-        %td= log.formatted_created_at
-        %td= number_to_human_size log.result.bytesize
+  .table-container
+    %table.table.table-striped#logs-table
+      %thead
+        %tr
+          %th= t(:field_host)
+          %th= t(:field_uploaded)
+          %th= t(:field_log_size)
+      %tbody
+      - @script.logs.order('created_at desc').each do |log|
+        %tr{:id => "log-#{log.id}", :class => "logs #{@highlights.include?(log.id) ? 'success' : ''}"}
+          %td= link_to log.host, log_path(log)
+          %td= log.formatted_created_at
+          %td= number_to_human_size log.result.bytesize
 
 :javascript
   $(function() {
@@ -114,8 +115,13 @@
     });
     setInterval(function() {
       if ($('#logs_auto_reload').is(':checked')) {
-        $("#logs-table").empty().load(window.location + ' #logs-table', function() {
-          $('#logs-count').text($('#logs-table tbody tr').size());
+        $(".table-container").load(window.location + ' #logs-table', function(response, status, xhr) {
+          if (status == "error") {
+            $("#logs-table").empty();
+            $('#logs-count').text(0);
+          } else {
+            $('#logs-count').text($('#logs-table tbody tr').size());
+          }
         });
       }
     }, 15 * 1000);
