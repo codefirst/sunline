@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20170417110832) do
 
-  create_table "attachments", force: true do |t|
+  create_table "attachments", force: :cascade do |t|
     t.integer  "script_id"
     t.string   "upload_file_name"
     t.string   "upload_content_type"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20170417110832) do
     t.datetime "updated_at"
   end
 
-  create_table "logs", force: true do |t|
+  create_table "logs", force: :cascade do |t|
     t.string   "host"
     t.text     "result"
     t.integer  "script_id"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20170417110832) do
     t.text     "memo"
   end
 
-  create_table "scripts", force: true do |t|
+  create_table "scripts", force: :cascade do |t|
     t.string   "name"
     t.text     "body"
     t.integer  "created_by_id"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20170417110832) do
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "name",       null: false
     t.string   "nickname",   null: false
     t.datetime "created_at"

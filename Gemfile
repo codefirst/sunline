@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.16'
+gem 'rails', '4.2.11.3'
 gem 'thin', '1.6.4'
 
 gem 'devise'
 gem 'omniauth'
-gem 'omniauth-github'
+gem 'omniauth-github', '~> 1.4.0'
 gem 'omniauth-redmine'
 
 # Use SCSS for stylesheets
@@ -29,14 +29,11 @@ gem 'therubyracer', platforms: :ruby
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
-
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
 gem 'settingslogic'
-gem 'paperclip', '~> 3.5.4'
+gem 'paperclip', '~> 4.3.7'
 gem 'codemirror-rails'
 gem 'slack-notifier'
 
@@ -48,7 +45,7 @@ end
 group :development, :test do
   gem 'rake', '< 11.0'
   gem 'sqlite3'
-  gem 'rspec-rails', '3.2.0'
+  gem 'rspec-rails', '~> 3.9.1'
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
   gem 'quiet_assets'

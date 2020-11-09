@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require bootstrap-fileupload
-//= require turbolinks
 //= require ZeroClipboard
 //= require codemirror
 //= require codemirror/modes/shell
