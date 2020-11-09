@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.13'
+gem 'rails', '4.1.16'
 gem 'thin', '1.6.4'
 
 gem 'devise'
@@ -46,6 +46,7 @@ group :doc do
 end
 
 group :development, :test do
+  gem 'rake', '< 11.0'
   gem 'sqlite3'
   gem 'rspec-rails', '3.2.0'
   gem 'rspec-its'
