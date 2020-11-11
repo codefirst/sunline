@@ -1,6 +1,7 @@
 class Attachment < ActiveRecord::Base
   belongs_to :script
   has_attached_file :upload
+  do_not_validate_attachment_file_type :upload
 
   def download_command(root_url)
       url = self.upload.url
