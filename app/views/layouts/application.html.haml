@@ -37,7 +37,7 @@
                   %li= link_to t(:button_sign_out), destroy_user_session_path, class: 'icon-signout', method: :delete
 
     .container
-      = bootstrap_flash
+      = bootstrap_flash_compat
       = yield
 
       %footer
