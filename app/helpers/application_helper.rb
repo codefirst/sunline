@@ -26,4 +26,8 @@ module ApplicationHelper
     end
     flash_messages.join("\n").html_safe
   end
+
+  def user_omniauth_authorize_path
+    send("user_#{Settings.omniauth.provider}_omniauth_authorize_path".to_sym)
+  end
 end
