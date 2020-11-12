@@ -55,7 +55,7 @@ group :production do
   gem 'pg'
   gem 'heroku-rack-ssl-enforcer-rails'
 end
-gem 'aws-sdk'
+gem 'aws-sdk-s3'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
