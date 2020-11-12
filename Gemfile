@@ -43,7 +43,7 @@ group :doc do
 end
 
 group :development, :test do
-  gem 'rake', '< 11.0'
+  gem 'rake', '< 13.0'
   gem 'sqlite3'
   gem 'rspec-rails', '~> 3.9.1'
   gem 'rspec-its'
