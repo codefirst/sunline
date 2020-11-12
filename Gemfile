@@ -33,7 +33,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 
 gem 'settingslogic'
-gem 'paperclip', '~> 4.3.7'
+gem 'paperclip', '~> 5.2.0'
 gem 'codemirror-rails'
 gem 'slack-notifier'
 
