@@ -24,6 +24,11 @@
       "value": "secret key",
       "required": false
     },
+    "AWS_REGION": {
+      "description": "region of S3",
+      "value": "region",
+      "required": false
+    },
     "OMNIAUTH_PROVIDER": {
       "description": "omniauth provider",
       "value": "github"
