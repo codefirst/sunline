@@ -90,11 +90,11 @@
           %th= t(:field_uploaded)
           %th= t(:field_log_size)
       %tbody
-      - @script.logs.order('created_at desc').each do |log|
+      - @script.logs.select_without_result.order('created_at desc').each do |log|
         %tr{:id => "log-#{log.id}", :class => "logs #{@highlights.include?(log.id) ? 'success' : ''}"}
           %td= link_to log.host, log_path(log)
           %td= log.formatted_created_at
-          %td= number_to_human_size log.result.bytesize
+          %td= number_to_human_size log.result_bytes
 
 :javascript
   $(function() {

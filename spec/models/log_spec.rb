@@ -32,4 +32,20 @@ describe Log do
     subject { Log.by_host('a.example.net') }
     it { is_expected.to have(2).items }
   end
+
+  context 'set result_bytes automatically' do
+    subject { Log.create(result: result) }
+
+    context 'have result' do
+      let(:result) { 'a result' }
+
+      it { is_expected.to have_attributes(result_bytes: result.size) }
+    end
+
+    context 'not have result' do
+      let(:result) { nil }
+
+      it { is_expected.to have_attributes(result_bytes: 0) }
+    end
+  end
 end

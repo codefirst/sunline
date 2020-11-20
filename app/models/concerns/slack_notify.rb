@@ -38,7 +38,7 @@ module SlackNotify
                 },
                 {
                   title: "Size",
-                  value: number_to_human_size(self.result.bytesize),
+                  value: number_to_human_size(self.result_bytes),
                   short: true
                 }
               ]

@@ -70,7 +70,7 @@ class Script < ActiveRecord::Base
   def logs_as_csv
     headers = %W(#{I18n.t(:field_host)} #{I18n.t(:field_uploaded)} #{I18n.t(:field_log_size)})
     CSV.generate(headers: headers, write_headers: true) do |csv|
-      logs.each do |log|
+      logs.select_without_result.each do |log|
         csv << log.as_csv_row
       end
     end
