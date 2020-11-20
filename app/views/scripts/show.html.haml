@@ -69,7 +69,7 @@
       %h4= t(:title_logs)
       .pull-right.muted.logs-toolbar
         %form.form-inline
-          %span#logs-count= @script.logs.length
+          %span#logs-count= @script.logs.size
           = t(:logs_count)
           %label.checkbox
             = check_box_tag(:logs_auto_reload)
