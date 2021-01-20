@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.11.3'
-gem 'thin', '1.6.4'
+gem 'puma'
 
 gem 'devise'
 gem 'omniauth'
