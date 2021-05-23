@@ -56,3 +56,27 @@ Setup database:
 Run tests:
 
     $ bundle exec rake
+
+Development with Docker
+------------------------
+
+Copy .env:
+
+    $ cp .env.sample .env
+
+and edit.
+
+Launch with docker-compose:
+
+    $ docker-compose -f docker-compose-development.yml up
+
+or
+
+    $ docker-compose -f docker-compose-development.yml up --build
+
+and access to http://localhost:3000/
+
+Setup database:
+
+    $ docker-compose -f docker-compose-development.yml exec app bundle exec rake db:migrate
+
