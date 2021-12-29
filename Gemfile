@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.11.3'
+gem 'rails', '5.0.7.2'
 gem 'puma'
 
 gem 'devise'
@@ -10,7 +10,7 @@ gem 'omniauth-github', '~> 1.4.0'
 gem 'omniauth-redmine'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.1'
+gem 'sass-rails', '~> 6.0.0'
 
 # Use Haml
 gem 'haml-rails'
@@ -22,14 +22,14 @@ gem 'uglifier', '>= 1.3.0'
 gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 4.4.0'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
 gem 'settingslogic'
 gem 'paperclip', '~> 6.1.0'
-gem 'codemirror-rails'
+gem 'codemirror-rails', '~> 5.16.0'
 gem 'slack-notifier'
 
 group :doc do
@@ -40,10 +40,9 @@ end
 group :development, :test do
   gem 'rake', '< 13.0'
   gem 'sqlite3'
-  gem 'rspec-rails', '~> 3.9.1'
+  gem 'rspec-rails'
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
-  gem 'quiet_assets'
 end
 
 group :production do
@@ -65,3 +64,5 @@ gem 'aws-sdk-s3'
 # gem 'debugger', group: [:development, :test]
 
 gem 'kaminari'
+
+gem 'sprockets-rails', '~> 3.2.2'
