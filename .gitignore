@@ -19,3 +19,6 @@
 /tmp
 
 .rspec
+
+/config/secrets.yml
+

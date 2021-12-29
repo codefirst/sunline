@@ -1,4 +1,4 @@
-class Attachment < ActiveRecord::Base
+class Attachment < ApplicationRecord
   belongs_to :script
   has_attached_file :upload
   do_not_validate_attachment_file_type :upload
