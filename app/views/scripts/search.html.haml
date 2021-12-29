@@ -7,10 +7,10 @@
     .pull-right
       - if params[:archived] == 'true'
         = link_to search_path(keyword: @keyword), class: 'btn btn-inverse' do
-          %i.icon-archive{:title => t(:link_active_scripts)}
+          %i.fa.fa-archive{:title => t(:link_active_scripts)}
       - else
         = link_to search_path(keyword: @keyword, archived: true), class: 'btn' do
-          %i.icon-archive{:title => t(:link_archived_scripts)}
+          %i.fa.fa-archive{:title => t(:link_archived_scripts)}
   .container.search-box
     %form{action: search_path, method: :get}
       .input-append
