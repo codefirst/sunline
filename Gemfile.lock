@@ -62,8 +62,6 @@ GEM
     bcrypt (3.1.16)
     builder (3.2.4)
     climate_control (0.2.0)
-    codemirror-rails (5.16.0)
-      railties (>= 3.0, < 6.0)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
     devise (4.7.3)
@@ -289,7 +287,6 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk-s3
-  codemirror-rails (~> 5.16.0)
   devise
   haml-rails
   heroku-rack-ssl-enforcer-rails

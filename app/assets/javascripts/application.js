@@ -12,6 +12,4 @@
 //
 //= require jquery_ujs
 //= require bootstrap-fileupload
-//= require codemirror
-//= require codemirror/modes/shell
 //= require_tree .
