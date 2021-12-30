@@ -27,10 +27,10 @@ class LogsController < ApplicationController
 
     respond_to do |format|
       if @log.save
-        format.html { render text: "log registration successful\n", status: :created}
+        format.html { render plain: "log registration successful\n", status: :created}
         format.json { render action: 'show', status: :created, location: @log }
       else
-        format.html { render text: "log registration failure\n", status: 500 }
+        format.html { render plain: "log registration failure\n", status: 500 }
         format.json { render json: @log.errors, status: :unprocessable_entity }
       end
     end
