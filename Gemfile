@@ -45,7 +45,7 @@ group :development, :test do
 end
 
 group :production do
-  gem 'pg', '~> 0.15'
+  gem 'pg', '~> 1.2'
   gem 'heroku-rack-ssl-enforcer-rails'
 end
 gem 'aws-sdk-s3'
