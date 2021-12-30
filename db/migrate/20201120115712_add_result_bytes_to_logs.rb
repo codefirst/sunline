@@ -1,4 +1,4 @@
-class AddResultBytesToLogs < ActiveRecord::Migration
+class AddResultBytesToLogs < ActiveRecord::Migration[4.2]
   def change
     add_column :logs, :result_bytes, :integer
 
