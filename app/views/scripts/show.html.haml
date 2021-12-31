@@ -45,10 +45,10 @@
         - @script.attachments.order(:upload_file_name).each do |attachment|
           %li
             %i.icon-file
-            = link_to attachment.upload.instance.upload_file_name, attachment.upload.url
+            = link_to attachment.upload.filename, attachment.upload.url
             %span.muted
               (
-              = number_to_human_size(attachment.upload.instance.upload_file_size)
+              = number_to_human_size(attachment.upload.byte_size)
               )
 
 .navbar.navbar-h4
