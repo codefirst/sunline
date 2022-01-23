@@ -27,6 +27,8 @@ module Sunline
     # config.i18n.default_locale = :de
     config.i18n.default_locale = ENV['SUNLINE_LOCALE'] || :en
 
+    config.autoloader = :zeitwerk
+
     if ENV['PAPERCLIP_STORAGE_TYPE'] == 's3'
       config.paperclip_defaults = {
         :storage => :s3,
