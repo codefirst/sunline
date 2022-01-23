@@ -29,7 +29,6 @@ gem 'jbuilder', '~> 2.11'
 
 gem 'settingslogic'
 gem 'paperclip', '~> 6.1.0'
-gem 'codemirror-rails', '~> 5.16.0'
 gem 'slack-notifier'
 
 group :doc do
