@@ -12,8 +12,6 @@ gem 'omniauth-redmine'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.1'
 
-gem 'twitter-bootstrap-rails'
-
 # Use Haml
 gem 'haml-rails'
 
