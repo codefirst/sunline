@@ -1,3 +1,3 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   devise :omniauthable
 end

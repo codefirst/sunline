@@ -40,7 +40,7 @@ describe LogsController, type: :controller do
     it "assigns the requested log as @log" do
       log = Log.create! valid_attributes
       get :show, {:id => log.to_param}, valid_session
-      expect(assigns(:log)).to eq(log)
+      expect(controller.instance_variable_get("@log")).to eq(log)
     end
   end
 end

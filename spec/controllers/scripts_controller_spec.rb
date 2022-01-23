@@ -15,7 +15,7 @@ describe ScriptsController, type: :controller  do
         @script.save
         get :index, archived: 'true'
       end
-      subject { assigns[:scripts].find {|script| script.id == @script.id } }
+      subject { controller.instance_variable_get("@scripts").find {|script| script.id == @script.id } }
       it { is_expected.not_to be_nil }
     end
 
@@ -25,7 +25,7 @@ describe ScriptsController, type: :controller  do
         @script.save
         get :index
       end
-      subject { assigns[:scripts].find {|script| script.id == @script.id } }
+      subject { controller.instance_variable_get("@scripts").find {|script| script.id == @script.id } }
       it { is_expected.not_to be_nil }
     end
   end
@@ -75,7 +75,7 @@ describe ScriptsController, type: :controller  do
         @script.save
         get :search, keyword: 'ls'
       end
-      subject { assigns[:scripts].find {|script| script.id == @script.id } }
+      subject { controller.instance_variable_get("@scripts").find {|script| script.id == @script.id } }
       it { is_expected.not_to be_nil }
     end
 
@@ -85,7 +85,7 @@ describe ScriptsController, type: :controller  do
         @script.save
         get :search, keyword: '', format: 'json'
       end
-      subject { assigns[:scripts].size }
+      subject { controller.instance_variable_get("@scripts").size }
       it { is_expected.to eq 0 }
     end
   end
