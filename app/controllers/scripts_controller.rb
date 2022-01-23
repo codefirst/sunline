@@ -1,6 +1,6 @@
 class ScriptsController < ApplicationController
   before_action :set_script, only: [:edit, :update, :destroy, :archive, :unarchive, :grep]
-  skip_filter :authenticate_user!, only: [:sh, :wrapped_sh]
+  skip_before_action :authenticate_user!, only: [:sh, :wrapped_sh]
 
   # GET /scripts
   # GET /scripts.json
@@ -16,9 +16,9 @@ class ScriptsController < ApplicationController
   def wrapped_sh
     script = Script.where(guid: params[:guid]).first
     if script
-      render text: script.remote_script(root_url)
+      render plain: script.remote_script(root_url)
     else
-      render text: "echo 'script not found'", status: 404
+      render plain: "echo 'script not found'", status: 404
     end
   end
 
@@ -26,9 +26,9 @@ class ScriptsController < ApplicationController
   def sh
     script = Script.where(guid: params[:guid]).first
     if script
-      render text: script.runnable_script(root_url)
+      render plain: script.runnable_script(root_url)
     else
-      render text: "echo 'script not found'", status: 404
+      render plain: "echo 'script not found'", status: 404
     end
   end
 

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.0.7.2'
+gem 'rails', '5.1.7'
 gem 'puma'
 
 gem 'devise'
@@ -25,7 +25,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails', '~> 4.4.0'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+gem 'jbuilder', '~> 2.11'
 
 gem 'settingslogic'
 gem 'paperclip', '~> 6.1.0'

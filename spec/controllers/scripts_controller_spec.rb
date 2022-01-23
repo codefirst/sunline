@@ -13,7 +13,7 @@ describe ScriptsController, type: :controller  do
       before do
         @script = Script.new(name: 'name', archived: true)
         @script.save
-        get :index, archived: 'true'
+        get :index, params: { archived: 'true' }
       end
       subject { controller.instance_variable_get("@scripts").find {|script| script.id == @script.id } }
       it { is_expected.not_to be_nil }
@@ -34,7 +34,7 @@ describe ScriptsController, type: :controller  do
     before do
       @script = Script.new(name: 'name', archived: nil)
       @script.save
-      post :archive, id: @script.id
+      post :archive, params: { id: @script.id }
     end
     subject { Script.find(@script.id) }
     its(:archived) { is_expected.to be_truthy }
@@ -44,7 +44,7 @@ describe ScriptsController, type: :controller  do
     before do
       @script = Script.new(name: 'name', archived: true)
       @script.save
-      post :unarchive, id: @script.id
+      post :unarchive, params: { id: @script.id }
     end
     subject { Script.find(@script.id) }
     its(:archived) { is_expected.to be_falsy }
@@ -54,7 +54,7 @@ describe ScriptsController, type: :controller  do
     before do
       @script = Script.new(name: 'name', body: 'ls -l')
       @script.save
-      get :sh, guid: @script.guid
+      get :sh, params: { guid: @script.guid }
     end
     it { expect(response.body).to be_include 'ls -l' }
   end
@@ -63,7 +63,7 @@ describe ScriptsController, type: :controller  do
     before do
       @script = Script.new(name: 'name', body: 'ls -l')
       @script.save
-      get :wrapped_sh, guid: @script.guid
+      get :wrapped_sh, params: { guid: @script.guid }
     end
     it { expect(response.body).to be_include 'tee' }
   end
@@ -73,7 +73,7 @@ describe ScriptsController, type: :controller  do
       before do
         @script = Script.new(name: 'name', body: 'ls -l')
         @script.save
-        get :search, keyword: 'ls'
+        get :search, params: { keyword: 'ls' }
       end
       subject { controller.instance_variable_get("@scripts").find {|script| script.id == @script.id } }
       it { is_expected.not_to be_nil }
@@ -83,7 +83,7 @@ describe ScriptsController, type: :controller  do
       before do
         @script = Script.new(name: 'name', body: 'ls -l')
         @script.save
-        get :search, keyword: '', format: 'json'
+        get :search, params: { keyword: '', format: 'json' }
       end
       subject { controller.instance_variable_get("@scripts").size }
       it { is_expected.to eq 0 }

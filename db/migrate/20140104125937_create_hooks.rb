@@ -1,4 +1,4 @@
-class CreateHooks < ActiveRecord::Migration
+class CreateHooks < ActiveRecord::Migration[4.2]
   def change
     create_table :hooks do |t|
       t.string :url
