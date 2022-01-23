@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '6.0.4.4'
+gem 'rails', '6.1.4.4'
 gem 'puma'
 
 gem 'devise'
@@ -45,7 +45,7 @@ group :development, :test do
 end
 
 group :production do
-  gem 'pg', '~> 0.15'
+  gem 'pg', '~> 1.2'
   gem 'heroku-rack-ssl-enforcer-rails'
 end
 gem 'aws-sdk-s3'
