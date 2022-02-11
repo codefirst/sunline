@@ -6,6 +6,7 @@
 
 /public/assets/
 /public/system/
+/node_modules/
 
 # Ignore bundler config.
 /.bundle

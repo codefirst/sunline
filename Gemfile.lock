@@ -139,7 +139,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
-    libv8 (3.16.14.17)
+    libv8-node (16.10.0.0)
     loofah (2.13.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -155,6 +155,8 @@ GEM
       rake
     mini_mime (1.1.2)
     mini_portile2 (2.6.1)
+    mini_racer (0.6.2)
+      libv8-node (~> 16.10.0.0)
     minitest (5.15.0)
     multi_json (1.15.0)
     multi_xml (0.6.0)
@@ -229,7 +231,6 @@ GEM
       thor (~> 1.0)
     rake (12.3.3)
     rdoc (6.3.2)
-    ref (2.0.0)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -284,9 +285,6 @@ GEM
     temple (0.8.2)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
-    therubyracer (0.12.3)
-      libv8 (~> 3.16.14.15)
-      ref
     thor (1.1.0)
     tilt (2.0.10)
     tzinfo (2.0.4)
@@ -312,6 +310,7 @@ DEPENDENCIES
   jbuilder (~> 2.11)
   jquery-rails (~> 4.4.0)
   kaminari
+  mini_racer
   omniauth
   omniauth-github (~> 1.4.0)
   omniauth-redmine
@@ -329,7 +328,6 @@ DEPENDENCIES
   slack-notifier
   sprockets-rails (~> 3.2.2)
   sqlite3
-  therubyracer
   uglifier (>= 1.3.0)
 
 RUBY VERSION
