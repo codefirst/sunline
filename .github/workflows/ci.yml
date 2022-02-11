@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image: ruby:2.5.8
+      image: ruby:2.7.5
 
     steps:
       - uses: actions/checkout@v1
