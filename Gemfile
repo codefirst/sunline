@@ -7,9 +7,9 @@ gem 'rails', '6.1.4.6'
 gem 'puma'
 
 gem 'devise'
-gem 'omniauth'
-gem 'omniauth-github', '~> 1.4.0'
+gem 'omniauth-github', '~> 2.0.0'
 gem 'omniauth-redmine'
+gem 'omniauth-rails_csrf_protection', '~> 1.0.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 6.0.0'
@@ -61,3 +61,4 @@ gem 'aws-sdk-s3'
 gem 'kaminari'
 
 gem 'sprockets-rails', '~> 3.2.2'
+
