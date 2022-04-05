@@ -7,8 +7,8 @@ describe Attachment do
         upload = double
         allow(upload).to receive(:url) { "/filename.txt" }
         instance = double
-        allow(instance).to receive(:upload_file_name) { "filename.txt" }
-        allow(upload).to receive(:instance) { instance }
+        allow(instance).to receive(:to_s) { "filename.txt" }
+        allow(upload).to receive(:filename) { instance }
         @attachment = Attachment.new
         allow(@attachment).to receive(:upload) { upload }
       end
@@ -21,8 +21,8 @@ describe Attachment do
         upload = double
         allow(upload).to receive(:url) { "http://foo.s3.amazonaws.com/attachments/uploads/000/000/000/original/filename.txt?00000000" }
         instance = double
-        allow(instance).to receive(:upload_file_name) { "filename.txt" }
-        allow(upload).to receive(:instance) { instance }
+        allow(instance).to receive(:to_s) { "filename.txt" }
+        allow(upload).to receive(:filename) { instance }
         @attachment = Attachment.new
         allow(@attachment).to receive(:upload) { upload }
       end

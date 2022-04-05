@@ -24,7 +24,7 @@ S3 settings
 
 if you use S3 as storage, set several environment variables.
 
-    $ export PAPERCLIP_STORAGE_TYPE=s3
+    $ export ACTIVE_STORAGE_SERVICE=amazon
     $ export AWS_BUCKET=bucket name
     $ export AWS_ACCESS_KEY_ID=access key
     $ export AWS_SECRET_ACCESS_KEY=secret access key
