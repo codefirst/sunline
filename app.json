@@ -4,9 +4,9 @@
   "repository": "https://github.com/codefirst/sunline/",
   "logo": "https://raw.githubusercontent.com/codefirst/sunline/master/app/assets/images/apple-touch-icon-114x114-precomposed.png",
   "env": {
-    "PAPERCLIP_STORAGE_TYPE": {
-      "description": "paperclip strage type",
-      "value": "s3",
+    "ACTIVE_STORAGE_SERVICE": {
+      "description": "active strage type",
+      "value": "amazon",
       "required": false
     },
     "AWS_BUCKET": {
