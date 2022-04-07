@@ -25,7 +25,6 @@ updates:
       - dependency-name: "jbuilder"
       - dependency-name: "slack-notifier"
       - dependency-name: "rake"
-      - dependency-name: "sqlite3"
       - dependency-name: "rspec-*"
       - dependency-name: "pg"
       - dependency-name: "heroku-rack-ssl-enforcer-rails"
