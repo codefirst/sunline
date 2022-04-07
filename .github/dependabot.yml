@@ -26,6 +26,5 @@ updates:
       - dependency-name: "slack-notifier"
       - dependency-name: "rspec-*"
       - dependency-name: "pg"
-      - dependency-name: "heroku-rack-ssl-enforcer-rails"
       - dependency-name: "kaminari"
       - dependency-name: "sprockets-rails"
