@@ -126,9 +126,6 @@ GEM
       html2haml (>= 1.0.1)
       railties (>= 5.1)
     hashie (5.0.0)
-    heroku-rack-ssl-enforcer-rails (0.1.0)
-      rack-ssl-enforcer
-      railties
     html2haml (2.2.0)
       erubis (~> 2.7.0)
       haml (>= 4.0, < 6)
@@ -206,7 +203,6 @@ GEM
     rack (2.2.3)
     rack-protection (2.2.0)
       rack
-    rack-ssl-enforcer (0.2.8)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (6.1.4.7)
@@ -307,7 +303,6 @@ DEPENDENCIES
   aws-sdk-s3
   devise
   haml-rails
-  heroku-rack-ssl-enforcer-rails
   jbuilder (~> 2.11)
   kaminari
   omniauth-github (~> 2.0.0)
