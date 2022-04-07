@@ -24,7 +24,6 @@ updates:
       - dependency-name: "uglifier"
       - dependency-name: "jbuilder"
       - dependency-name: "slack-notifier"
-      - dependency-name: "rake"
       - dependency-name: "rspec-*"
       - dependency-name: "pg"
       - dependency-name: "heroku-rack-ssl-enforcer-rails"
