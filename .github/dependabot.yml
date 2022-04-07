@@ -24,7 +24,6 @@ updates:
       - dependency-name: "haml-rails"
       - dependency-name: "uglifier"
       - dependency-name: "jbuilder"
-      - dependency-name: "settingslogic"
       - dependency-name: "slack-notifier"
       - dependency-name: "sdoc"
       - dependency-name: "rake"
