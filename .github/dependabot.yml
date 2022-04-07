@@ -1,0 +1,37 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      timezone: "Asia/Tokyo"
+      day: "friday"
+
+  - package-ecosystem: "bundler"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      timezone: "Asia/Tokyo"
+      day: "friday"
+    allow:
+      - dependency-type: "direct"
+    ignore:
+      - dependency-name: "rails"
+      - dependency-name: "puma"
+      - dependency-name: "devise"
+      - dependency-name: "omniauth-*"
+      - dependency-name: "sass-rails"
+      - dependency-name: "haml-rails"
+      - dependency-name: "uglifier"
+      - dependency-name: "jbuilder"
+      - dependency-name: "settingslogic"
+      - dependency-name: "slack-notifier"
+      - dependency-name: "sdoc"
+      - dependency-name: "rake"
+      - dependency-name: "sqlite3"
+      - dependency-name: "rspec-*"
+      - dependency-name: "pg"
+      - dependency-name: "heroku-rack-ssl-enforcer-rails"
+      - dependency-name: "aws-sdk-s3"
+      - dependency-name: "kaminari"
+      - dependency-name: "sprockets-rails"
