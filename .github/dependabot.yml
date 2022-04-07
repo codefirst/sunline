@@ -17,7 +17,6 @@ updates:
       - dependency-type: "direct"
     ignore:
       - dependency-name: "rails"
-      - dependency-name: "puma"
       - dependency-name: "devise"
       - dependency-name: "omniauth-*"
       - dependency-name: "sass-rails"
