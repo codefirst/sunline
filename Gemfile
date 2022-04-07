@@ -27,7 +27,7 @@ gem 'settingslogic'
 gem 'slack-notifier'
 
 group :development, :test do
-  gem 'rake', '< 13.0'
+  gem 'rake', '< 14.0'
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'rspec-its'
