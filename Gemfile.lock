@@ -236,7 +236,6 @@ GEM
       rake (>= 0.13)
       thor (~> 1.0)
     rake (12.3.3)
-    rdoc (6.3.2)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -275,8 +274,6 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sdoc (2.0.2)
-      rdoc (>= 5.0)
     settingslogic (2.0.9)
     sexp_processor (4.16.0)
     slack-notifier (1.5.1)
@@ -324,7 +321,6 @@ DEPENDENCIES
   rspec-its
   rspec-rails
   sass-rails (~> 6.0.0)
-  sdoc
   settingslogic
   slack-notifier
   sprockets-rails (~> 3.2.2)

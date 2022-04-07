@@ -26,11 +26,6 @@ gem 'jbuilder', '~> 2.11'
 gem 'settingslogic'
 gem 'slack-notifier'
 
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
-end
-
 group :development, :test do
   gem 'rake', '< 13.0'
   gem 'sqlite3'

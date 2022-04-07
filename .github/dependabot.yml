@@ -26,7 +26,6 @@ updates:
       - dependency-name: "jbuilder"
       - dependency-name: "settingslogic"
       - dependency-name: "slack-notifier"
-      - dependency-name: "sdoc"
       - dependency-name: "rake"
       - dependency-name: "sqlite3"
       - dependency-name: "rspec-*"
