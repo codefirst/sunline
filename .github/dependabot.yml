@@ -32,6 +32,5 @@ updates:
       - dependency-name: "rspec-*"
       - dependency-name: "pg"
       - dependency-name: "heroku-rack-ssl-enforcer-rails"
-      - dependency-name: "aws-sdk-s3"
       - dependency-name: "kaminari"
       - dependency-name: "sprockets-rails"
