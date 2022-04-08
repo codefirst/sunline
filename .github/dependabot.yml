@@ -21,7 +21,6 @@ updates:
       - dependency-name: "sass-rails"
       - dependency-name: "haml-rails"
       - dependency-name: "uglifier"
-      - dependency-name: "jbuilder"
       - dependency-name: "slack-notifier"
       - dependency-name: "rspec-*"
       - dependency-name: "pg"
