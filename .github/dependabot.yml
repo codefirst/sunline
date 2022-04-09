@@ -22,6 +22,5 @@ updates:
       - dependency-name: "haml-rails"
       - dependency-name: "uglifier"
       - dependency-name: "slack-notifier"
-      - dependency-name: "rspec-*"
       - dependency-name: "pg"
       - dependency-name: "sprockets-rails"
