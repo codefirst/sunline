@@ -17,4 +17,3 @@ updates:
       - dependency-type: "direct"
     ignore:
       - dependency-name: "rails"
-      - dependency-name: "slack-notifier"
