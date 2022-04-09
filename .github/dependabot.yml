@@ -18,4 +18,3 @@ updates:
     ignore:
       - dependency-name: "rails"
       - dependency-name: "slack-notifier"
-      - dependency-name: "pg"
