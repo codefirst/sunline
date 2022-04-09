@@ -19,7 +19,6 @@ updates:
       - dependency-name: "rails"
       - dependency-name: "sass-rails"
       - dependency-name: "haml-rails"
-      - dependency-name: "uglifier"
       - dependency-name: "slack-notifier"
       - dependency-name: "pg"
       - dependency-name: "sprockets-rails"
