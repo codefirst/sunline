@@ -24,5 +24,4 @@ updates:
       - dependency-name: "slack-notifier"
       - dependency-name: "rspec-*"
       - dependency-name: "pg"
-      - dependency-name: "kaminari"
       - dependency-name: "sprockets-rails"
