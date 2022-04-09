@@ -17,7 +17,5 @@ updates:
       - dependency-type: "direct"
     ignore:
       - dependency-name: "rails"
-      - dependency-name: "sass-rails"
       - dependency-name: "slack-notifier"
       - dependency-name: "pg"
-      - dependency-name: "sprockets-rails"
