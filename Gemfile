@@ -52,6 +52,3 @@ gem 'aws-sdk-s3'
 # gem 'debugger', group: [:development, :test]
 
 gem 'kaminari'
-
-gem 'sprockets-rails', '~> 3.2.2'
-
