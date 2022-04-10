@@ -1,21 +1,21 @@
 - content_for :title do
   = t(:title_search)
 
-.navbar
-  .container
-    %h3= t(:title_search)
-    .pull-right
-      - if params[:archived] == 'true'
-        = link_to search_path(keyword: @keyword), class: 'btn btn-inverse' do
-          %i.fa.fa-archive{:title => t(:link_active_scripts)}
-      - else
-        = link_to search_path(keyword: @keyword, archived: true), class: 'btn' do
-          %i.fa.fa-archive{:title => t(:link_archived_scripts)}
-  .container.search-box
-    %form{action: search_path, method: :get}
-      .input-append
-        = text_field_tag :keyword, @keyword, class: 'input-xlarge'
-        = submit_tag t(:title_search), class: 'btn'
+.page-title
+  %h3= t(:title_search)
+  .page-title-right-menu
+    - if params[:archived] == 'true'
+      = link_to search_path(keyword: @keyword), class: 'btn btn-inverse' do
+        %i.fa.fa-archive{:title => t(:link_active_scripts)}
+    - else
+      = link_to search_path(keyword: @keyword, archived: true), class: 'btn' do
+        %i.fa.fa-archive{:title => t(:link_archived_scripts)}
+
+.search-box
+  %form{action: search_path, method: :get}
+    .input-append
+      = text_field_tag :keyword, @keyword, class: 'input-xlarge'
+      = submit_tag t(:title_search), class: 'btn'
 
 .search-results
   - @scripts.each do |script|

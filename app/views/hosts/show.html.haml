@@ -7,12 +7,11 @@
     %span.divider /
   %li.active= @hostname
 
-.navbar
-  .container
-    %h4= @hostname
-    .pull-right.muted
-      = @logs.length
-      = t(:logs_count)
+.page-title
+  %h4= @hostname
+  .page-title-right-menu.muted
+    = @logs.length
+    = t(:logs_count)
 
 %table.table.table-striped
   %tr

@@ -10,11 +10,10 @@
     %span.divider /
   %li.active= t(:title_log)
 
-.navbar
-  .container
-    %h3= t(:title_log)
-    .pull-right
-      = link_to t(:button_edit), edit_log_path, class: 'btn'
+.page-title
+  %h3= t(:title_log)
+  .page-title-right-menu
+    = link_to t(:button_edit), edit_log_path, class: 'btn'
 
 %dl.dl-horizontal
 
