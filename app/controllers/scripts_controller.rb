@@ -1,4 +1,5 @@
 class ScriptsController < ApplicationController
+  include ActiveStorage::SetCurrent
   before_action :set_script, only: [:edit, :update, :destroy, :archive, :unarchive, :grep]
   skip_before_action :authenticate_user!, only: [:sh, :wrapped_sh]
 

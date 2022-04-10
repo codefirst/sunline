@@ -23,5 +23,7 @@ Rails.application.routes.draw do
   end
   get ':controller/:action', controller: 'authentication'
 
-  get '*not_found' => 'application#render_404'
+  get '*not_found' => 'application#render_404', constraints: ->(req) do
+    req.path.exclude? 'rails/active_storage'
+  end
 end
