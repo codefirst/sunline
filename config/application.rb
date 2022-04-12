@@ -26,5 +26,8 @@ module Sunline
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.i18n.default_locale = ENV['SUNLINE_LOCALE'] || :en
+
+    # The exiration time of ActiveStorage urls.
+    config.active_storage.service_urls_expire_in = (ENV['ACTIVE_STORAGE_SERVICE_URLS_EXPIRE_IN_MINUTES'] || '5').to_i.minutes
   end
 end
