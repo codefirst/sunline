@@ -1,5 +1,7 @@
 devise_secret_key: 'ab57649fe7285173042a0e90697f1725a8109c70f9fc5e7045bd7eb109d3d05e50e767ace36eddc52829e2866444e06ded8ac4cf8e018b7431945c0b25c7d923'
 
 omniauth:
-  provider: <%= ENV['OMNIAUTH_PROVIDER'] || 'github' %>
-  args: <%= ENV['OMNIAUTH_ARGS'] || '[]' %>
+  github:
+    client_id: <%= ENV['OMNIAUTH_GITHUB_CLIENT_ID'] || '' %>
+    client_secret: <%= ENV['OMNIAUTH_GITHUB_CLIENT_SECRET'] || '' %>
+

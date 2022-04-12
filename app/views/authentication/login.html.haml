@@ -1,1 +1,1 @@
-.login-link= link_to "sign in with #{Settings.omniauth.provider}", user_omniauth_authorize_path(Settings.omniauth.provider.to_sym)
+.login-link= link_to "sign in with GitHub", user_omniauth_authorize_path(:github)

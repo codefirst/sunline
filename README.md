@@ -38,8 +38,8 @@ if you want to notify logs to a Slack channel.
 
 Run:
 
-    $ export OMNIAUTH_PROVIDER=github
-    $ export OMNIAUTH_ARGS="['Client ID','Client Secret']"
+    $ export OMNIAUTH_GITHUB_CLIENT_ID=Client ID
+    $ export OMNIAUTH_GITHUB_CLIENT_SECRET=Client Secret
     $ export SUNLINE_LOCALE=ja    # in japanese only
     $ export SUNLINE_TIMEZONE=Tokyo    # rake time:zones:all
     $ bundle exec rails s -e production
