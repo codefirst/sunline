@@ -15,5 +15,3 @@ updates:
       day: "friday"
     allow:
       - dependency-type: "direct"
-    ignore:
-      - dependency-name: "rails"
