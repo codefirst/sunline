@@ -29,13 +29,13 @@
       "value": "region",
       "required": false
     },
-    "OMNIAUTH_PROVIDER": {
-      "description": "omniauth provider",
-      "value": "github"
+    "OMNIAUTH_GITHUB_CLIENT_ID": {
+      "description": "client id for omniauth-github",
+      "value": "Client ID"
     },
-    "OMNIAUTH_ARGS": {
-      "description": "omniauth args",
-      "value": "[\"Client ID\",\"Client Secret\"]"
+    "OMNIAUTH_GITHUB_CLIENT_SECRET": {
+      "description": "client secret for omniauth-github",
+      "value": "Client Secret"
     },
     "SUNLINE_LOCALE": {
       "description": "locale",
