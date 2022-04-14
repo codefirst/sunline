@@ -40,6 +40,7 @@ Run:
 
     $ export OMNIAUTH_GITHUB_CLIENT_ID=Client ID
     $ export OMNIAUTH_GITHUB_CLIENT_SECRET=Client Secret
+    $ export OMNIAUTH_GITHUB_ORGANIZATION=Some Organization # optional
     $ export SUNLINE_LOCALE=ja    # in japanese only
     $ export SUNLINE_TIMEZONE=Tokyo    # rake time:zones:all
     $ bundle exec rails s -e production

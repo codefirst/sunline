@@ -37,6 +37,10 @@
       "description": "client secret for omniauth-github",
       "value": "Client Secret"
     },
+    "OMNIAUTH_GITHUB_ORGANIZATION": {
+      "description": "GitHub organization name to restrict login(optional)",
+      "value": ""
+    },
     "SUNLINE_LOCALE": {
       "description": "locale",
       "value": "ja"
