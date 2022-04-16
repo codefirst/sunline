@@ -4,7 +4,6 @@
 %ul.breadcrumb
   %li
     = link_to t(:title_scripts), scripts_path
-    %span.divider /
   %li.active= @script.name
 
 .page-title
@@ -13,18 +12,18 @@
     - if @script.archived
       = link_to t(:button_unarchive), unarchive_script_path(@script), class: 'btn btn-primary', method: :post
     - else
-      = link_to t(:button_edit), edit_script_path(@script), class: 'btn'
+      = link_to t(:button_edit), edit_script_path(@script), class: 'btn btn-default'
       = link_to t(:button_archive), archive_script_path(@script), class: 'btn btn-danger', method: :post
 
 %dl.dl-horizontal
 
   %dt= t(:field_body)
-  %dd= text_area_tag :body, @script.body, class: 'input-xxlarge script-area', rows: 15
+  %dd= text_area_tag :body, @script.body, class: 'form-control script-area', rows: 15
 
   %dt= t(:field_created_by)
   %dd
     = @script.creater_name
-    %span.muted
+    %span.text-muted
       (
       = time_ago_in_words(@script.created_at) + t(:ago)
       )
@@ -32,7 +31,7 @@
   %dt= t(:field_updated_by)
   %dd
     = @script.updater_name
-    %span.muted
+    %span.text-muted
       (
       = time_ago_in_words(@script.updated_at) + t(:ago)
       )
@@ -43,9 +42,9 @@
       %ul.attachments
         - @script.attachments.order(:upload_file_name).each do |attachment|
           %li
-            %i.icon-file
+            %i.fa.fa-file
             = link_to attachment.upload.filename, attachment.upload.url
-            %span.muted
+            %span.text-muted
               (
               = number_to_human_size(attachment.upload.byte_size)
               )
@@ -64,7 +63,7 @@
 - unless @script.logs.empty?
   .page-title
     %h4= t(:title_logs)
-    .page-title-right-menu.muted.logs-toolbar
+    .page-title-right-menu.text-muted.logs-toolbar
       %form.form-inline
         %span#logs-count= @script.logs.size
         = t(:logs_count)

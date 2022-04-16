@@ -4,12 +4,11 @@
 %ul.breadcrumb
   %li
     = link_to t(:title_hosts), hosts_path
-    %span.divider /
   %li.active= @hostname
 
 .page-title
   %h4= @hostname
-  .page-title-right-menu.muted
+  .page-title-right-menu.text-muted
     = @logs.length
     = t(:logs_count)
 

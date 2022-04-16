@@ -8,18 +8,18 @@
 
   .field
     = f.label :name
-    = f.text_field :name, class: 'input-xlarge'
+    = f.text_field :name, class: 'form-control'
   .field
     = f.label :body
-    = f.text_area :body, class: 'input-xxlarge script-area', rows: 15
+    = f.text_area :body, class: 'form-control script-area', rows: 15
   .field
     = label_tag t(:field_attachments)
     %ul.attachments
       - @script.attachments.order(:upload_file_name).each do |attachment|
         %li
-          %i.icon-file
+          %i.fa.fa-file
           = attachment.upload.filename
-          %span.muted
+          %span.text-muted
             (
             = number_to_human_size(attachment.upload.byte_size)
             )
@@ -31,8 +31,8 @@
       = render 'form_upload', :display => 'none'
       = render 'form_upload', :display => 'block'
     .fileuploads-more
-      = link_to '#', :class => 'attachment-more btn' do
-        %i.icon-plus
+      = link_to '#', :class => 'attachment-more btn btn-default' do
+        %i.fa.fa-plus
         =t(:button_more_attachment)
 
   .actions

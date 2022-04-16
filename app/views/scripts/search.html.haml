@@ -5,17 +5,17 @@
   %h3= t(:title_search)
   .page-title-right-menu
     - if params[:archived] == 'true'
-      = link_to search_path(keyword: @keyword), class: 'btn btn-inverse' do
-        %i.fa.fa-archive{:title => t(:link_active_scripts)}
+      = link_to search_path(keyword: @keyword), class: 'btn btn-default active' do
+        %i.fa.fa-box-open{:title => t(:link_active_scripts)}
     - else
-      = link_to search_path(keyword: @keyword, archived: true), class: 'btn' do
-        %i.fa.fa-archive{:title => t(:link_archived_scripts)}
+      = link_to search_path(keyword: @keyword, archived: true), class: 'btn btn-default' do
+        %i.fa.fa-box{:title => t(:link_archived_scripts)}
 
 .search-box
   %form{action: search_path, method: :get}
-    .input-append
-      = text_field_tag :keyword, @keyword, class: 'input-xlarge'
-      = submit_tag t(:title_search), class: 'btn'
+    .form-inline
+      = text_field_tag :keyword, @keyword, class: 'form-control'
+      = submit_tag t(:title_search), class: 'btn btn-default'
 
 .search-results
   - @scripts.each do |script|
@@ -24,13 +24,13 @@
         %span.search-result-title= link_to script.name, script
         .pull-right
           = script.updater_name
-          %span.muted
+          %span.text-muted
             (
             = time_ago_in_words(script.updated_at) + t(:ago)
             )
       .search-result-body= text_area_tag :body,
         script.body.split("\n").find { |l| @keyword.split(/[[:blank:]]+/).any? { |word| l.include?(word) } },
-        class: 'input-xxlarge script-area',
+        class: 'form-control script-area',
         rows: 1,
         'data-first-line-number': script.body.split("\n").index { |l| @keyword.split(/[[:blank:]]+/).any? { |word| l.include?(word) } } + 1
 
