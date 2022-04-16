@@ -33,7 +33,7 @@
           - @log.errors.full_messages.each do |msg|
             %li= msg
     %dt= t(:field_memo)
-    %dd= f.text_area :memo, class: 'input-xxlarge script-area', rows: 15
+    %dd= f.text_area :memo, class: 'form-control script-area', rows: 15
     %dd= f.submit t(:button_save), class: 'btn btn-primary'
 
 
