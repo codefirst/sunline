@@ -23,15 +23,20 @@
 
   %body
     .navbar.navbar-fixed-top.navbar-inverse
-      .navbar-inner
-        .container
-          = link_to image_tag(asset_path('sunline-logo-white.png')), {controller: 'top'}, class: 'brand'
-          - if user_signed_in?
-            %ul.nav
+      .container
+        .navbar-header
+          = link_to image_tag(asset_path('sunline-logo-white.png')), {controller: 'top'}, class: 'navbar-brand'
+          %button.navbar-toggle{'data-toggle': 'collapse', 'data-target': '#js-navbar-collapse'}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+        - if user_signed_in?
+          .collapse.navbar-collapse#js-navbar-collapse
+            %ul.nav.navbar-nav
               %li= link_to t(:title_scripts), scripts_path
               %li= link_to t(:title_hosts), hosts_path
               %li= link_to t(:title_search), search_path
-            %ul.nav.pull-right
+            %ul.nav.navbar-nav.navbar-right
               %li.dropdown
                 %a.dropdown-toggle(data-toggle="dropdown" role="button" href="#")
                   = t(:button_account)
