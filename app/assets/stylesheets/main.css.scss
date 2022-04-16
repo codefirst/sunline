@@ -15,16 +15,15 @@ body {
       padding: 10px 20px 10px;
     }
   }
-  .container h3, .container h4 {
-    display: inline;
-  }
 }
 
-.h3-right {
-  padding-top: 10px;
-}
-.navbar-h4 {
-  margin-bottom: 2px;
+.page-title {
+  display: flex;
+  justify-content: space-between;
+
+  &-right-menu {
+    margin: 10px 0;
+  }
 }
 
 .copy-button {
