@@ -4,10 +4,8 @@
 %ul.breadcrumb
   %li
     = link_to t(:title_scripts), scripts_path
-    %span.divider /
   %li
     = link_to @script.name, script_path(@script)
-    %span.divider /
   %li.active= t(:title_edit)
 
 %h3= t(:title_edit)
