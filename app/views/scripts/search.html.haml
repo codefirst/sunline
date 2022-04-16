@@ -13,7 +13,7 @@
 
 .search-box
   %form{action: search_path, method: :get}
-    .input-append
+    .form-inline
       = text_field_tag :keyword, @keyword, class: 'form-control'
       = submit_tag t(:title_search), class: 'btn btn-default'
 
