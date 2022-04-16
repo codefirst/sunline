@@ -23,7 +23,7 @@
   %dt= t(:field_created_by)
   %dd
     = @script.creater_name
-    %span.muted
+    %span.text-muted
       (
       = time_ago_in_words(@script.created_at) + t(:ago)
       )
@@ -31,7 +31,7 @@
   %dt= t(:field_updated_by)
   %dd
     = @script.updater_name
-    %span.muted
+    %span.text-muted
       (
       = time_ago_in_words(@script.updated_at) + t(:ago)
       )
@@ -44,7 +44,7 @@
           %li
             %i.icon-file
             = link_to attachment.upload.filename, attachment.upload.url
-            %span.muted
+            %span.text-muted
               (
               = number_to_human_size(attachment.upload.byte_size)
               )
@@ -63,7 +63,7 @@
 - unless @script.logs.empty?
   .page-title
     %h4= t(:title_logs)
-    .page-title-right-menu.muted.logs-toolbar
+    .page-title-right-menu.text-muted.logs-toolbar
       %form.form-inline
         %span#logs-count= @script.logs.size
         = t(:logs_count)

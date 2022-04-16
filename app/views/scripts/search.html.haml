@@ -24,7 +24,7 @@
         %span.search-result-title= link_to script.name, script
         .pull-right
           = script.updater_name
-          %span.muted
+          %span.text-muted
             (
             = time_ago_in_words(script.updated_at) + t(:ago)
             )
