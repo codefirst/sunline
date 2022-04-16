@@ -42,7 +42,7 @@
       %ul.attachments
         - @script.attachments.order(:upload_file_name).each do |attachment|
           %li
-            %i.icon-file
+            %i.fa.fa-file
             = link_to attachment.upload.filename, attachment.upload.url
             %span.text-muted
               (

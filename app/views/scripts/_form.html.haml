@@ -17,7 +17,7 @@
     %ul.attachments
       - @script.attachments.order(:upload_file_name).each do |attachment|
         %li
-          %i.icon-file
+          %i.fa.fa-file
           = attachment.upload.filename
           %span.text-muted
             (
