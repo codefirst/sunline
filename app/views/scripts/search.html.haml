@@ -8,14 +8,14 @@
       = link_to search_path(keyword: @keyword), class: 'btn btn-inverse' do
         %i.fa.fa-archive{:title => t(:link_active_scripts)}
     - else
-      = link_to search_path(keyword: @keyword, archived: true), class: 'btn' do
+      = link_to search_path(keyword: @keyword, archived: true), class: 'btn btn-default' do
         %i.fa.fa-archive{:title => t(:link_archived_scripts)}
 
 .search-box
   %form{action: search_path, method: :get}
     .input-append
       = text_field_tag :keyword, @keyword, class: 'form-control'
-      = submit_tag t(:title_search), class: 'btn'
+      = submit_tag t(:title_search), class: 'btn btn-default'
 
 .search-results
   - @scripts.each do |script|

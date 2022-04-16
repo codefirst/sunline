@@ -12,7 +12,7 @@
     - if @script.archived
       = link_to t(:button_unarchive), unarchive_script_path(@script), class: 'btn btn-primary', method: :post
     - else
-      = link_to t(:button_edit), edit_script_path(@script), class: 'btn'
+      = link_to t(:button_edit), edit_script_path(@script), class: 'btn btn-default'
       = link_to t(:button_archive), archive_script_path(@script), class: 'btn btn-danger', method: :post
 
 %dl.dl-horizontal

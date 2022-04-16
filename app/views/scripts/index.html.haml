@@ -8,10 +8,10 @@
       = link_to scripts_path, class: 'btn btn-inverse' do
         %i.fa.fa-archive{:title => t(:link_active_scripts)}
     - else
-      = link_to scripts_path(archived: true), class: 'btn' do
+      = link_to scripts_path(archived: true), class: 'btn btn-default' do
         %i.fa.fa-archive{:title => t(:link_archived_scripts)}
 
-    = link_to t(:button_new_script), new_script_path, class: 'btn'
+    = link_to t(:button_new_script), new_script_path, class: 'btn btn-default'
 
 %table.table.table-striped
   %tr
