@@ -36,7 +36,6 @@ en:
   button_change: Change
   button_select_file: Select file
   button_more_attachment: More attachment
-  button_back: Back
   button_wrapped: Wrapped
   button_export_csv: Export CSV
 
@@ -51,6 +50,4 @@ en:
   auto_reload: Auto reload
   grep_logs: Grep logs
 
-  error_404: 404 Error
-  not_found: "%{path} is not found"
   error_authentication_failed: Authentication failed
