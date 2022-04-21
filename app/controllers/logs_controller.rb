@@ -4,12 +4,10 @@ class LogsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:create]
 
   # GET /logs/1
-  # GET /logs/1.json
   def show
   end
 
   # POST /logs
-  # POST /logs.json
   def create
     if params[:log_file].nil?
       render json: {message: "log file not specified"}.to_json, status: 500
@@ -28,10 +26,8 @@ class LogsController < ApplicationController
     respond_to do |format|
       if @log.save
         format.html { render plain: "log registration successful\n", status: :created}
-        format.json { render action: 'show', status: :created, location: @log }
       else
         format.html { render plain: "log registration failure\n", status: 500 }
-        format.json { render json: @log.errors, status: :unprocessable_entity }
       end
     end
   end
