@@ -78,16 +78,6 @@ describe ScriptsController, type: :controller  do
       subject { controller.instance_variable_get("@scripts").find {|script| script.id == @script.id } }
       it { is_expected.not_to be_nil }
     end
-
-    describe 'without keyword' do
-      before do
-        @script = Script.new(name: 'name', body: 'ls -l')
-        @script.save
-        get :search, params: { keyword: '', format: 'json' }
-      end
-      subject { controller.instance_variable_get("@scripts").size }
-      it { is_expected.to eq 0 }
-    end
   end
 
 end
