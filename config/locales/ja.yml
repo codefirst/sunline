@@ -82,7 +82,6 @@ ja:
   button_change: 変更
   button_select_file: ファイルを選択
   button_more_attachment: ファイルを追加
-  button_back: 戻る
   button_wrapped: ラップ URL
   button_export_csv: CSV エクスポート
 
@@ -97,6 +96,4 @@ ja:
   auto_reload: 自動更新
   grep_logs: ログを検索
 
-  error_404: 404 エラー
-  not_found: "%{path} は存在しません"
   error_authentication_failed: 認証に失敗しました
