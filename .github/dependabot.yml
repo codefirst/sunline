@@ -13,5 +13,3 @@ updates:
       interval: "weekly"
       timezone: "Asia/Tokyo"
       day: "friday"
-    allow:
-      - dependency-type: "direct"
