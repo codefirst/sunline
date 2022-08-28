@@ -1,0 +1,28 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data
+    restart: always
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      OMNIAUTH_GITHUB_CLIENT_ID:
+      OMNIAUTH_GITHUB_CLIENT_SECRET:
+      OMNIAUTH_GITHUB_ORGANIZATION:
+    volumes:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+volumes:
+  postgres_volume:
+

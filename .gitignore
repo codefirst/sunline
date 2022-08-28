@@ -23,3 +23,5 @@
 /config/secrets.yml
 
 /storage
+
+/.env
