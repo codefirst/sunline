@@ -7,7 +7,7 @@ gem 'rails', '7.0.4'
 gem 'puma'
 
 gem 'devise'
-gem 'omniauth-github', '~> 2.0.0'
+gem 'omniauth-github', '~> 2.0.1'
 gem 'omniauth-rails_csrf_protection', '~> 1.0.0'
 gem 'octokit', '~> 5.6'
 
