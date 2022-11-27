@@ -6,7 +6,7 @@ module ApplicationHelper
   end
 
   # moneky patch for twitter-bootstrap-rails-2.2.8
-  ALERT_TYPES = ['error', 'info', 'success', 'warning']
+  ALERT_TYPES = ['danger', 'info', 'success', 'warning']
   def bootstrap_flash_compat
     flash_messages = []
     flash.each do |type, message|
@@ -14,7 +14,7 @@ module ApplicationHelper
       next if message.blank?
 
       type = 'success' if type == 'notice'
-      type = 'error'   if type == 'alert'
+      type = 'danger'   if type == 'alert'
       next unless ALERT_TYPES.include?(type)
 
       Array(message).each do |msg|
