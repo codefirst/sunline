@@ -47,7 +47,7 @@
             %span.text-muted
               (
               = number_to_human_size(attachment.upload.byte_size)
-              ,
+              \/
               = time_ago_in_words(attachment.updated_at) + t(:ago)
               )
 
