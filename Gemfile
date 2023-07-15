@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '3.2.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '7.0.5'
+gem 'rails', '7.0.6'
 gem 'puma'
 
 gem 'devise'
