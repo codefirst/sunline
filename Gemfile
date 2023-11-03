@@ -9,7 +9,7 @@ gem 'puma'
 gem 'devise'
 gem 'omniauth-github', '~> 2.0.1'
 gem 'omniauth-rails_csrf_protection', '~> 1.0.0'
-gem 'octokit', '~> 7.2'
+gem 'octokit', '~> 8.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 6.0.0'
