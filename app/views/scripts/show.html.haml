@@ -96,16 +96,18 @@
 
 :javascript
   $(function() {
-    var clip = new ClipboardJS('.copy-button');
-    clip.on('success' , function(e) {
-      var self = $(e.trigger);
-      self.attr('title', '#{t(:copied)}');
-      self.tooltip('show');
-      setTimeout(function() {
-        self.attr('title', '#{t(:copy_to_clipboard)}');
-        self.tooltip('destroy');
-      }, 3000);
-    } );
+    $('.copy-button').on('click', function(e) {
+      var text = $(this).data('clipboard-text');
+      navigator.clipboard.writeText(text).then(function() {
+        var self = $(e.currentTarget);
+        self.attr('title', '#{t(:copied)}');
+        self.tooltip('show');
+        setTimeout(function() {
+          self.attr('title', '#{t(:copy_to_clipboard)}');
+          self.tooltip('destroy');
+        }, 3000);
+      });
+    });
     $('.script-area').each(function() {
       CodeMirror.fromTextArea(this, {mode: "shell", lineNumbers: true, readOnly: true});
     });
