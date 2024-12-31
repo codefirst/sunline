@@ -11,6 +11,7 @@ Install
 Install dependencies:
 
     $ bundle install --path .bundle --without development test
+    $ bin/yarn
 
 Precompile assets:
 
@@ -53,6 +54,10 @@ For developers
 Setup database:
 
     $ bundle exec rake db:migrate RAILS_ENV=test
+
+Run server:
+
+    $ bin/dev
 
 Run tests:
 
