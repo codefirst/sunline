@@ -14,6 +14,7 @@ gem "faraday-retry", "~> 2.2"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 6.0.0'
+gem 'jsbundling-rails'
 
 # Use Haml
 gem 'haml-rails'
