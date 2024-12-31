@@ -1,5 +1,6 @@
 // Entry point for your Sass build
 
+@use "bootstrap/dist/css/bootstrap";
 @use "codemirror/lib/codemirror";
 
 @use 'bootstrap-fileupload.css';
