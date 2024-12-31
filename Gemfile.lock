@@ -108,7 +108,6 @@ GEM
     diff-lcs (1.5.1)
     drb (2.2.1)
     erubi (1.13.1)
-    execjs (2.9.1)
     faraday (2.12.0)
       faraday-net_http (>= 2.0, < 3.4)
       json
@@ -317,8 +316,6 @@ GEM
     timeout (0.4.3)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    uglifier (4.2.1)
-      execjs (>= 0.3.0, < 3)
     uri (1.0.2)
     useragent (0.16.11)
     version_gem (1.1.1)
@@ -353,7 +350,6 @@ DEPENDENCIES
   settingslogic
   slack-notifier
   sqlite3
-  uglifier (>= 1.3.0)
 
 RUBY VERSION
    ruby 3.3.6p108
