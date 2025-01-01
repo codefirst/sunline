@@ -41,10 +41,6 @@
       "description": "GitHub organization name to restrict login(optional)",
       "value": ""
     },
-    "SUNLINE_LOCALE": {
-      "description": "locale",
-      "value": "ja"
-    },
     "SUNLINE_TIMEZONE": {
       "description": "timezone",
       "value": "Tokyo"
