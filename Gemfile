@@ -18,9 +18,6 @@ gem 'sass-rails', '~> 6.0.0'
 # Use Haml
 gem 'haml-rails'
 
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-
 gem 'settingslogic'
 gem 'slack-notifier'
 
