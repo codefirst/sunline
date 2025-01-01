@@ -1,9 +1,6 @@
 {
   "name": "app",
   "private": true,
-  "devDependencies": {
-    "esbuild": "^0.24.2"
-  },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
     "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
@@ -12,7 +9,10 @@
     "@fortawesome/fontawesome-free": "5.7.2",
     "bootstrap": "3.4.1",
     "codemirror": "5.65.0",
-    "jquery": "3.7.1",
+    "jquery": "3.7.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.2",
     "sass": "^1.83.0"
   }
 }
