@@ -10,10 +10,10 @@
   %h3= @script.name
   .page-title-right-menu
     - if @script.archived
-      = link_to t(:button_unarchive), unarchive_script_path(@script), class: 'btn btn-primary', method: :post
+      = button_to t(:button_unarchive), unarchive_script_path(@script), class: 'btn btn-primary', form: { class: 'form-btn-inline-block' }, method: :post
     - else
       = link_to t(:button_edit), edit_script_path(@script), class: 'btn btn-default'
-      = link_to t(:button_archive), archive_script_path(@script), class: 'btn btn-danger', method: :post
+      = button_to t(:button_archive), archive_script_path(@script), class: 'btn btn-danger', form: { class: 'form-btn-inline-block' }, method: :post
 
 %dl.dl-horizontal
 
