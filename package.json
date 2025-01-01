@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.7.2",
+    "bootstrap": "3.4.1",
     "codemirror": "5.65.0",
     "sass": "^1.83.0"
   }
