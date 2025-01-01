@@ -12,6 +12,21 @@ body {
   }
 }
 
+.signout-menu {
+  .btn-link {
+    color: #333333;
+    width: 100%;
+    text-align: left;
+    padding: 3px 20px;
+
+    &:hover, &:focus {
+      color: #262626;
+      text-decoration: none;
+      background-color: #f5f5f5;
+    }
+  }
+}
+
 .page-title {
   display: flex;
   justify-content: space-between;
