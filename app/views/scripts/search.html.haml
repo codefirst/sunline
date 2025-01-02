@@ -41,7 +41,7 @@
   $(function() {
     $('.script-area').each(function() {
       var firstLineNumber = $(this).data('first-line-number');
-      CodeMirror.fromTextArea(this, {"mode": "shell", "readOnly": true, "lineNumbers": true, "firstLineNumber": firstLineNumber});
+      editorFromTextArea(this, {readOnly: true, firstLineNumber: firstLineNumber});
     });
     $('[name="keyword"]').focus();
   });

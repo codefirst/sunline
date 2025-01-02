@@ -109,7 +109,7 @@
       });
     });
     $('.script-area').each(function() {
-      CodeMirror.fromTextArea(this, {mode: "shell", lineNumbers: true, readOnly: true});
+      editorFromTextArea(this, {readOnly: true});
     });
     setInterval(function() {
       if ($('#logs_auto_reload').is(':checked')) {

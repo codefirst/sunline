@@ -49,6 +49,6 @@
       return false;
     });
     $('.script-area').each(function() {
-      CodeMirror.fromTextArea(this, {mode: "shell", lineNumbers: true});
+      editorFromTextArea(this, {});
     });
   });
