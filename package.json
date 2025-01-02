@@ -6,7 +6,7 @@
     "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "5.7.2",
+    "@fortawesome/fontawesome-free": "5.15.4",
     "bootstrap": "3.4.1",
     "codemirror": "5.65.0",
     "jquery": "3.7.1"
