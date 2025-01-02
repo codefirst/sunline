@@ -19,9 +19,15 @@ window.editorFromTextArea = function (textarea, options) {
     keymap.of(defaultKeymap),
     keymap.of(historyKeymap),
     StreamLanguage.define(shell),
-    syntaxHighlighting(defaultHighlightStyle),
-    lineNumbers()
+    syntaxHighlighting(defaultHighlightStyle)
   ];
+  if (options.firstLineNumber) {
+    extensions.push(lineNumbers(
+      { formatNumber: (n) => (n + options.firstLineNumber - 1).toString() }
+    ));
+  } else {
+    extensions.push(lineNumbers());
+  }
   if (options.readOnly) {
     extensions.push(EditorState.readOnly.of(true));
   }
