@@ -8,7 +8,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.15.4",
     "bootstrap": "3.4.1",
-    "codemirror": "5.65.0",
+    "codemirror": "5.65.18",
     "jquery": "3.7.1"
   },
   "devDependencies": {
