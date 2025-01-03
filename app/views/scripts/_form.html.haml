@@ -29,10 +29,10 @@
             = check_box_tag "delete_attachments[]", attachment.id
             = t(:button_remove)
 
-    .fileuploads
+    .fileinputs
       = render 'form_upload', :display => 'none'
       = render 'form_upload', :display => 'block'
-    .fileuploads-more
+    .fileinputs-more
       = link_to '#', :class => 'attachment-more btn btn-default' do
         %i.fa.fa-plus
         =t(:button_more_attachment)
@@ -43,9 +43,9 @@
 :javascript
   $(function() {
     $('.attachment-more').on('click', function(e) {
-      var fileupload = $('.fileuploads .fileupload:first-child');
-      var lastupload = $('.fileuploads .fileupload:last-child');
-      fileupload.clone(true).toggle().insertAfter(lastupload);
+      var fileinput = $('.fileinputs .fileinput:first-child');
+      var lastupload = $('.fileinputs .fileinput:last-child');
+      fileinput.clone(true).toggle().insertAfter(lastupload);
       return false;
     });
     $('.script-area').each(function() {

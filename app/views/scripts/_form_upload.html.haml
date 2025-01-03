@@ -1,12 +1,12 @@
-.fileupload.fileupload-new{'data-provides': 'fileupload', style: "display:#{display}"}
+.fileinput.fileinput-new{'data-provides': 'fileinput', style: "display:#{display}"}
   .input-group
     .form-control.uneditable-input
-      %i.fa.fa-file.fileupload-exists
-      %span.fileupload-preview
+      %i.fa.fa-file.fileinput-exists
+      %span.fileinput-preview
     .input-group-btn
       %span.btn.btn-default.btn-file
-        %span.fileupload-new= t(:button_select_file)
-        %span.fileupload-exists
+        %span.fileinput-new= t(:button_select_file)
+        %span.fileinput-exists
           = t(:button_change)
         = file_field_tag 'attachments[][upload]', class: 'input-file'
-      = link_to t(:button_remove), '#', {'data-dismiss': 'fileupload', class: 'btn btn-default fileupload-exists'}
+      = link_to t(:button_remove), '#', {'data-dismiss': 'fileinput', class: 'btn btn-default fileinput-exists'}
