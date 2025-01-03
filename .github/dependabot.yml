@@ -13,3 +13,17 @@ updates:
       interval: "weekly"
       timezone: "Asia/Tokyo"
       day: "friday"
+
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      timezone: "Asia/Tokyo"
+      day: "friday"
+    groups:
+      codemirror:
+        patterns:
+          - "@codemirror/*"
+    ignore:
+      - dependency-name: "bootstrap"
+      - dependency-name: "jasny-bootstrap"
