@@ -124,9 +124,19 @@ ul.attachments {
   }
 }
 
-.CodeMirror {
+.cm-editor {
   height: auto;
   border: 1px solid #ddd;
+
+  .cm-content {
+    font-family: "Consolas";
+  }
+
+  &.cm-editor.cm-focused {
+    border-color: #66afe9;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+    outline: 0;
+  }
 }
 
 .form-btn-inline-block {
