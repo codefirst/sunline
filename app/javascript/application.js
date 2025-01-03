@@ -7,7 +7,7 @@ import("bootstrap/dist/js/bootstrap"); // use () to import jQuery
 
 import "@fortawesome/fontawesome-free/js/all";
 
-import("./bootstrap-fileupload"); // use () to import $
+import("jasny-bootstrap/dist/js/jasny-bootstrap"); // use () to import $
 
 import { editorFromTextArea } from "./codemirror";
 window.editorFromTextArea = editorFromTextArea;
