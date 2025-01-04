@@ -65,6 +65,7 @@ class ScriptsController < ApplicationController
       if @script.save
         format.html { redirect_to @script, notice: 'Script was successfully created.' }
       else
+        flash.now[:alert] = @script.errors.full_messages.to_sentence if @script.errors.any?
         format.html { render action: 'new' }
       end
     end
@@ -79,6 +80,7 @@ class ScriptsController < ApplicationController
       if @script.update(script_params.merge(updated_by: current_user))
         format.html { redirect_to @script, notice: 'Script was successfully updated.' }
       else
+        flash.now[:alert] = @script.errors.full_messages.to_sentence if @script.errors.any?
         format.html { render action: 'edit' }
       end
     end
