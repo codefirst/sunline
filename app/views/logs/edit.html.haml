@@ -26,12 +26,6 @@
   %dd= number_to_human_size @log.result_bytes
 
   = form_for @log do |f|
-    - if @log.errors.any?
-      #error_explanation
-        %h2= "#{pluralize(@log.errors.count, "error")} prohibited this script from being saved:"
-        %ul
-          - @log.errors.full_messages.each do |msg|
-            %li= msg
     %dt= t(:field_memo)
     %dd= f.text_area :memo, class: 'form-control script-area', rows: 15
     %dd= f.submit t(:button_save), class: 'btn btn-primary'
