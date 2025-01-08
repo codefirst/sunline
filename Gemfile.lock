@@ -100,6 +100,7 @@ GEM
     crass (1.0.6)
     cssbundling-rails (1.4.1)
       railties (>= 6.0.0)
+    csv (3.3.2)
     date (3.4.1)
     devise (4.9.4)
       bcrypt (~> 3.0)
@@ -326,6 +327,7 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk-s3
   cssbundling-rails
+  csv
   devise
   faraday-retry (~> 2.2)
   haml-rails

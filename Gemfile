@@ -6,6 +6,8 @@ ruby file: '.ruby-version'
 gem 'rails', '8.0.1'
 gem 'puma'
 
+gem 'csv'
+
 gem 'devise'
 gem 'omniauth-github', '~> 2.0.1'
 gem 'omniauth-rails_csrf_protection', '~> 1.0.2'
