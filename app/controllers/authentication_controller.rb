@@ -17,7 +17,7 @@ class AuthenticationController < ApplicationController
       user = User.new(name: oauth.info.name, nickname: oauth.info.nickname)
     end
     user.save
-    sign_in_and_redirect user,:event => :authentication
+    sign_in_and_redirect user, event: :authentication
   end
 
   def logout

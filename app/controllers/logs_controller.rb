@@ -14,7 +14,7 @@ class LogsController < ApplicationController
       return
     end
 
-    @log = Log.new(host: params[:host], :result => params[:log_file].read)
+    @log = Log.new(host: params[:host], result: params[:log_file].read)
     script = Script.where(guid: params[:guid]).first
     unless script
       render json: {message: "scripts not found. GUID: #{params[:guid]}"}.to_json, status: 500
