@@ -14,7 +14,7 @@ gem 'omniauth-rails_csrf_protection', '~> 1.0.2'
 gem 'octokit', '~> 9.2'
 gem "faraday-retry", "~> 2.2"
 
-gem 'sprockets-rails'
+gem 'propshaft'
 gem 'jsbundling-rails'
 gem 'cssbundling-rails'
 
