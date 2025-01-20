@@ -5,9 +5,9 @@
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
     %title= title(yield(:title))
     = csrf_meta_tags
-    = stylesheet_link_tag "application", :media => "all"
-    = favicon_link_tag 'apple-touch-icon.png', :rel => 'apple-touch-icon', :type => 'image/png'
-    = favicon_link_tag 'favicon.ico', :rel => 'icon'
+    = stylesheet_link_tag "application", media: "all"
+    = favicon_link_tag 'apple-touch-icon.png', rel: 'apple-touch-icon', type: 'image/png'
+    = favicon_link_tag 'favicon.ico', rel: 'icon'
     = javascript_include_tag "application"
 
   %body
