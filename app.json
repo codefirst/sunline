@@ -40,10 +40,6 @@
     "OMNIAUTH_GITHUB_ORGANIZATION": {
       "description": "GitHub organization name to restrict login(optional)",
       "value": ""
-    },
-    "SUNLINE_TIMEZONE": {
-      "description": "timezone",
-      "value": "Tokyo"
     }
   },
   "addons": [
