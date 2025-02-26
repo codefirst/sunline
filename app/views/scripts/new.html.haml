@@ -1,11 +1,9 @@
 - content_for :title do
   = t(:title_new_script)
-
-%ul.breadcrumb
-  %li
-    = link_to t(:title_scripts), scripts_path
-  %li.active= t(:title_new_script)
-
+%nav{"aria-label" => "breadcrumb"}
+  %ol.breadcrumb
+    %li.breadcrumb-item
+      = link_to t(:title_scripts), scripts_path
+    %li.breadcrumb-item.active{"aria-current" => "page"}= t(:title_new_script)
 %h3= t(:title_new_script)
-
 = render 'form'

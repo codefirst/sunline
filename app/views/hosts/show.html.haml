@@ -1,10 +1,11 @@
 - content_for :title do
   = @hostname
 
-%ul.breadcrumb
-  %li
-    = link_to t(:title_hosts), hosts_path
-  %li.active= @hostname
+%nav{"aria-label" => "breadcrumb"}
+  %ol.breadcrumb
+    %li.breadcrumb-item
+      = link_to t(:title_hosts), hosts_path
+    %li.breadcrumb-item.active{"aria-current" => "page"}= @hostname
 
 .page-title
   %h4= @hostname
@@ -13,12 +14,13 @@
     = t(:logs_count)
 
 %table.table.table-striped
-  %tr
-    %th= t(:field_script_name)
-    %th= t(:field_created)
-
-  - @logs.each do |log|
+  %thead
     %tr
-      %td= link_to log.script.name, script_path(log.script.id)
-      %td= link_to log.formatted_created_at, log_path(log.id)
+      %th= t(:field_script_name)
+      %th= t(:field_created)
+  %tbody
+    - @logs.each do |log|
+      %tr
+        %td= link_to log.script.name, script_path(log.script.id)
+        %td= link_to log.formatted_created_at, log_path(log.id)
 

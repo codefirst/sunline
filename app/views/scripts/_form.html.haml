@@ -1,13 +1,13 @@
 = form_for @script, html: {multipart: true} do |f|
-  .field
+  .form-group
     = f.label :name
     = f.text_field :name, class: 'form-control'
-  .field
+  .form-group
     = f.label :body
     = f.text_area :body, class: 'form-control script-area', rows: 15
-  .field
+  .form-group
     = label_tag t(:field_attachments)
-    %ul.attachments
+    %ul.attachments.list-unstyled
       - @script.attachments.order(:upload_file_name).each do |attachment|
         %li
           %i.fa.fa-file
@@ -18,21 +18,18 @@
             \/
             = time_ago_in_words(attachment.updated_at) + t(:ago)
             )
-          %label.checkbox
-            = check_box_tag "delete_attachments[]", attachment.id
-            = t(:button_remove)
-
+          .form-check.form-check-inline
+            = check_box_tag "delete_attachments[]", attachment.id, false, class: 'form-check-input'
+            = label_tag nil, t(:button_remove), class: 'form-check-label'
     .fileinputs
       = render 'form_upload', display: 'none'
       = render 'form_upload', display: 'block'
-    .fileinputs-more
-      = link_to '#', class: 'attachment-more btn btn-default' do
+    .fileinputs-more.mt-2
+      = link_to '#', class: 'attachment-more btn btn-outline-secondary' do
         %i.fa.fa-plus
         =t(:button_more_attachment)
-
   .actions
     = f.submit t(:button_save), class: 'btn btn-primary'
-
 :javascript
   $(function() {
     $('.attachment-more').on('click', function(e) {
