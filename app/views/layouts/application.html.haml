@@ -23,7 +23,7 @@
               %li.nav-item= link_to t(:title_search), search_path, class: 'nav-link'
             %ul.navbar-nav.ml-auto
               %li.nav-item.dropdown
-                %a.nav-link.dropdown-toggle(data-toggle="dropdown" role="button" href="#" id="accountDropdown" aria-haspopup="true" aria-expanded="false")
+                %a.nav-link(data-toggle="dropdown" role="button" href="#" id="accountDropdown" aria-haspopup="true" aria-expanded="false")
                   = t(:button_account)
                   %i.fa.fa-caret-down
                 .dropdown-menu.dropdown-menu-right(aria-labelledby="accountDropdown")
