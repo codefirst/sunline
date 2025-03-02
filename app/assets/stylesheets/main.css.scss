@@ -3,6 +3,10 @@ body {
 }
 
 .navbar {
+  .container {
+    padding-left: 0;
+    padding-right: 15px;
+  }
   .navbar-brand {
     padding: 0;
     img {
