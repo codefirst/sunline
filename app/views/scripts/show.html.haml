@@ -67,15 +67,15 @@
     %h4= t(:title_logs)
     .page-title-right-menu.text-muted.logs-toolbar
       %form.form-inline
-        %span#logs-count= @script.logs.size
+        %span#logs-count.mr-1= @script.logs.size
         = t(:logs_count)
-        .form-check.form-check-inline
+        .form-check.form-check-inline.ml-3
           = check_box_tag(:logs_auto_reload, "1", false, class: 'form-check-input')
           = label_tag(:logs_auto_reload, t(:auto_reload), class: 'form-check-label')
         = form_tag script_path(@script), method: 'get', class: 'grep-log-form d-inline-block ml-2' do
           = text_field_tag :keyword, @keyword, class: 'form-control auto-width', placeholder: t(:grep_logs)
           .dropdown.d-inline-block
-            = link_to '#', class: 'btn btn-outline-secondary dropdown-toggle', 'data-toggle': 'dropdown', style: 'margin-top:0' do
+            = link_to '#', class: 'btn btn-outline-secondary ml-1', 'data-toggle': 'dropdown', style: 'margin-top:0' do
               %i.fa.fa-ellipsis-v
             .dropdown-menu.dropdown-menu-right
               = link_to t(:button_export_csv), logs_csv_path(@script), class: 'dropdown-item'
