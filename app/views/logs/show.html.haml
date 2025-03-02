@@ -1,34 +1,34 @@
 - content_for :title do
   = "#{@log.script.name} - #{t(:title_log)}"
 
-%ul.breadcrumb
-  %li
-    = link_to t(:title_scripts), scripts_path
-  %li
-    = link_to @log.script.name, script_path(@log.script)
-  %li.active= t(:title_log)
+%nav{"aria-label" => "breadcrumb"}
+  %ol.breadcrumb
+    %li.breadcrumb-item
+      = link_to t(:title_scripts), scripts_path
+    %li.breadcrumb-item
+      = link_to @log.script.name, script_path(@log.script)
+    %li.breadcrumb-item.active{"aria-current" => "page"}= t(:title_log)
 
 .page-title
   %h3= t(:title_log)
   .page-title-right-menu
-    = link_to t(:button_edit), edit_log_path, class: 'btn btn-default'
+    = link_to t(:button_edit), edit_log_path, class: 'btn btn-outline-secondary'
 
-%dl.dl-horizontal
+%dl.row
+  %dt.col-sm-3.text-right= t(:field_host)
+  %dd.col-sm-9= @log.host
 
-  %dt= t(:field_host)
-  %dd= @log.host
+  %dt.col-sm-3.text-right= t(:field_uploaded)
+  %dd.col-sm-9= @log.formatted_created_at
 
-  %dt= t(:field_uploaded)
-  %dd= @log.formatted_created_at
-
-  %dt= t(:field_log)
-  %dd
+  %dt.col-sm-3.text-right= t(:field_log)
+  %dd.col-sm-9
     %pre= @log.result
 
-  %dt= t(:field_log_size)
-  %dd= number_to_human_size @log.result_bytes
+  %dt.col-sm-3.text-right= t(:field_log_size)
+  %dd.col-sm-9= number_to_human_size @log.result_bytes
 
-  %dt= t(:field_memo)
-  %dd
+  %dt.col-sm-3.text-right= t(:field_memo)
+  %dd.col-sm-9
     - unless @log.memo.blank?
       %pre= @log.memo

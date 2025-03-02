@@ -26,4 +26,3 @@ updates:
           - "@codemirror/*"
     ignore:
       - dependency-name: "bootstrap"
-      - dependency-name: "jasny-bootstrap"

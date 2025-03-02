@@ -5,24 +5,26 @@
   %h3= t(:title_search)
   .page-title-right-menu
     - if params[:archived] == 'true'
-      = link_to search_path(keyword: @keyword), class: 'btn btn-default active' do
+      = link_to search_path(keyword: @keyword), class: 'btn btn-outline-secondary active' do
         %i.fa.fa-box-open{title: t(:link_active_scripts)}
     - else
-      = link_to search_path(keyword: @keyword, archived: true), class: 'btn btn-default' do
+      = link_to search_path(keyword: @keyword, archived: true), class: 'btn btn-outline-secondary' do
         %i.fa.fa-box{title: t(:link_archived_scripts)}
 
-.search-box
+.search-box.mb-3
   %form{action: search_path, method: :get}
-    .form-inline
-      = text_field_tag :keyword, @keyword, class: 'form-control'
-      = submit_tag t(:title_search), class: 'btn btn-default'
+    .form-row.align-items-center
+      .col-auto
+        = text_field_tag :keyword, @keyword, class: 'form-control'
+      .col-auto
+        = submit_tag t(:title_search), class: 'btn btn-outline-secondary'
 
 .search-results
   - @scripts.each do |script|
-    .search-result
+    .search-result.mb-4
       .search-result-title-box
         %span.search-result-title= link_to script.name, script
-        .pull-right
+        .float-right
           = script.updater_name
           %span.text-muted
             (

@@ -8,7 +8,11 @@
     = t(:hosts_count)
 
 %table.table.table-striped
-  - @hosts.each do |host|
+  %thead
     %tr
-      %td= link_to host, host_path(host)
+      %th= t(:field_host)
+  %tbody
+    - @hosts.each do |host|
+      %tr
+        %td= link_to host, host_path(host)
 

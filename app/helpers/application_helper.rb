@@ -5,7 +5,7 @@ module ApplicationHelper
     page_tilte << 'Sunline'
   end
 
-  # moneky patch for twitter-bootstrap-rails-2.2.8
+  # Updated for Bootstrap 4.6.2
   ALERT_TYPES = ['danger', 'info', 'success', 'warning']
   def bootstrap_flash_compat
     flash_messages = []
@@ -19,8 +19,8 @@ module ApplicationHelper
 
       Array(message).each do |msg|
         text = content_tag(:div,
-                            content_tag(:button, raw("&times;"), class: "close", "data-dismiss": "alert") +
-                            msg.html_safe, class: "alert fade in alert-#{type}")
+                           content_tag(:button, raw("&times;"), class: "close", "data-dismiss": "alert", "aria-label": "Close") +
+                           msg.html_safe, class: "alert alert-#{type} alert-dismissible fade show")
         flash_messages << text if msg
       end
     end

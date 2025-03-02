@@ -1,33 +1,35 @@
 - content_for :title do
   = "#{@log.script.name} - #{t(:title_log)} - #{t(:title_edit)}"
 
-%ul.breadcrumb
-  %li
-    = link_to t(:title_scripts), scripts_path
-  %li
-    = link_to @log.script.name, script_path(@log.script)
-  %li.active= t(:title_log)
+%nav{"aria-label" => "breadcrumb"}
+  %ol.breadcrumb
+    %li.breadcrumb-item
+      = link_to t(:title_scripts), scripts_path
+    %li.breadcrumb-item
+      = link_to @log.script.name, script_path(@log.script)
+    %li.breadcrumb-item.active{"aria-current" => "page"}= t(:title_log)
 
 %h3= t(:title_log)
 
-%dl.dl-horizontal
+= form_for @log do |f|
+  %dl.row
+    %dt.col-sm-3.text-right= t(:field_host)
+    %dd.col-sm-9= @log.host
 
-  %dt= t(:field_host)
-  %dd= @log.host
+    %dt.col-sm-3.text-right= t(:field_uploaded)
+    %dd.col-sm-9= @log.formatted_created_at
 
-  %dt= t(:field_uploaded)
-  %dd= @log.formatted_created_at
+    %dt.col-sm-3.text-right= t(:field_log)
+    %dd.col-sm-9
+      %pre= @log.result
 
-  %dt= t(:field_log)
-  %dd
-    %pre= @log.result
+    %dt.col-sm-3.text-right= t(:field_log_size)
+    %dd.col-sm-9= number_to_human_size @log.result_bytes
 
-  %dt= t(:field_log_size)
-  %dd= number_to_human_size @log.result_bytes
-
-  = form_for @log do |f|
-    %dt= t(:field_memo)
-    %dd= f.text_area :memo, class: 'form-control script-area', rows: 15
-    %dd= f.submit t(:button_save), class: 'btn btn-primary'
+    %dt.col-sm-3.text-right= t(:field_memo)
+    %dd.col-sm-9
+      = f.text_area :memo, class: 'form-control script-area', rows: 15
+      .mt-3
+        = f.submit t(:button_save), class: 'btn btn-primary'
 
 

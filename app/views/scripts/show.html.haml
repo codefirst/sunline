@@ -1,10 +1,11 @@
 - content_for :title do
   = @script.name
 
-%ul.breadcrumb
-  %li
-    = link_to t(:title_scripts), scripts_path
-  %li.active= @script.name
+%nav{"aria-label" => "breadcrumb"}
+  %ol.breadcrumb
+    %li.breadcrumb-item
+      = link_to t(:title_scripts), scripts_path
+    %li.breadcrumb-item.active{"aria-current" => "page"}= @script.name
 
 .page-title
   %h3= @script.name
@@ -12,24 +13,23 @@
     - if @script.archived
       = button_to t(:button_unarchive), unarchive_script_path(@script), class: 'btn btn-primary', form: { class: 'form-btn-inline-block' }, method: :post
     - else
-      = link_to t(:button_edit), edit_script_path(@script), class: 'btn btn-default'
+      = link_to t(:button_edit), edit_script_path(@script), class: 'btn btn-outline-secondary'
       = button_to t(:button_archive), archive_script_path(@script), class: 'btn btn-danger', form: { class: 'form-btn-inline-block' }, method: :post
 
-%dl.dl-horizontal
+%dl.row
+  %dt.col-sm-3.text-right= t(:field_body)
+  %dd.col-sm-9= text_area_tag :body, @script.body, class: 'form-control script-area', rows: 15
 
-  %dt= t(:field_body)
-  %dd= text_area_tag :body, @script.body, class: 'form-control script-area', rows: 15
-
-  %dt= t(:field_created_by)
-  %dd
+  %dt.col-sm-3.text-right= t(:field_created_by)
+  %dd.col-sm-9
     = @script.creater_name
     %span.text-muted
       (
       = time_ago_in_words(@script.created_at) + t(:ago)
       )
 
-  %dt= t(:field_updated_by)
-  %dd
+  %dt.col-sm-3.text-right= t(:field_updated_by)
+  %dd.col-sm-9
     = @script.updater_name
     %span.text-muted
       (
@@ -37,9 +37,9 @@
       )
 
   - unless @script.attachments.empty?
-    %dt= t(:field_attachments)
-    %dd
-      %ul.attachments
+    %dt.col-sm-3.text-right= t(:field_attachments)
+    %dd.col-sm-9
+      %ul.attachments.list-unstyled
         - @script.attachments.order(:upload_file_name).each do |attachment|
           %li
             %i.fa.fa-file
@@ -54,7 +54,7 @@
 .page-title
   %h4= t(:field_run)
   .page-title-right-menu
-    = link_to 'javascript:void(0)', class: 'copy-button btn btn-info', 'data-clipboard-text': "#{@script.remote_script(root_url)}", title: t(:copy_to_clipboard), 'data-placement': 'bottom' do
+    = link_to 'javascript:void(0)', class: 'copy-button btn btn-info mr-1', 'data-clipboard-text': "#{@script.remote_script(root_url)}", title: t(:copy_to_clipboard), 'data-placement': 'bottom' do
       %i.fa.fa-paperclip
     = link_to 'javascript:void(0)', class: 'copy-button btn btn-info', 'data-clipboard-text': "#{wrapped_sh_url(@script.guid)}", title: t(:copy_to_clipboard), 'data-placement': 'bottom' do
       = t(:button_wrapped)
@@ -67,19 +67,18 @@
     %h4= t(:title_logs)
     .page-title-right-menu.text-muted.logs-toolbar
       %form.form-inline
-        %span#logs-count= @script.logs.size
+        %span#logs-count.mr-1= @script.logs.size
         = t(:logs_count)
-        %label.checkbox
-          = check_box_tag(:logs_auto_reload)
-          = t(:auto_reload)
-        = form_tag script_path(@script), method: 'get', class: 'grep-log-form' do
+        .form-check.form-check-inline.ml-3
+          = check_box_tag(:logs_auto_reload, "1", false, class: 'form-check-input')
+          = label_tag(:logs_auto_reload, t(:auto_reload), class: 'form-check-label')
+        = form_tag script_path(@script), method: 'get', class: 'grep-log-form d-inline-block ml-2' do
           = text_field_tag :keyword, @keyword, class: 'form-control auto-width', placeholder: t(:grep_logs)
-          .dropdown{style: 'display:inline'}
-            = link_to '#', class: 'btn dropdown-toggle', 'data-toggle': 'dropdown', style: 'margin-top:0' do
+          .dropdown.d-inline-block
+            = link_to '#', class: 'btn btn-outline-secondary ml-1', 'data-toggle': 'dropdown', style: 'margin-top:0' do
               %i.fa.fa-ellipsis-v
-            %ul.dropdown-menu.pull-right
-              %li
-                = link_to t(:button_export_csv), logs_csv_path(@script)
+            .dropdown-menu.dropdown-menu-right
+              = link_to t(:button_export_csv), logs_csv_path(@script), class: 'dropdown-item'
   .table-container
     %table.table.table-striped#logs-table
       %thead
@@ -89,7 +88,7 @@
           %th= t(:field_log_size)
       %tbody
       - @script.logs.select_without_result.order('created_at desc').each do |log|
-        %tr{id: "log-#{log.id}", class: "logs #{@highlights.include?(log.id) ? 'success' : ''}"}
+        %tr{id: "log-#{log.id}", class: "logs #{@highlights.include?(log.id) ? 'table-success' : ''}"}
           %td= link_to log.host, log_path(log)
           %td= log.formatted_created_at
           %td= number_to_human_size log.result_bytes
@@ -104,7 +103,7 @@
         self.tooltip('show');
         setTimeout(function() {
           self.attr('title', '#{t(:copy_to_clipboard)}');
-          self.tooltip('destroy');
+          self.tooltip('dispose');
         }, 3000);
       });
     });

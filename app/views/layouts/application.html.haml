@@ -9,36 +9,30 @@
     = favicon_link_tag 'apple-touch-icon.png', rel: 'apple-touch-icon', type: 'image/png'
     = favicon_link_tag 'favicon.ico', rel: 'icon'
     = javascript_include_tag "application"
-
   %body
-    .navbar.navbar-fixed-top.navbar-inverse
+    %nav.navbar.fixed-top.navbar-expand-lg.navbar-dark.bg-dark
       .container
-        .navbar-header
-          = link_to image_tag(asset_path('sunline-logo-white.png')), {controller: 'top'}, class: 'navbar-brand'
-          %button.navbar-toggle{'data-toggle': 'collapse', 'data-target': '#js-navbar-collapse'}
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
+        = link_to image_tag(asset_path('sunline-logo-white.png')), {controller: 'top'}, class: 'navbar-brand'
+        %button.navbar-toggler{'type': 'button', 'data-toggle': 'collapse', 'data-target': '#js-navbar-collapse', 'aria-controls': 'js-navbar-collapse', 'aria-expanded': 'false', 'aria-label': 'Toggle navigation'}
+          %span.navbar-toggler-icon
         - if user_signed_in?
           .collapse.navbar-collapse#js-navbar-collapse
-            %ul.nav.navbar-nav
-              %li= link_to t(:title_scripts), scripts_path
-              %li= link_to t(:title_hosts), hosts_path
-              %li= link_to t(:title_search), search_path
-            %ul.nav.navbar-nav.navbar-right
-              %li.dropdown
-                %a.dropdown-toggle(data-toggle="dropdown" role="button" href="#")
+            %ul.navbar-nav.mr-auto
+              %li.nav-item= link_to t(:title_scripts), scripts_path, class: 'nav-link'
+              %li.nav-item= link_to t(:title_hosts), hosts_path, class: 'nav-link'
+              %li.nav-item= link_to t(:title_search), search_path, class: 'nav-link'
+            %ul.navbar-nav.ml-auto
+              %li.nav-item.dropdown
+                %a.nav-link(data-toggle="dropdown" role="button" href="#" id="accountDropdown" aria-haspopup="true" aria-expanded="false")
                   = t(:button_account)
                   %i.fa.fa-caret-down
-                %ul.dropdown-menu(role="menu")
-                  %li.signout-menu
+                .dropdown-menu.dropdown-menu-right(aria-labelledby="accountDropdown")
+                  .dropdown-item.signout-menu
                     = button_to destroy_user_session_path, method: :delete, class: 'btn btn-link' do
                       %i.fa.fa-sign-out-alt
                       = t(:button_sign_out)
-
-    .container
+    .container.mt-5.pt-3
       = bootstrap_flash_compat
       = yield
-
       %footer
         %p &copy; codefirst.org
