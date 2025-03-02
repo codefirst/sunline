@@ -103,7 +103,7 @@
         self.tooltip('show');
         setTimeout(function() {
           self.attr('title', '#{t(:copy_to_clipboard)}');
-          self.tooltip('destroy');
+          self.tooltip('dispose');
         }, 3000);
       });
     });
