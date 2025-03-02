@@ -11,21 +11,21 @@
 
 %h3= t(:title_log)
 
-%dl.row
-  %dt.col-sm-3= t(:field_host)
-  %dd.col-sm-9= @log.host
+= form_for @log do |f|
+  %dl.row
+    %dt.col-sm-3= t(:field_host)
+    %dd.col-sm-9= @log.host
 
-  %dt.col-sm-3= t(:field_uploaded)
-  %dd.col-sm-9= @log.formatted_created_at
+    %dt.col-sm-3= t(:field_uploaded)
+    %dd.col-sm-9= @log.formatted_created_at
 
-  %dt.col-sm-3= t(:field_log)
-  %dd.col-sm-9
-    %pre= @log.result
+    %dt.col-sm-3= t(:field_log)
+    %dd.col-sm-9
+      %pre= @log.result
 
-  %dt.col-sm-3= t(:field_log_size)
-  %dd.col-sm-9= number_to_human_size @log.result_bytes
+    %dt.col-sm-3= t(:field_log_size)
+    %dd.col-sm-9= number_to_human_size @log.result_bytes
 
-  = form_for @log do |f|
     %dt.col-sm-3= t(:field_memo)
     %dd.col-sm-9
       = f.text_area :memo, class: 'form-control script-area', rows: 15
