@@ -17,10 +17,10 @@
       = button_to t(:button_archive), archive_script_path(@script), class: 'btn btn-danger', form: { class: 'form-btn-inline-block' }, method: :post
 
 %dl.row
-  %dt.col-sm-3= t(:field_body)
+  %dt.col-sm-3.text-right= t(:field_body)
   %dd.col-sm-9= text_area_tag :body, @script.body, class: 'form-control script-area', rows: 15
 
-  %dt.col-sm-3= t(:field_created_by)
+  %dt.col-sm-3.text-right= t(:field_created_by)
   %dd.col-sm-9
     = @script.creater_name
     %span.text-muted
@@ -28,7 +28,7 @@
       = time_ago_in_words(@script.created_at) + t(:ago)
       )
 
-  %dt.col-sm-3= t(:field_updated_by)
+  %dt.col-sm-3.text-right= t(:field_updated_by)
   %dd.col-sm-9
     = @script.updater_name
     %span.text-muted
@@ -37,7 +37,7 @@
       )
 
   - unless @script.attachments.empty?
-    %dt.col-sm-3= t(:field_attachments)
+    %dt.col-sm-3.text-right= t(:field_attachments)
     %dd.col-sm-9
       %ul.attachments.list-unstyled
         - @script.attachments.order(:upload_file_name).each do |attachment|
