@@ -8,10 +8,10 @@
     "build-dev:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
   },
   "dependencies": {
-    "@codemirror/commands": "^6.8.0",
+    "@codemirror/commands": "^6.8.1",
     "@codemirror/language": "^6.11.0",
     "@codemirror/legacy-modes": "^6.5.0",
-    "@codemirror/view": "6.36.4",
+    "@codemirror/view": "6.36.5",
     "@fortawesome/fontawesome-free": "6.7.2",
     "bootstrap": "4.6.2",
     "jasny-bootstrap": "4.0.0",
