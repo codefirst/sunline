@@ -1,4 +1,6 @@
 en:
+  description: A lightweight script and log management tool
+
   title_scripts: Scripts
   title_logs: Logs
   title_hosts: Hosts
