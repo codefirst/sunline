@@ -2,7 +2,7 @@
   .content
     .text-center
       %h1 Sunline
-      %h2 A lightweight script and log management tool
+      %h2= t(:description)
       = form_tag user_github_omniauth_authorize_path, method: 'post' do
         %button.btn.btn-primary.btn-lg
           %i.fa.fa-sign-in-alt
