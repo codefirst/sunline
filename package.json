@@ -19,7 +19,7 @@
     "popper.js": "1.16.1"
   },
   "devDependencies": {
-    "esbuild": "^0.25.2",
+    "esbuild": "^0.25.3",
     "sass": "^1.87.0"
   }
 }
