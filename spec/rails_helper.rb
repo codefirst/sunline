@@ -41,7 +41,10 @@ RSpec.configure do |config|
 
   # Avoid "Could not find a valid mapping for #<User...> error"
   # It will be fixed in Devise 5
-  ActiveSupport.on_load(:action_mailer) do
-    Rails.application.reload_routes_unless_loaded
+  module Devise
+    def self.mappings
+      Rails.application.try(:reload_routes_unless_loaded)
+      @@mappings
+    end
   end
 end
