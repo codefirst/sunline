@@ -66,7 +66,7 @@
   .page-title
     %h4= t(:title_logs)
     .page-title-right-menu.text-muted.logs-toolbar
-      %form.form-inline
+      %form.d-flex.flex-row.align-items-center.flex-wrap
         %span#logs-count.me-1= @script.logs.size
         = t(:logs_count)
         .form-check.form-check-inline.ms-3
