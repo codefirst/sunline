@@ -13,10 +13,9 @@
     "@codemirror/legacy-modes": "^6.5.1",
     "@codemirror/view": "6.36.6",
     "@fortawesome/fontawesome-free": "6.7.2",
-    "bootstrap": "4.6.2",
-    "jasny-bootstrap": "4.0.0",
-    "jquery": "3.7.1",
-    "popper.js": "1.16.1"
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "5.3.6",
+    "jquery": "3.7.1"
   },
   "devDependencies": {
     "esbuild": "^0.25.3",
