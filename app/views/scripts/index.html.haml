@@ -5,10 +5,10 @@
   %h3= t(:title_scripts)
   .page-title-right-menu
     - if params[:archived] == 'true'
-      = link_to scripts_path, class: 'btn btn-outline-secondary active mr-1' do
+      = link_to scripts_path, class: 'btn btn-outline-secondary active me-1' do
         %i.fa.fa-box-open{title: t(:link_active_scripts)}
     - else
-      = link_to scripts_path(archived: true), class: 'btn btn-outline-secondary mr-1' do
+      = link_to scripts_path(archived: true), class: 'btn btn-outline-secondary me-1' do
         %i.fa.fa-box{title: t(:link_archived_scripts)}
 
     = link_to t(:button_new_script), new_script_path, class: 'btn btn-outline-secondary'

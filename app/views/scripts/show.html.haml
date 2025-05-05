@@ -54,7 +54,7 @@
 .page-title
   %h4= t(:field_run)
   .page-title-right-menu
-    = link_to 'javascript:void(0)', class: 'copy-button btn btn-info mr-1', 'data-clipboard-text': "#{@script.remote_script(root_url)}", title: t(:copy_to_clipboard), 'data-placement': 'bottom' do
+    = link_to 'javascript:void(0)', class: 'copy-button btn btn-info me-1', 'data-clipboard-text': "#{@script.remote_script(root_url)}", title: t(:copy_to_clipboard), 'data-placement': 'bottom' do
       %i.fa.fa-paperclip
     = link_to 'javascript:void(0)', class: 'copy-button btn btn-info', 'data-clipboard-text': "#{wrapped_sh_url(@script.guid)}", title: t(:copy_to_clipboard), 'data-placement': 'bottom' do
       = t(:button_wrapped)
@@ -67,7 +67,7 @@
     %h4= t(:title_logs)
     .page-title-right-menu.text-muted.logs-toolbar
       %form.form-inline
-        %span#logs-count.mr-1= @script.logs.size
+        %span#logs-count.me-1= @script.logs.size
         = t(:logs_count)
         .form-check.form-check-inline.ml-3
           = check_box_tag(:logs_auto_reload, "1", false, class: 'form-check-input')
