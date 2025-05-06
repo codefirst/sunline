@@ -14,9 +14,9 @@
     %nav.navbar.fixed-top.navbar-expand-lg.navbar-dark.bg-dark
       .container
         = link_to image_tag(asset_path('sunline-logo-white.png')), {controller: 'top'}, class: 'navbar-brand'
-        %button.navbar-toggler{'type': 'button', 'data-bs-toggle': 'collapse', 'data-bs-target': '#js-navbar-collapse', 'aria-controls': 'js-navbar-collapse', 'aria-expanded': 'false', 'aria-label': 'Toggle navigation'}
-          %span.navbar-toggler-icon
         - if user_signed_in?
+          %button.navbar-toggler{'type': 'button', 'data-bs-toggle': 'collapse', 'data-bs-target': '#js-navbar-collapse', 'aria-controls': 'js-navbar-collapse', 'aria-expanded': 'false', 'aria-label': 'Toggle navigation'}
+            %span.navbar-toggler-icon
           .collapse.navbar-collapse#js-navbar-collapse
             %ul.navbar-nav.me-auto
               %li.nav-item= link_to t(:title_scripts), scripts_path, class: 'nav-link'
