@@ -3,7 +3,7 @@
 import jQuery from 'jquery';
 window.jQuery = window.$ = jQuery;
 
-import("bootstrap/dist/js/bootstrap"); // use () to import jQuery
+import "bootstrap/dist/js/bootstrap";
 
 import "@fortawesome/fontawesome-free/js/all";
 
