@@ -13,8 +13,8 @@
 
 .search-box.mb-3
   %form{action: search_path, method: :get}
-    .form-row.align-items-center
-      .col-auto
+    .d-flex.flex-row.align-items-center.flex-wrap
+      .col-auto.me-1
         = text_field_tag :keyword, @keyword, class: 'form-control'
       .col-auto
         = submit_tag t(:title_search), class: 'btn btn-outline-secondary'
@@ -36,7 +36,7 @@
         rows: 1,
         'data-first-line-number': script.body.split("\n").index { |l| @keyword.split(/[[:blank:]]+/).any? { |word| l.include?(word) } } + 1
 
-.text-center
+.d-flex.justify-content-center
   = paginate @scripts
 
 :javascript

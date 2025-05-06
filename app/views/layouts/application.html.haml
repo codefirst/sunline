@@ -14,17 +14,17 @@
     %nav.navbar.fixed-top.navbar-expand-lg.navbar-dark.bg-dark
       .container
         = link_to image_tag(asset_path('sunline-logo-white.png')), {controller: 'top'}, class: 'navbar-brand'
-        %button.navbar-toggler{'type': 'button', 'data-toggle': 'collapse', 'data-target': '#js-navbar-collapse', 'aria-controls': 'js-navbar-collapse', 'aria-expanded': 'false', 'aria-label': 'Toggle navigation'}
+        %button.navbar-toggler{'type': 'button', 'data-bs-toggle': 'collapse', 'data-bs-target': '#js-navbar-collapse', 'aria-controls': 'js-navbar-collapse', 'aria-expanded': 'false', 'aria-label': 'Toggle navigation'}
           %span.navbar-toggler-icon
         - if user_signed_in?
           .collapse.navbar-collapse#js-navbar-collapse
-            %ul.navbar-nav.mr-auto
+            %ul.navbar-nav.me-auto
               %li.nav-item= link_to t(:title_scripts), scripts_path, class: 'nav-link'
               %li.nav-item= link_to t(:title_hosts), hosts_path, class: 'nav-link'
               %li.nav-item= link_to t(:title_search), search_path, class: 'nav-link'
-            %ul.navbar-nav.ml-auto
+            %ul.navbar-nav.ms-auto
               %li.nav-item.dropdown
-                %a.nav-link(data-toggle="dropdown" role="button" href="#" id="accountDropdown" aria-haspopup="true" aria-expanded="false")
+                %a.nav-link(data-bs-toggle="dropdown" role="button" href="#" id="accountDropdown" aria-haspopup="true" aria-expanded="false")
                   = t(:button_account)
                   %i.fa.fa-caret-down
                 .dropdown-menu.dropdown-menu-right(aria-labelledby="accountDropdown")

@@ -1,11 +1,11 @@
 = form_for @script, html: {multipart: true} do |f|
-  .form-group
+  .mb-3
     = f.label :name
     = f.text_field :name, class: 'form-control'
-  .form-group
+  .mb-3
     = f.label :body
     = f.text_area :body, class: 'form-control script-area', rows: 15
-  .form-group
+  .mb-3
     = label_tag t(:field_attachments)
     %ul.attachments.list-unstyled
       - @script.attachments.order(:upload_file_name).each do |attachment|
