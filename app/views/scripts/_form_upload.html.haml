@@ -1,12 +1,3 @@
 .fileinput.fileinput-new{'data-provides': 'fileinput', style: "display:#{display}"}
   .mb-3
-    .form-control
-      %i.fa.fa-file.fileinput-exists
-      %span.fileinput-preview
-    .input-group-append
-      %span.btn.btn-outline-secondary.btn-file
-        %span.fileinput-new= t(:button_select_file)
-        %span.fileinput-exists
-          = t(:button_change)
-        = file_field_tag 'attachments[][upload]', class: 'input-file'
-      = link_to t(:button_remove), '#', {'data-dismiss': 'fileinput', class: 'btn btn-outline-secondary fileinput-exists'}
+    = file_field_tag 'attachments[][upload]', class: 'form-control'
