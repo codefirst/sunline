@@ -36,7 +36,7 @@
         rows: 1,
         'data-first-line-number': script.body.split("\n").index { |l| @keyword.split(/[[:blank:]]+/).any? { |word| l.include?(word) } } + 1
 
-.text-center
+.d-flex.justify-content-center
   = paginate @scripts
 
 :javascript
