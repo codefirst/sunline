@@ -75,10 +75,6 @@ footer {
   -webkit-animation: fadein 300ms linear 0s 1;
 }
 
-#notice {
-  color: green;
-}
-
 .field {
   margin-bottom: 17px;
   label {
@@ -100,10 +96,6 @@ ul.attachments {
   padding-left: 0;
 }
 
-.fileinput {
-  display: block;
-}
-
 .cm-editor {
   height: auto;
   border: 1px solid #ddd;
@@ -119,15 +111,8 @@ ul.attachments {
   }
 }
 
-.form-btn-inline-block {
-  display: inline-block;
-}
-
 .logs-toolbar form {
   margin-bottom: 0;
-}
-.grep-log-form {
-  display: inline;
 }
 .auto-width {
   width: 100px;
