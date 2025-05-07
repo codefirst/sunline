@@ -2,6 +2,13 @@ body {
   padding-top: 20px;
 }
 
+a:not([class*="btn"]) {
+  text-decoration: none;
+}
+a:not([class*="btn"]):hover {
+  text-decoration: underline;
+}
+
 .navbar {
   .container {
     padding-left: 0;
