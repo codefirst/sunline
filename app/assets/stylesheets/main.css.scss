@@ -56,13 +56,6 @@ footer {
   animation: fadein 300ms linear 0s 1;
 }
 
-.field {
-  margin-bottom: 17px;
-  label {
-    font-weight: bold;
-  }
-}
-
 .field_with_errors {
   input[type="text"] {
     border-color: #b94a48;
