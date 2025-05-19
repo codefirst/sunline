@@ -38,7 +38,7 @@
       fileinput.clone(true).toggle().insertAfter(lastupload);
       return false;
     });
-    $('.script-area').each(function() {
-      editorFromTextArea(this, {});
+    document.querySelectorAll('.script-area').forEach(function(el) {
+      editorFromTextArea(el, {});
     });
   });

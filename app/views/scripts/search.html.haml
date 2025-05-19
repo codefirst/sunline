@@ -41,9 +41,9 @@
 
 :javascript
   $(function() {
-    $('.script-area').each(function() {
-      var firstLineNumber = $(this).data('first-line-number');
-      editorFromTextArea(this, {readOnly: true, firstLineNumber: firstLineNumber});
+    document.querySelectorAll('.script-area').forEach(function(el) {
+      var firstLineNumber = el.dataset.firstLineNumber;
+      editorFromTextArea(el, {readOnly: true, firstLineNumber: firstLineNumber});
     });
   });
 

@@ -107,8 +107,8 @@
         }, 3000);
       });
     });
-    $('.script-area').each(function() {
-      editorFromTextArea(this, {readOnly: true});
+    document.querySelectorAll('.script-area').forEach(function(el) {
+      editorFromTextArea(el, {readOnly: true});
     });
     setInterval(function() {
       if ($('#logs_auto_reload').is(':checked')) {
