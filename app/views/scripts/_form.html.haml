@@ -31,7 +31,7 @@
   .actions
     = f.submit t(:button_save), class: 'btn btn-primary'
 :javascript
-  $(function() {
+  document.addEventListener('DOMContentLoaded', function() {
     $('.attachment-more').on('click', function(e) {
       var fileinput = $('.fileinputs .fileinput:first-child');
       var lastupload = $('.fileinputs .fileinput:last-child');

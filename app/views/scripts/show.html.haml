@@ -94,7 +94,7 @@
           %td= number_to_human_size log.result_bytes
 
 :javascript
-  $(function() {
+  document.addEventListener('DOMContentLoaded', function() {
     $('.copy-button').on('click', function(e) {
       var text = $(this).data('clipboard-text');
       navigator.clipboard.writeText(text).then(function() {

@@ -40,7 +40,7 @@
   = paginate @scripts
 
 :javascript
-  $(function() {
+  document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.script-area').forEach(function(el) {
       var firstLineNumber = el.dataset.firstLineNumber;
       editorFromTextArea(el, {readOnly: true, firstLineNumber: firstLineNumber});
