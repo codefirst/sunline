@@ -9,3 +9,5 @@ import "@fortawesome/fontawesome-free/js/all";
 
 import { editorFromTextArea } from "./codemirror";
 window.editorFromTextArea = editorFromTextArea;
+
+import "./darkmode";
