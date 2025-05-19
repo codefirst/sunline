@@ -15,7 +15,7 @@
   %form{action: search_path, method: :get}
     .d-flex.flex-row.align-items-center.flex-wrap
       .col-auto.me-1
-        = text_field_tag :keyword, @keyword, class: 'form-control'
+        = text_field_tag :keyword, @keyword, class: 'form-control', autofocus: true
       .col-auto
         = submit_tag t(:title_search), class: 'btn btn-outline-secondary'
 
@@ -45,6 +45,5 @@
       var firstLineNumber = $(this).data('first-line-number');
       editorFromTextArea(this, {readOnly: true, firstLineNumber: firstLineNumber});
     });
-    $('[name="keyword"]').focus();
   });
 
