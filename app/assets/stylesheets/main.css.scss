@@ -6,6 +6,15 @@
   --sunline-footer-text-color: #aaa;
   --sunline-cm-editor-border-color: #ddd;
 }
+[data-bs-theme=dark] {
+  --sunline-pre-background-color: #212529;
+  --sunline-pre-border-color: #343a40;
+  --sunline-pre-text-color: #f8f9fa;
+  --sunline-footer-border-color: #343a40;
+  --sunline-footer-text-color: #868e96;
+  --sunline-cm-editor-border-color: #495057;
+}
+
 a:not([class*="btn"]) {
   text-decoration: none;
 }
@@ -86,6 +95,11 @@ footer {
     box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
     outline: 0;
   }
+}
+[data-bs-theme=dark] .cm-editor .cm-gutters {
+  background-color: var(--sunline-cm-editor-border-color);
+  color: #868e96;
+  border-right: 1px solid var(--sunline-cm-editor-border-color);
 }
 
 .auto-width {
