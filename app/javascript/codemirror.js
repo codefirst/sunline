@@ -1,21 +1,27 @@
-import { EditorView, lineNumbers, keymap } from "@codemirror/view";
+import { defaultKeymap, history, historyKeymap } from "@codemirror/commands";
+import {
+  StreamLanguage,
+  defaultHighlightStyle,
+  syntaxHighlighting,
+} from "@codemirror/language";
+import { shell } from "@codemirror/legacy-modes/mode/shell";
 import { EditorState } from "@codemirror/state";
-import { history, defaultKeymap, historyKeymap } from '@codemirror/commands';
-import { StreamLanguage, syntaxHighlighting, defaultHighlightStyle } from "@codemirror/language";
-import { shell } from '@codemirror/legacy-modes/mode/shell';
+import { EditorView, keymap, lineNumbers } from "@codemirror/view";
 
-export const editorFromTextArea = function (textarea, options) {
+export const editorFromTextArea = (textarea, options) => {
   const extensions = [
     history(),
     keymap.of(defaultKeymap),
     keymap.of(historyKeymap),
     StreamLanguage.define(shell),
-    syntaxHighlighting(defaultHighlightStyle)
+    syntaxHighlighting(defaultHighlightStyle),
   ];
   if (options.firstLineNumber) {
-    extensions.push(lineNumbers(
-      { formatNumber: (n) => (n + options.firstLineNumber - 1).toString() }
-    ));
+    extensions.push(
+      lineNumbers({
+        formatNumber: (n) => (n + options.firstLineNumber - 1).toString(),
+      }),
+    );
   } else {
     extensions.push(lineNumbers());
   }
@@ -32,4 +38,4 @@ export const editorFromTextArea = function (textarea, options) {
     });
   }
   return view;
-}
+};
