@@ -111,15 +111,35 @@
       editorFromTextArea(el, {readOnly: true});
     });
     setInterval(function() {
-      if ($('#logs_auto_reload').is(':checked')) {
-        $(".table-container").load(window.location + ' #logs-table', function(response, status, xhr) {
-          if (status == "error") {
-            $("#logs-table").empty();
-            $('#logs-count').text(0);
-          } else {
-            $('#logs-count').text($('#logs-table tbody tr').length);
-          }
-        });
+      const autoReload = document.getElementById('logs_auto_reload');
+      if (autoReload && autoReload.checked) {
+        const url = window.location.href.split('#')[0];
+        fetch(url, { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+          .then(function(response) {
+            if (!response.ok){
+              throw new Error('error');
+            }
+            return response.text();
+          })
+          .then(function(html) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const newTable = doc.querySelector('#logs-table');
+            const tableContainer = document.querySelector('.table-container');
+            if (newTable && tableContainer) {
+              const oldTable = tableContainer.querySelector('#logs-table');
+              oldTable.replaceWith(newTable);
+              const count = newTable.querySelectorAll('tbody tr').length;
+              const logsCount = document.getElementById('logs-count');
+              logsCount.textContent = count;
+            }
+          })
+          .catch(function() {
+            const logsTable = document.getElementById('logs-table');
+            logsTable.innerHTML = '';
+            const logsCount = document.getElementById('logs-count');
+            logsCount.textContent = 0;
+          });
       }
     }, 15 * 1000);
   });
