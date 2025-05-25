@@ -32,10 +32,15 @@
     = f.submit t(:button_save), class: 'btn btn-primary'
 :javascript
   document.addEventListener('DOMContentLoaded', function() {
-    $('.attachment-more').on('click', function(e) {
-      var fileinput = $('.fileinputs .fileinput:first-child');
-      var lastupload = $('.fileinputs .fileinput:last-child');
-      fileinput.clone(true).toggle().insertAfter(lastupload);
+    const attachmentMoreButton = document.querySelector('.attachment-more');
+    attachmentMoreButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      const fileinputs = document.querySelector('.fileinputs');
+      const fileinput = fileinputs.querySelector('.fileinput:first-child');
+      const lastupload = fileinputs.querySelector('.fileinput:last-child');
+      const clone = fileinput.cloneNode(true);
+      clone.style.display = '';
+      lastupload.after(clone);
       return false;
     });
     document.querySelectorAll('.script-area').forEach(function(el) {
