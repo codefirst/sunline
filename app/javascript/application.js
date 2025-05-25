@@ -3,7 +3,8 @@
 import jQuery from "jquery";
 window.jQuery = window.$ = jQuery;
 
-import "bootstrap/dist/js/bootstrap";
+import { Tooltip } from "bootstrap/dist/js/bootstrap";
+window.Tooltip = Tooltip;
 
 import "@fortawesome/fontawesome-free/js/all";
 
