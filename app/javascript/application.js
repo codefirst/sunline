@@ -1,8 +1,5 @@
 // Entry point for the build script in your package.json
 
-import jQuery from "jquery";
-window.jQuery = window.$ = jQuery;
-
 import { Tooltip } from "bootstrap/dist/js/bootstrap";
 window.Tooltip = Tooltip;
 
