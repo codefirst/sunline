@@ -95,17 +95,20 @@
 
 :javascript
   document.addEventListener('DOMContentLoaded', function() {
-    $('.copy-button').on('click', function(e) {
-      var text = $(this).data('clipboard-text');
-      navigator.clipboard.writeText(text).then(function() {
-        const tooltip = new Tooltip(e.currentTarget, {
-          trigger: 'manual',
-          title: '#{t(:copied)}'
+    document.querySelectorAll('.copy-button').forEach(function(button) {
+      button.addEventListener('click', function(e) {
+        const button = e.currentTarget;
+        const text = button.dataset.clipboardText;
+        navigator.clipboard.writeText(text).then(function() {
+          const tooltip = new Tooltip(button, {
+            trigger: 'manual',
+            title: '#{t(:copied)}'
+          });
+          tooltip.show();
+          setTimeout(function() {
+            tooltip.dispose();
+          }, 3000);
         });
-        tooltip.show();
-        setTimeout(function() {
-          tooltip.dispose();
-        }, 3000);
       });
     });
     document.querySelectorAll('.script-area').forEach(function(el) {
