@@ -168,7 +168,7 @@ GEM
       net-smtp
     marcel (1.0.4)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.8)
+    mini_portile2 (2.8.9)
     minitest (5.25.5)
     multi_xml (0.6.0)
     net-http (0.6.0)
@@ -305,7 +305,7 @@ GEM
     snaky_hash (2.0.1)
       hashie
       version_gem (~> 1.1, >= 1.1.1)
-    sqlite3 (2.6.0)
+    sqlite3 (2.7.0)
       mini_portile2 (~> 2.8.0)
     stringio (3.1.7)
     temple (0.8.2)
