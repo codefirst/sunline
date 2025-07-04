@@ -9,9 +9,9 @@
   },
   "dependencies": {
     "@codemirror/commands": "^6.8.1",
-    "@codemirror/language": "^6.11.1",
+    "@codemirror/language": "^6.11.2",
     "@codemirror/legacy-modes": "^6.5.1",
-    "@codemirror/view": "6.37.2",
+    "@codemirror/view": "6.38.0",
     "@fortawesome/fontawesome-free": "6.7.2",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "5.3.6"

@@ -12,10 +12,10 @@
     "@codemirror/view" "^6.27.0"
     "@lezer/common" "^1.1.0"
 
-"@codemirror/language@^6.0.0", "@codemirror/language@^6.11.1":
-  version "6.11.1"
-  resolved "https://registry.yarnpkg.com/@codemirror/language/-/language-6.11.1.tgz#7e91a79cd05e278d5782ff9b4cafe8b83a699688"
-  integrity sha512-5kS1U7emOGV84vxC+ruBty5sUgcD0te6dyupyRVG2zaSjhTDM73LhVKUtVwiqSe6QwmEoA4SCiU8AKPFyumAWQ==
+"@codemirror/language@^6.0.0", "@codemirror/language@^6.11.2":
+  version "6.11.2"
+  resolved "https://registry.yarnpkg.com/@codemirror/language/-/language-6.11.2.tgz#90d2d094cfbd14263bc5354ebd2445ee4e81bdc3"
+  integrity sha512-p44TsNArL4IVXDTbapUmEkAlvWs2CFQbcfc0ymDsis1kH2wh0gcY96AS29c/vp2d0y2Tquk1EDSaawpzilUiAw==
   dependencies:
     "@codemirror/state" "^6.0.0"
     "@codemirror/view" "^6.23.0"
@@ -38,10 +38,10 @@
   dependencies:
     "@marijn/find-cluster-break" "^1.0.0"
 
-"@codemirror/view@6.37.2", "@codemirror/view@^6.23.0", "@codemirror/view@^6.27.0":
-  version "6.37.2"
-  resolved "https://registry.yarnpkg.com/@codemirror/view/-/view-6.37.2.tgz#fe576641a2e809a50946567cd2b528c86f22b885"
-  integrity sha512-XD3LdgQpxQs5jhOOZ2HRVT+Rj59O4Suc7g2ULvZ+Yi8eCkickrkZ5JFuoDhs2ST1mNI5zSsNYgR3NGa4OUrbnw==
+"@codemirror/view@6.38.0", "@codemirror/view@^6.23.0", "@codemirror/view@^6.27.0":
+  version "6.38.0"
+  resolved "https://registry.yarnpkg.com/@codemirror/view/-/view-6.38.0.tgz#4486062b791a4247793e0953e05ae71a9e172217"
+  integrity sha512-yvSchUwHOdupXkd7xJ0ob36jdsSR/I+/C+VbY0ffBiL5NiSTEBDfB1ZGWbbIlDd5xgdUkody+lukAdOxYrOBeg==
   dependencies:
     "@codemirror/state" "^6.5.0"
     crelt "^1.0.6"
