@@ -9,3 +9,5 @@ import { editorFromTextArea } from "./codemirror";
 window.editorFromTextArea = editorFromTextArea;
 
 import "./darkmode";
+
+import "./data-loading-text";

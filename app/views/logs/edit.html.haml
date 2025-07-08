@@ -30,6 +30,6 @@
     %dd.col-sm-9
       = f.text_area :memo, class: 'form-control script-area', rows: 15
       .mt-3
-        = f.submit t(:button_save), class: 'btn btn-primary'
+        = f.submit t(:button_save), class: 'btn btn-primary', data: { loading_text: 'Loading...' }
 
 
