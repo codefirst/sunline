@@ -29,7 +29,7 @@
         %i.fa.fa-plus
         =t(:button_more_attachment)
   .actions
-    = f.submit t(:button_save), class: 'btn btn-primary'
+    = f.submit t(:button_save), class: 'btn btn-primary', data: { loading_text: 'Loading...' }
 :javascript
   document.addEventListener('DOMContentLoaded', function() {
     const attachmentMoreButton = document.querySelector('.attachment-more');

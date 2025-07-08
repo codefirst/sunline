@@ -17,7 +17,7 @@
       .col-auto.me-1
         = text_field_tag :keyword, @keyword, class: 'form-control', autofocus: true
       .col-auto
-        = submit_tag t(:title_search), class: 'btn btn-outline-secondary'
+        = submit_tag t(:title_search), class: 'btn btn-outline-secondary', data: { loading_text: 'Loading...' }
 
 .search-results
   - @scripts.each do |script|
