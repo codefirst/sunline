@@ -30,7 +30,7 @@
                 .dropdown-menu.dropdown-menu-dark.dropdown-menu-right(aria-labelledby="accountDropdown")
                   .dropdown-item
                     = button_to destroy_user_session_path, method: :delete, class: 'btn btn-link dropdown-item' do
-                      %i.fa.fa-sign-out-alt
+                      %i.fa-solid.fa-arrow-right-from-bracket
                       = t(:button_sign_out)
     .container.mt-5.pt-3
       = bootstrap_flash_compat

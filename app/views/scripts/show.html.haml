@@ -76,7 +76,7 @@
           = text_field_tag :keyword, @keyword, class: 'form-control auto-width', placeholder: t(:grep_logs)
           .dropdown.d-inline-block
             = link_to '#', class: 'btn btn-outline-secondary ms-1', 'data-bs-toggle': 'dropdown', style: 'margin-top:0' do
-              %i.fa.fa-ellipsis-v
+              %i.fa-solid.fa-ellipsis-vertical
             .dropdown-menu.dropdown-menu-right
               = link_to t(:button_export_csv), logs_csv_path(@script), class: 'dropdown-item'
   .table-container
