@@ -9,7 +9,7 @@
         %i.fa.fa-box-open{title: t(:link_active_scripts)}
     - else
       = link_to search_path(keyword: @keyword, archived: true), class: 'btn btn-outline-secondary' do
-        %i.fa.fa-box{title: t(:link_archived_scripts)}
+        %i.fa-solid.fa-box{title: t(:link_archived_scripts)}
 
 .mt-3.mb-3
   %form{action: search_path, method: :get}
