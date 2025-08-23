@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@codemirror/commands": "^6.8.1",
-    "@codemirror/language": "^6.11.2",
+    "@codemirror/language": "^6.11.3",
     "@codemirror/legacy-modes": "^6.5.1",
     "@codemirror/view": "6.38.1",
     "@fortawesome/fontawesome-free": "7.0.0",
