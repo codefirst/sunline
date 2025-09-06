@@ -96,6 +96,9 @@ footer {
     outline: 0;
   }
 }
+[data-bs-theme=dark] .cm-content {
+  caret-color: var(--sunline-pre-text-color);
+}
 [data-bs-theme=dark] .cm-editor .cm-gutters {
   background-color: var(--sunline-cm-editor-border-color);
   color: #868e96;
