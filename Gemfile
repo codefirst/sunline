@@ -12,7 +12,7 @@ gem 'devise'
 gem 'omniauth-github', '~> 2.0.1'
 gem 'omniauth-rails_csrf_protection', '~> 2.0.1'
 gem 'octokit', '~> 10.0'
-gem "faraday-retry", "~> 2.3"
+gem "faraday-retry", "~> 2.4"
 
 gem 'propshaft'
 gem 'jsbundling-rails'
