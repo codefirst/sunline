@@ -11,7 +11,7 @@
     "@codemirror/commands": "^6.10.1",
     "@codemirror/language": "^6.12.1",
     "@codemirror/legacy-modes": "^6.5.2",
-    "@codemirror/view": "6.39.8",
+    "@codemirror/view": "6.39.9",
     "@fortawesome/fontawesome-free": "7.1.0",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "5.3.6"
