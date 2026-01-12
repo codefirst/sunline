@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby file: '.ruby-version'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '8.1.1'
+gem 'rails', '8.1.2'
 gem 'puma'
 
 gem 'csv'
