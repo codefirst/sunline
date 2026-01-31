@@ -38,13 +38,4 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.include Devise::Test::ControllerHelpers, :type => :controller
-
-  # Avoid "Could not find a valid mapping for #<User...> error"
-  # It will be fixed in Devise 5
-  module Devise
-    def self.mappings
-      Rails.application.try(:reload_routes_unless_loaded)
-      @@mappings
-    end
-  end
 end
