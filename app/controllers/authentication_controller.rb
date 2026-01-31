@@ -1,4 +1,4 @@
-class AuthenticationController < ApplicationController
+class AuthenticationController < Devise::OmniauthCallbacksController
   skip_before_action :authenticate_user!
 
   def login
