@@ -63,6 +63,6 @@ Run tests:
 
 run docker:
 
-    $ docker build -t sunline .
+    $ docker build --build-arg RUBY_VERSION=$(cat .ruby-version) -t sunline .
     $ docker run -p 3000:3000 -e DATABASE_URL="postgresql://user:pass@localhost:5432/sunline_production?host=host.docker.internal" -e RAILS_FORCE_SSL=false -e RAILS_SERVE_STATIC_FILES=true -e OMNIAUTH_GITHUB_CLIENT_ID=xxx -e OMNIAUTH_GITHUB_CLIENT_SECRET=xxx sunline
 
