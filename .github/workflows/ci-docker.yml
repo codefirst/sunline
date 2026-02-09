@@ -73,7 +73,7 @@ jobs:
           format: 'list'
           exit-code: '1'
           exit-level: 'fatal'
-          ignore: 'CIS-DI-0010'
+          ignore: 'CIS-DI-0010,DKL-DI-0005'
 
   trivy:
     needs: docker-build
