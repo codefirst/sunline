@@ -1,51 +1,73 @@
 {
-  "name": "sunlilne",
+  "name": "sunline",
   "description": "A lightweight script and log management tool",
+  "keywords": [
+    "rails",
+    "ruby",
+    "script",
+    "log"
+  ],
   "repository": "https://github.com/codefirst/sunline/",
-  "logo": "https://raw.githubusercontent.com/codefirst/sunline/master/app/assets/images/apple-touch-icon-114x114-precomposed.png",
+  "logo": "https://raw.githubusercontent.com/codefirst/sunline/master/app/assets/images/apple-touch-icon.png",
+  "stack": "heroku-24",
   "env": {
+    "SECRET_KEY_BASE": {
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "generator": "secret"
+    },
     "ACTIVE_STORAGE_SERVICE": {
-      "description": "active strage type",
-      "value": "amazon",
-      "required": false
+      "description": "Active Storage service to use (amazon or local).",
+      "value": "local"
     },
     "AWS_BUCKET": {
-      "description": "bucket name of S3",
-      "value": "backet name",
+      "description": "S3 bucket name (required if ACTIVE_STORAGE_SERVICE is amazon).",
       "required": false
     },
     "AWS_ACCESS_KEY_ID": {
-      "description": "access key of S3",
-      "value": "access key",
+      "description": "AWS access key (required if ACTIVE_STORAGE_SERVICE is amazon).",
       "required": false
     },
     "AWS_SECRET_ACCESS_KEY": {
-      "description": "secret key of S3",
-      "value": "secret key",
+      "description": "AWS secret access key (required if ACTIVE_STORAGE_SERVICE is amazon).",
       "required": false
     },
     "AWS_REGION": {
-      "description": "region of S3",
-      "value": "region",
+      "description": "AWS region (required if ACTIVE_STORAGE_SERVICE is amazon).",
       "required": false
     },
     "OMNIAUTH_GITHUB_CLIENT_ID": {
-      "description": "client id for omniauth-github",
-      "value": "Client ID"
+      "description": "GitHub OAuth client ID.",
+      "required": true
     },
     "OMNIAUTH_GITHUB_CLIENT_SECRET": {
-      "description": "client secret for omniauth-github",
-      "value": "Client Secret"
+      "description": "GitHub OAuth client secret.",
+      "required": true
     },
     "OMNIAUTH_GITHUB_ORGANIZATION": {
-      "description": "GitHub organization name to restrict login(optional)",
-      "value": ""
+      "description": "GitHub organization name to restrict login (optional).",
+      "required": false
     }
   },
   "addons": [
-    "heroku-postgresql"
+    {
+      "plan": "heroku-postgresql:essential-0"
+    }
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "heroku/ruby"
+    }
   ],
   "scripts": {
-    "postdeploy": "bundle exec rake db:migrate RAILS_ENV=production"
+    "postdeploy": "bundle exec rails db:migrate"
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    }
   }
 }
