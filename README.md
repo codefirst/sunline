@@ -10,7 +10,7 @@ Install
 Install dependencies:
 
 ```shell
-$ bundle install --path .bundle --without development test
+$ bundle install --without development test
 $ bin/yarn
 ```
 

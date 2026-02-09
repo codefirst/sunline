@@ -24,6 +24,6 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version-file: './.node-version'
-      - run: bundle install --jobs 4 --retry 3 --path vendor/bundle
+      - run: bundle install --jobs 4 --retry 3
       - run: bundle exec rake db:migrate RAILS_ENV=test
       - run: bundle exec rake spec
