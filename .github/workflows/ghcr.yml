@@ -13,7 +13,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  ghcr:
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
