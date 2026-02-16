@@ -6,7 +6,7 @@
   --sunline-footer-text-color: #aaa;
   --sunline-cm-editor-border-color: #ddd;
 }
-[data-bs-theme=dark] {
+[data-bs-theme="dark"] {
   --sunline-pre-background-color: #212529;
   --sunline-pre-border-color: #343a40;
   --sunline-pre-text-color: #f8f9fa;
@@ -97,7 +97,7 @@ footer {
   border: 1px solid var(--sunline-cm-editor-border-color);
 
   .cm-content {
-    font-family: "Consolas";
+    font-family: "Consolas", monospace;
   }
 
   &.cm-editor.cm-focused {
