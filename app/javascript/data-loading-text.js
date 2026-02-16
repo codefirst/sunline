@@ -1,13 +1,15 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const forms = document.querySelectorAll('form');
+document.addEventListener("DOMContentLoaded", () => {
+  const forms = document.querySelectorAll("form");
 
-  forms.forEach(form => {
-    form.addEventListener('submit', (event) => {
-      const submitButton = form.querySelector('input[type="submit"], button[type="submit"]');
+  forms.forEach((form) => {
+    form.addEventListener("submit", (_event) => {
+      const submitButton = form.querySelector(
+        'input[type="submit"], button[type="submit"]',
+      );
 
-      if (submitButton && submitButton.dataset.loadingText) {
+      if (submitButton?.dataset?.loadingText) {
         submitButton.disabled = true;
-        if (submitButton.tagName === 'INPUT') {
+        if (submitButton.tagName === "INPUT") {
           submitButton.value = submitButton.dataset.loadingText;
         } else {
           submitButton.textContent = submitButton.dataset.loadingText;
