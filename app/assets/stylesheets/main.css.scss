@@ -18,10 +18,19 @@
     caret-color: var(--sunline-pre-text-color);
   }
 
-  .cm-editor .cm-gutters {
-    background-color: var(--sunline-cm-editor-border-color);
-    color: var(--sunline-footer-text-color);
-    border-right: 1px solid var(--sunline-cm-editor-border-color);
+  .cm-editor {
+    .cm-gutters {
+      background-color: var(--sunline-cm-editor-border-color);
+      color: var(--sunline-footer-text-color);
+      border-right: 1px solid var(--sunline-cm-editor-border-color);
+    }
+
+    .ͼf {
+      color: #6d9cbe;
+    }
+    .ͼa {
+      color: #da4939;
+    }
   }
 }
 
