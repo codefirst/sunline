@@ -38,10 +38,10 @@
   dependencies:
     "@marijn/find-cluster-break" "^1.0.0"
 
-"@codemirror/view@6.39.15", "@codemirror/view@^6.23.0", "@codemirror/view@^6.27.0":
-  version "6.39.15"
-  resolved "https://registry.yarnpkg.com/@codemirror/view/-/view-6.39.15.tgz#7665f465b7fad1a1cae15b2689ffee2b47b18246"
-  integrity sha512-aCWjgweIIXLBHh7bY6cACvXuyrZ0xGafjQ2VInjp4RM4gMfscK5uESiNdrH0pE+e1lZr2B4ONGsjchl2KsKZzg==
+"@codemirror/view@6.39.16", "@codemirror/view@^6.23.0", "@codemirror/view@^6.27.0":
+  version "6.39.16"
+  resolved "https://registry.yarnpkg.com/@codemirror/view/-/view-6.39.16.tgz#e9d876aba20b31df7858abd7c2a845319c70b302"
+  integrity sha512-m6S22fFpKtOWhq8HuhzsI1WzUP/hB9THbDj0Tl5KX4gbO6Y91hwBl7Yky33NdvB6IffuRFiBxf1R8kJMyXmA4Q==
   dependencies:
     "@codemirror/state" "^6.5.0"
     crelt "^1.0.6"
