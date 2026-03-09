@@ -11,7 +11,7 @@ Install dependencies:
 
 ```shell
 $ bundle install --without development test
-$ bin/yarn
+$ npm install
 ```
 
 Precompile assets:

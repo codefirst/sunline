@@ -27,13 +27,11 @@ FROM base AS build
 # Install packages needed to build gems and Node.js
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git libpq-dev libyaml-dev pkg-config nodejs npm && \
-    npm install -g yarn && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Install JavaScript dependencies
-COPY package.json yarn.lock ./
-COPY bin/yarn ./bin/
-RUN bin/yarn install --frozen-lockfile
+COPY package.json package-lock.json ./
+RUN npm ci
 
 # Install application gems
 COPY vendor/* ./vendor/
