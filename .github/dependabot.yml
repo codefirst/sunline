@@ -24,8 +24,6 @@ updates:
       codemirror:
         patterns:
           - "@codemirror/*"
-    ignore:
-      - dependency-name: "bootstrap"
 
   - package-ecosystem: "docker"
     directory: "/"
