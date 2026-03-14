@@ -8,10 +8,10 @@
     "build-dev:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
   },
   "dependencies": {
-    "@codemirror/commands": "^6.10.2",
+    "@codemirror/commands": "^6.10.3",
     "@codemirror/language": "^6.12.2",
     "@codemirror/legacy-modes": "^6.5.2",
-    "@codemirror/view": "6.39.16",
+    "@codemirror/view": "6.40.0",
     "@fortawesome/fontawesome-free": "7.2.0",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "5.3.8"
