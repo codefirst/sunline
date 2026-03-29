@@ -2,6 +2,8 @@ version: 2
 updates:
   - package-ecosystem: "github-actions"
     directory: "/"
+    cooldown:
+      default-days: 3
     schedule:
       interval: "weekly"
       timezone: "Asia/Tokyo"
@@ -9,6 +11,8 @@ updates:
 
   - package-ecosystem: "bundler"
     directory: "/"
+    cooldown:
+      default-days: 3
     schedule:
       interval: "weekly"
       timezone: "Asia/Tokyo"
@@ -16,6 +20,8 @@ updates:
 
   - package-ecosystem: "npm"
     directory: "/"
+    cooldown:
+      default-days: 3
     schedule:
       interval: "weekly"
       timezone: "Asia/Tokyo"
@@ -27,6 +33,8 @@ updates:
 
   - package-ecosystem: "docker"
     directory: "/"
+    cooldown:
+      default-days: 3
     schedule:
       interval: "weekly"
       timezone: "Asia/Tokyo"
