@@ -84,3 +84,45 @@ Run docker:
 $ docker build -t sunline .
 $ docker run -p 3000:3000 -e DATABASE_URL="postgresql://user:pass@localhost:5432/sunline_production?host=host.docker.internal" -e RAILS_FORCE_SSL=false -e RAILS_SERVE_STATIC_FILES=true -e OMNIAUTH_GITHUB_CLIENT_ID=xxx -e OMNIAUTH_GITHUB_CLIENT_SECRET=xxx sunline
 ```
+
+Deploy to AWS Lambda
+---------------------
+
+This app supports deployment to AWS Lambda via [Lamby](https://lamby.cloud/) and AWS SAM.
+
+### Prerequisites
+
+- [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) configured with appropriate credentials
+- [AWS SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html)
+- An Amazon RDS PostgreSQL instance accessible from Lambda
+
+### Environment variables
+
+Set the following environment variables on the Lambda function (via the AWS Console, SAM template, or [AWS SSM Parameter Store](https://github.com/rails-lambda/crypteia)):
+
+| Variable | Description |
+|---|---|
+| `SECRET_KEY_BASE` | Rails secret key base |
+| `DATABASE_URL` | PostgreSQL connection URL (e.g. `postgresql://user:pass@host/dbname`) |
+| `OMNIAUTH_GITHUB_CLIENT_ID` | GitHub OAuth App client ID |
+| `OMNIAUTH_GITHUB_CLIENT_SECRET` | GitHub OAuth App client secret |
+| `OMNIAUTH_GITHUB_ORGANIZATION` | (Optional) Restrict login to a specific GitHub organization |
+
+### Deploy
+
+```shell
+# Deploy to staging (default)
+$ ./bin/deploy-lambda
+
+# Deploy to production
+$ RAILS_ENV=production ./bin/deploy-lambda
+```
+
+The script will:
+
+1. Bundle gems for production into `vendor/bundle`
+2. Precompile assets
+3. Build and push a Docker image to Amazon ECR
+4. Deploy via AWS SAM (`sunline-staging` or `sunline-production` CloudFormation stack)
+
+The Lambda Function URL is shown in the SAM deploy output as `RailsLambdaUrl`.

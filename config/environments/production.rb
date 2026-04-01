@@ -22,7 +22,14 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
+  # When running on Lambda, RAILS_SERVE_STATIC_FILES=1 is set in Dockerfile.lambda.
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  if ENV['RAILS_SERVE_STATIC_FILES'].present?
+    config.public_file_server.headers = {
+      'Cache-Control' => "public, max-age=#{30.days.seconds.to_i}",
+      'X-Lamby-Base64' => '1'
+    }
+  end
 
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
