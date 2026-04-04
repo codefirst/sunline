@@ -1,0 +1,26 @@
+FROM public.ecr.aws/lambda/ruby:4@sha256:e0f7f8672f8c5e2444452ce406c0196d93b9969d8a21dadcc346c0d23b5a45b4
+
+ARG TZ=""
+WORKDIR ${LAMBDA_TASK_ROOT}
+
+COPY Gemfile Gemfile.lock ./
+
+RUN dnf install -y gcc make libyaml-devel libpq-devel libxml2-devel libxslt-devel nodejs npm && \
+    dnf clean all && \
+    echo 'gem "lamby", "~> 6.0.1"' >> Gemfile && \
+    sed -i '/^ruby /d' Gemfile && \
+    rm Gemfile.lock && \
+    bundle config set --local path vendor/bundle && \
+    bundle config set --local without "development test" && \
+    bundle install && \
+    cp Gemfile Gemfile.bak && \
+    cp Gemfile.lock Gemfile.lock.bak
+
+COPY . .
+
+RUN mv Gemfile.bak Gemfile && \
+    mv Gemfile.lock.bak Gemfile.lock && \
+    npm install && \
+    TZ=${TZ} bundle exec rails assets:precompile RAILS_ENV=production
+
+CMD ["handler.handler"]
