@@ -1,16 +1,19 @@
-name: Push Lambda Docker Image to GHCR
+name: Build and Push Docker Image to GHCR
 
 on:
-  push:
-    branches: [ "master" ]
+  workflow_call:
+    inputs:
+      image_name:
+        required: true
+        type: string
+      dockerfile:
+        required: false
+        type: string
+        default: Dockerfile
 
 permissions:
   contents: read
   packages: write
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: false
 
 jobs:
   build-amd64:
@@ -39,10 +42,10 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: .
-          file: Dockerfile.lambda
+          file: ${{ inputs.dockerfile }}
           provenance: false
           platforms: linux/amd64
-          outputs: type=image,name=ghcr.io/${{ github.repository_owner }}/sunline-lambda,push-by-digest=true,name-canonical=true,push=true
+          outputs: type=image,name=${{ inputs.image_name }},push-by-digest=true,name-canonical=true,push=true
           cache-from: type=gha
 
   build-arm64:
@@ -71,10 +74,10 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: .
-          file: Dockerfile.lambda
+          file: ${{ inputs.dockerfile }}
           provenance: false
           platforms: linux/arm64
-          outputs: type=image,name=ghcr.io/${{ github.repository_owner }}/sunline-lambda,push-by-digest=true,name-canonical=true,push=true
+          outputs: type=image,name=${{ inputs.image_name }},push-by-digest=true,name-canonical=true,push=true
           cache-from: type=gha
 
   merge:
@@ -98,6 +101,6 @@ jobs:
             "$REPO@$AMD_DIGEST" \
             "$REPO@$ARM_DIGEST"
         env:
-          REPO: ghcr.io/${{ github.repository_owner }}/sunline-lambda
+          REPO: ${{ inputs.image_name }}
           AMD_DIGEST: ${{ needs.build-amd64.outputs.digest }}
           ARM_DIGEST: ${{ needs.build-arm64.outputs.digest }}
