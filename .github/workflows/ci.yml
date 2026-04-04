@@ -25,6 +25,5 @@ jobs:
         with:
           node-version-file: './.node-version'
           cache: 'npm'
-      - run: bundle install --jobs 4 --retry 3
       - run: bundle exec rake db:migrate RAILS_ENV=test
       - run: bundle exec rake spec
