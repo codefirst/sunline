@@ -10,6 +10,9 @@ amazon:
   service: S3
   access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
   secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+<% if ENV['AWS_SESSION_TOKEN'].present? %>
+  session_token: <%= ENV['AWS_SESSION_TOKEN'] %>
+<% end %>
   region: <%= ENV['AWS_REGION'] %>
   bucket: <%= ENV['AWS_BUCKET'] %>
 
