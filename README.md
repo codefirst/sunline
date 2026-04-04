@@ -10,7 +10,7 @@ Install
 Install dependencies:
 
 ```shell
-$ bundle install --without development test
+$ BUNDLE_WITHOUT=development:test bundle install
 $ npm install
 ```
 
