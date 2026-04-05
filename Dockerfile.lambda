@@ -16,11 +16,10 @@ WORKDIR ${LAMBDA_TASK_ROOT}
 RUN dnf install -y gcc make libyaml-devel libpq-devel libxml2-devel libxslt-devel nodejs npm && \
     dnf clean all
 
-COPY Gemfile Gemfile.lock ./
+COPY Gemfile ./
 
 RUN echo 'gem "lamby", "~> 6.0.1"' >> Gemfile && \
     sed -i '/^ruby /d' Gemfile && \
-    rm Gemfile.lock && \
     bundle install
 RUN cp Gemfile /tmp/Gemfile.lamby && cp Gemfile.lock /tmp/Gemfile.lock.lamby
 
