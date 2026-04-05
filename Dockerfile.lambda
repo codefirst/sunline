@@ -18,17 +18,17 @@ RUN dnf install -y gcc make libyaml-devel libpq-devel libxml2-devel libxslt-deve
 
 COPY Gemfile Gemfile.lock ./
 
-RUN echo 'gem "lamby", "~> 6.0.1"' >> Gemfile
-RUN sed -i '/^ruby /d' Gemfile
-RUN rm Gemfile.lock
-RUN bundle install
+RUN echo 'gem "lamby", "~> 6.0.1"' >> Gemfile && \
+    sed -i '/^ruby /d' Gemfile && \
+    rm Gemfile.lock && \
+    bundle install
 RUN cp Gemfile /tmp/Gemfile.lamby && cp Gemfile.lock /tmp/Gemfile.lock.lamby
 
 COPY . .
 
 RUN npm ci
-RUN cp /tmp/Gemfile.lamby Gemfile && cp /tmp/Gemfile.lock.lamby Gemfile.lock
-RUN TZ=${TZ} bundle exec rails assets:precompile
+RUN cp /tmp/Gemfile.lamby Gemfile && cp /tmp/Gemfile.lock.lamby Gemfile.lock && \
+    TZ=${TZ} bundle exec rails assets:precompile
 
 
 # Final stage for app image
