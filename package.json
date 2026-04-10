@@ -18,6 +18,6 @@
   },
   "devDependencies": {
     "esbuild": "^0.28.0",
-    "sass": "^1.98.0"
+    "sass": "^1.99.0"
   }
 }
