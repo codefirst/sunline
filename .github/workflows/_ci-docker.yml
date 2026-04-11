@@ -6,7 +6,7 @@ on:
       target:
         required: false
         type: string
-        default: web
+        default: app
 
 permissions:
   contents: read

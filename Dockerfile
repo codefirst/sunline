@@ -50,7 +50,7 @@ RUN bin/rails assets:precompile
 
 
 # Final stage for app image
-FROM base AS web
+FROM base AS app
 
 # Run and own only the runtime files as a non-root user for security
 RUN groupadd --system --gid 1000 rails && \
@@ -67,7 +67,7 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 CMD ["./bin/rails", "server"]
 
 # Final stage for Lambda
-FROM web AS lambda
+FROM app AS lambda
 
 USER root
 COPY --from=public.ecr.aws/awsguru/aws-lambda-adapter:1.0.0 /lambda-adapter /opt/extensions/lambda-adapter
