@@ -22,4 +22,4 @@ jobs:
     uses: ./.github/workflows/_ghcr.yml
     with:
       image_name: ghcr.io/${{ github.repository_owner }}/sunline-lambda
-      dockerfile: Dockerfile.lambda
+      target: lambda

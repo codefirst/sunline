@@ -6,10 +6,10 @@ on:
       image_name:
         required: true
         type: string
-      dockerfile:
+      target:
         required: false
         type: string
-        default: Dockerfile
+        default: web
 
 permissions:
   contents: read
@@ -42,7 +42,8 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: .
-          file: ${{ inputs.dockerfile }}
+          file: Dockerfile
+          target: ${{ inputs.target }}
           provenance: false
           platforms: linux/amd64
           outputs: type=image,name=${{ inputs.image_name }},push-by-digest=true,name-canonical=true,push=true
@@ -74,7 +75,8 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: .
-          file: ${{ inputs.dockerfile }}
+          file: Dockerfile
+          target: ${{ inputs.target }}
           provenance: false
           platforms: linux/arm64
           outputs: type=image,name=${{ inputs.image_name }},push-by-digest=true,name-canonical=true,push=true
