@@ -3,10 +3,10 @@ name: CI Docker
 on:
   workflow_call:
     inputs:
-      dockerfile:
+      target:
         required: false
         type: string
-        default: Dockerfile
+        default: web
 
 permissions:
   contents: read
@@ -26,7 +26,8 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: .
-          file: ${{ inputs.dockerfile }}
+          file: Dockerfile
+          target: ${{ inputs.target }}
           push: false
           tags: ghcr.io/${{ github.repository }}:${{ github.sha }}
           cache-from: type=gha
@@ -43,7 +44,7 @@ jobs:
       - name: hadolint
         uses: hadolint/hadolint-action@v3.3.0
         with:
-          dockerfile: ${{ inputs.dockerfile }}
+          dockerfile: Dockerfile
           ignore: DL3008,DL3016,DL3041,DL3059
 
   dockle:
@@ -61,7 +62,8 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: .
-          file: ${{ inputs.dockerfile }}
+          file: Dockerfile
+          target: ${{ inputs.target }}
           push: false
           load: true
           tags: ghcr.io/${{ github.repository }}:${{ github.sha }}
@@ -91,7 +93,8 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: .
-          file: ${{ inputs.dockerfile }}
+          file: Dockerfile
+          target: ${{ inputs.target }}
           push: false
           load: true
           tags: ghcr.io/${{ github.repository }}:${{ github.sha }}

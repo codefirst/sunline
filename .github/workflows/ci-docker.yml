@@ -20,4 +20,4 @@ jobs:
   ci-lambda:
     uses: ./.github/workflows/_ci-docker.yml
     with:
-      dockerfile: Dockerfile.lambda
+      target: lambda
