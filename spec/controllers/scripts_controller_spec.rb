@@ -1,17 +1,16 @@
 require 'rails_helper'
 
 describe ScriptsController, type: :controller  do
+  let(:sign_in_user) { User.create!(name: 'name', nickname: 'nickname') }
 
   before do
-    user = User.new(name: 'name', nickname: 'nickname')
-    user.save
-    sign_in user
+    sign_in sign_in_user
   end
 
   describe 'index' do
     context 'archived scripts' do
       before do
-        @script = Script.new(name: 'name', archived: true)
+        @script = Script.new(name: 'name', archived: true, created_by: sign_in_user, updated_by: sign_in_user)
         @script.save
         get :index, params: { archived: 'true' }
       end
@@ -21,7 +20,7 @@ describe ScriptsController, type: :controller  do
 
     context 'active scripts' do
       before do
-        @script = Script.new(name: 'name', archived: false)
+        @script = Script.new(name: 'name', archived: false, created_by: sign_in_user, updated_by: sign_in_user)
         @script.save
         get :index
       end
@@ -32,7 +31,7 @@ describe ScriptsController, type: :controller  do
 
   context 'archive' do
     before do
-      @script = Script.new(name: 'name', archived: nil)
+      @script = Script.new(name: 'name', archived: nil, created_by: sign_in_user, updated_by: sign_in_user)
       @script.save
       post :archive, params: { id: @script.id }
     end
@@ -42,7 +41,7 @@ describe ScriptsController, type: :controller  do
 
   context 'unarchive' do
     before do
-      @script = Script.new(name: 'name', archived: true)
+      @script = Script.new(name: 'name', archived: true, created_by: sign_in_user, updated_by: sign_in_user)
       @script.save
       post :unarchive, params: { id: @script.id }
     end
@@ -52,7 +51,7 @@ describe ScriptsController, type: :controller  do
 
   context 'runnable_script' do
     before do
-      @script = Script.new(name: 'name', body: 'ls -l')
+      @script = Script.new(name: 'name', body: 'ls -l', created_by: sign_in_user, updated_by: sign_in_user)
       @script.save
       get :sh, params: { guid: @script.guid }
     end
@@ -61,7 +60,7 @@ describe ScriptsController, type: :controller  do
 
   context 'remote_script' do
     before do
-      @script = Script.new(name: 'name', body: 'ls -l')
+      @script = Script.new(name: 'name', body: 'ls -l', created_by: sign_in_user, updated_by: sign_in_user)
       @script.save
       get :wrapped_sh, params: { guid: @script.guid }
     end
@@ -71,7 +70,7 @@ describe ScriptsController, type: :controller  do
   context 'search_script' do
     describe 'with keyword' do
       before do
-        @script = Script.new(name: 'name', body: 'ls -l')
+        @script = Script.new(name: 'name', body: 'ls -l', created_by: sign_in_user, updated_by: sign_in_user)
         @script.save
         get :search, params: { keyword: 'ls' }
       end

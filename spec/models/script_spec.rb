@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe Script do
+  let(:user) { User.create!(name: 'name', nickname: 'nickname') }
 
   describe '' do
     before do
@@ -16,7 +17,7 @@ describe Script do
 
   describe 'save' do
     before do
-      @script = Script.new(name: 'name')
+      @script = Script.new(name: 'name', created_by: user, updated_by: user)
       @script.save
     end
 
@@ -55,16 +56,18 @@ describe Script do
   end
 
   describe 'search' do
-    script = Script.new(name: "ls", body: "ls -la")
-    script.save
+    before do
+      Script.new(name: "ls", body: "ls -la", created_by: user, updated_by: user).save!
+    end
 
     subject { Script.search("ls").first }
     its(:body) { is_expected.to include "ls" }
   end
 
   describe 'search by multi word' do
-    script = Script.new(name: "ls", body: "ls -la\nbundle install")
-    script.save
+    before do
+      Script.new(name: "ls", body: "ls -la\nbundle install", created_by: user, updated_by: user).save!
+    end
 
     subject { Script.search("ls bundle").first }
     its(:body) { is_expected.to include "ls" }
