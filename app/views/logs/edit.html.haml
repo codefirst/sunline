@@ -11,7 +11,7 @@
 
 %h3= t(:title_log)
 
-= form_for @log do |f|
+= form_with model: @log do |f|
   %dl.row
     %dt.col-sm-3.text-right= t(:field_host)
     %dd.col-sm-9= @log.host
