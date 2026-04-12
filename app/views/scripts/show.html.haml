@@ -72,7 +72,7 @@
         .form-check.form-check-inline.ms-3
           = check_box_tag(:logs_auto_reload, "1", false, class: 'form-check-input')
           = label_tag(:logs_auto_reload, t(:auto_reload), class: 'form-check-label')
-        = form_tag script_path(@script), method: 'get', class: 'd-inline-block ms-2' do
+        = form_with url: script_path(@script), method: 'get', class: 'd-inline-block ms-2' do
           = text_field_tag :keyword, @keyword, class: 'form-control auto-width', placeholder: t(:grep_logs)
           .dropdown.d-inline-block
             = link_to '#', class: 'btn btn-outline-secondary ms-1', 'data-bs-toggle': 'dropdown', style: 'margin-top:0' do
