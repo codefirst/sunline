@@ -30,15 +30,16 @@ describe LogsController, type: :controller do
   # LogsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  let(:sign_in_user) { User.create!(name: 'name', nickname: 'nickname') }
+
   before do
-    user = User.new(name: 'name', nickname: 'nickname')
-    user.save
-    sign_in user
+    sign_in sign_in_user
   end
 
   describe "GET show" do
     it "assigns the requested log as @log" do
-      log = Log.create! valid_attributes
+      script = Script.create!(name: 'name', created_by: sign_in_user, updated_by: sign_in_user)
+      log = Log.create! valid_attributes.merge(script: script)
       get :show, params: { id: log }, session: valid_session
       expect(controller.instance_variable_get("@log")).to eq(log)
     end
