@@ -97,11 +97,13 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
 
-      - name: Create manifest list and push
+      - name: Create manifest list and individual tags
         run: |
           docker buildx imagetools create -t "$REPO:latest" \
             "$REPO@$AMD_DIGEST" \
             "$REPO@$ARM_DIGEST"
+          docker buildx imagetools create -t "$REPO:amd64" "$REPO@$AMD_DIGEST"
+          docker buildx imagetools create -t "$REPO:arm64" "$REPO@$ARM_DIGEST"
         env:
           REPO: ${{ inputs.image_name }}
           AMD_DIGEST: ${{ needs.build-amd64.outputs.digest }}
