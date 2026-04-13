@@ -46,7 +46,8 @@ jobs:
           target: ${{ inputs.target }}
           provenance: false
           platforms: linux/amd64
-          outputs: type=image,name=${{ inputs.image_name }},push-by-digest=true,name-canonical=true,push=true
+          tags: ${{ inputs.image_name }}:amd64
+          push: true
           cache-from: type=gha
 
   build-arm64:
@@ -79,7 +80,8 @@ jobs:
           target: ${{ inputs.target }}
           provenance: false
           platforms: linux/arm64
-          outputs: type=image,name=${{ inputs.image_name }},push-by-digest=true,name-canonical=true,push=true
+          tags: ${{ inputs.image_name }}:arm64
+          push: true
           cache-from: type=gha
 
   merge:
@@ -97,13 +99,11 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
 
-      - name: Create manifest list and individual tags
+      - name: Create manifest list and push
         run: |
           docker buildx imagetools create -t "$REPO:latest" \
             "$REPO@$AMD_DIGEST" \
             "$REPO@$ARM_DIGEST"
-          docker buildx imagetools create -t "$REPO:amd64" "$REPO@$AMD_DIGEST"
-          docker buildx imagetools create -t "$REPO:arm64" "$REPO@$ARM_DIGEST"
         env:
           REPO: ${{ inputs.image_name }}
           AMD_DIGEST: ${{ needs.build-amd64.outputs.digest }}
