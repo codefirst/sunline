@@ -66,12 +66,20 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 CMD ["./bin/rails", "server"]
 
+# LWA
+FROM public.ecr.aws/awsguru/aws-lambda-adapter:1.0.0@sha256:b4da35991627bdac98a81c377d0cc28e6989687359576dfda9f0b64be835d648 AS aws-lambda-adapter
+
 # Final stage for Lambda
 FROM app AS lambda
 
 USER root
-COPY --from=public.ecr.aws/awsguru/aws-lambda-adapter:1.0.0 /lambda-adapter /opt/extensions/lambda-adapter
+COPY --from=aws-lambda-adapter /lambda-adapter /opt/extensions/lambda-adapter
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y awscli jq && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives
 RUN rm -rf /rails/tmp && ln -sf /tmp /rails/tmp
+COPY ./bin/lambda-entrypoint.sh ./bin/lambda-entrypoint.sh
+RUN chmod +x ./bin/lambda-entrypoint.sh
 USER 1000:1000
 
-CMD ["./bin/rails", "server", "-b", "0.0.0.0", "-p", "8080"]
+CMD ["./bin/lambda-entrypoint.sh"]
