@@ -14,7 +14,7 @@ class ScriptsController < ApplicationController
 
   # GET /scripts/wrapped/guid.sh
   def wrapped_sh
-    script = Script.where(guid: params[:guid]).first
+    script = Script.find_by(guid: params[:guid])
     if script
       render plain: script.remote_script(root_url)
     else
@@ -24,7 +24,7 @@ class ScriptsController < ApplicationController
 
   # GET /scripts/guid.sh
   def sh
-    script = Script.where(guid: params[:guid]).first
+    script = Script.find_by(guid: params[:guid])
     if script
       render plain: script.runnable_script(root_url)
     else
