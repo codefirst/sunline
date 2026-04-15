@@ -14,21 +14,18 @@ class LogsController < ApplicationController
       return
     end
 
-    @log = Log.new(host: params[:host], result: params[:log_file].read)
     script = Script.find_by(guid: params[:guid])
     unless script
       render json: {message: "scripts not found. GUID: #{params[:guid]}"}.to_json, status: 500
       return
     end
 
-    script.logs << @log
+    @log = Log.new(host: params[:host], result: params[:log_file].read, script: script)
 
-    respond_to do |format|
-      if @log.save
-        format.html { render plain: "log registration successful\n", status: :created}
-      else
-        format.html { render plain: "log registration failure\n", status: 500 }
-      end
+    if @log.save
+      render plain: "log registration successful\n", status: :created
+    else
+      render plain: "log registration failure\n", status: 500
     end
   end
 
