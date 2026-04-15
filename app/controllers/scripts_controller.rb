@@ -74,7 +74,7 @@ class ScriptsController < ApplicationController
   # PATCH/PUT /scripts/1
   def update
     add_attachments
-    Attachment.delete params[:delete_attachments] if params[:delete_attachments]
+    Attachment.destroy params[:delete_attachments] if params[:delete_attachments]
 
     respond_to do |format|
       if @script.update(script_params.merge(updated_by: current_user))
