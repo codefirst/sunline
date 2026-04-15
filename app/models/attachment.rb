@@ -1,5 +1,5 @@
 class Attachment < ApplicationRecord
-  belongs_to :script
+  belongs_to :script, touch: true
   has_one_attached :upload
 
   def download_command(root_url)
