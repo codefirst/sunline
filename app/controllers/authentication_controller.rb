@@ -10,7 +10,7 @@ class AuthenticationController < Devise::OmniauthCallbacksController
 
     return redirect_to root_path, alert: t(:error_authentication_failed) unless organization_member?(oauth)
 
-    user = User.where(nickname: oauth.info.nickname).first
+    user = User.find_by(nickname: oauth.info.nickname)
     if user
       user.name = oauth.info.name
     else

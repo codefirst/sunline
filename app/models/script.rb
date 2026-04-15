@@ -17,7 +17,7 @@ class Script < ApplicationRecord
 
   def generate_guid
     uuid = SecureRandom.uuid.split('-').first
-    uuid << Time.now.strftime("%Y%m%d%H%M%S%L") unless Script.where(guid: uuid).first.nil?
+    uuid << Time.now.strftime("%Y%m%d%H%M%S%L") if Script.exists?(guid: uuid)
     self.guid = uuid
   end
 
