@@ -3,6 +3,8 @@ class ScriptsController < ApplicationController
   before_action :set_script, only: [:edit, :update, :destroy, :archive, :unarchive, :grep]
   skip_before_action :authenticate_user!, only: [:sh, :wrapped_sh]
 
+  CACHE_EXPIRES_IN = [Rails.application.config.active_storage.service_urls_expire_in - 1.minute, 1.minute].max
+
   # GET /scripts
   def index
     if params[:archived] == 'true'
@@ -16,7 +18,10 @@ class ScriptsController < ApplicationController
   def wrapped_sh
     script = Script.find_by(guid: params[:guid])
     if script
-      render plain: script.remote_script(root_url)
+      content = Rails.cache.fetch(["script", script.cache_key_with_version, "wrapped_sh"], expires_in: CACHE_EXPIRES_IN) do
+        script.remote_script(root_url)
+      end
+      render plain: content
     else
       render plain: "echo 'script not found'", status: 404
     end
@@ -26,7 +31,10 @@ class ScriptsController < ApplicationController
   def sh
     script = Script.find_by(guid: params[:guid])
     if script
-      render plain: script.runnable_script(root_url)
+      content = Rails.cache.fetch(["script", script.cache_key_with_version, "sh"], expires_in: CACHE_EXPIRES_IN) do
+        script.runnable_script(root_url)
+      end
+      render plain: content
     else
       render plain: "echo 'script not found'", status: 404
     end
