@@ -1,6 +1,6 @@
 class ScriptsController < ApplicationController
   include ActiveStorage::SetCurrent
-  before_action :set_script, only: [:edit, :update, :destroy, :archive, :unarchive, :grep]
+  before_action :set_script, only: [:edit, :update, :destroy, :archive, :unarchive]
   skip_before_action :authenticate_user!, only: [:sh, :wrapped_sh]
 
   CACHE_EXPIRES_IN = [Rails.application.config.active_storage.service_urls_expire_in - 1.minute, 1.minute].max
@@ -112,10 +112,6 @@ class ScriptsController < ApplicationController
     @script.archived = false
     @script.save
     redirect_to script_path(params[:id]), notice: "Script was successfully unarchived."
-  end
-
-  def grep
-    render json: @script.grep_logs(params[:keyword])
   end
 
   def search
