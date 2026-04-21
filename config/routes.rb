@@ -1,19 +1,19 @@
 Rails.application.routes.draw do
-  get 'scripts/:guid.sh', controller: 'scripts', action: 'sh'
-  get 'scripts/wrapped/:guid.sh', controller: 'scripts', action: 'wrapped_sh', as: :wrapped_sh
-  get 'scripts/search', controller: 'scripts', action: 'search', as: :search
-  get 'scripts/:id/logs.csv', controller: 'scripts', action: 'csv', as: 'logs_csv'
+  get 'scripts/:guid.sh', to: 'scripts#sh'
+  get 'scripts/wrapped/:guid.sh', to: 'scripts#wrapped_sh', as: :wrapped_sh
+  get 'scripts/search', to: 'scripts#search', as: :search
+  get 'scripts/:id/logs.csv', to: 'scripts#csv', as: 'logs_csv'
   resources :scripts
 
-  get 'hosts', controller: 'hosts', action: 'index', as: :hosts
-  get 'hosts/:hostname', controller: 'hosts', action: 'show', hostname: /.+/, as: :host
+  get 'hosts', to: 'hosts#index', as: :hosts
+  get 'hosts/:hostname', to: 'hosts#show', hostname: /.+/, as: :host
 
   root 'top#index'
 
   resources :logs
-  post 'scripts/:guid/log', controller: 'logs', action: 'create'
-  post 'scripts/archive/:id', controller: 'scripts', action: 'archive', as: :archive_script
-  post 'scripts/unarchive/:id', controller: 'scripts', action: 'unarchive', as: :unarchive_script
+  post 'scripts/:guid/log', to: 'logs#create'
+  post 'scripts/archive/:id', to: 'scripts#archive', as: :archive_script
+  post 'scripts/unarchive/:id', to: 'scripts#unarchive', as: :unarchive_script
 
   devise_for :users, controllers: { omniauth_callbacks: 'authentication' }
   devise_scope :user do
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     delete 'sign_out', to: 'authentication#logout', as: :destroy_user_session
   end
 
-  get '*not_found' => 'application#render_404', constraints: ->(req) do
+  get '*not_found', to: 'application#render_404', constraints: ->(req) {
     req.path.exclude? 'rails/active_storage'
-  end
+  }
 end
