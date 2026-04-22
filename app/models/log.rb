@@ -21,7 +21,7 @@ class Log < ApplicationRecord
   end
 
   def as_csv_row
-    [host, formatted_created_at, number_to_human_size(result_bytes)]
+    [host, formatted_created_at, ActiveSupport::NumberHelper.number_to_human_size(result_bytes)]
   end
 
   private
