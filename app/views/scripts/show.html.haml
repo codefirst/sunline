@@ -54,9 +54,9 @@
 .page-title
   %h4= t(:field_run)
   .page-title-right-menu
-    = link_to 'javascript:void(0)', class: 'copy-button btn btn-info btn-sm me-1', 'data-clipboard-text': "#{@script.remote_script(root_url)}", title: t(:copy_to_clipboard) do
+    = link_to 'javascript:void(0)', class: 'copy-button btn btn-info btn-sm me-1', 'data-clipboard-text': "#{@script.remote_script(root_url)}", 'data-copied-text': t(:copied), title: t(:copy_to_clipboard) do
       %i.fa.fa-paperclip
-    = link_to 'javascript:void(0)', class: 'copy-button btn btn-info btn-sm', 'data-clipboard-text': "#{wrapped_sh_url(@script.guid)}", title: t(:copy_to_clipboard) do
+    = link_to 'javascript:void(0)', class: 'copy-button btn btn-info btn-sm', 'data-clipboard-text': "#{wrapped_sh_url(@script.guid)}", 'data-copied-text': t(:copied), title: t(:copy_to_clipboard) do
       = t(:button_wrapped)
 
 %pre.run.mb-3
@@ -93,58 +93,5 @@
           %td= log.formatted_created_at
           %td= number_to_human_size log.result_bytes
 
-:javascript
-  document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.copy-button').forEach(function(button) {
-      button.addEventListener('click', function(e) {
-        const button = e.currentTarget;
-        const text = button.dataset.clipboardText;
-        navigator.clipboard.writeText(text).then(function() {
-          const tooltip = new Tooltip(button, {
-            trigger: 'manual',
-            title: '#{t(:copied)}'
-          });
-          tooltip.show();
-          setTimeout(function() {
-            tooltip.dispose();
-          }, 3000);
-        });
-      });
-    });
-    document.querySelectorAll('.script-area').forEach(function(el) {
-      editorFromTextArea(el, {readOnly: true});
-    });
-    setInterval(function() {
-      const autoReload = document.getElementById('logs_auto_reload');
-      if (autoReload && autoReload.checked) {
-        const url = window.location.href.split('#')[0];
-        fetch(url, { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
-          .then(function(response) {
-            if (!response.ok){
-              throw new Error('error');
-            }
-            return response.text();
-          })
-          .then(function(html) {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            const newTable = doc.querySelector('#logs-table');
-            const tableContainer = document.querySelector('.table-container');
-            if (newTable && tableContainer) {
-              const oldTable = tableContainer.querySelector('#logs-table');
-              oldTable.replaceWith(newTable);
-              const count = newTable.querySelectorAll('tbody tr').length;
-              const logsCount = document.getElementById('logs-count');
-              logsCount.textContent = count;
-            }
-          })
-          .catch(function() {
-            const logsTable = document.getElementById('logs-table');
-            logsTable.innerHTML = '';
-            const logsCount = document.getElementById('logs-count');
-            logsCount.textContent = 0;
-          });
-      }
-    }, 15 * 1000);
-  });
-
+- content_for :javascript do
+  = javascript_include_tag "scripts-show"
