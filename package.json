@@ -5,7 +5,9 @@
     "build": "esbuild app/javascript/*.* --bundle --minify --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
     "build-dev": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
     "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --style=compressed --no-source-map --load-path=node_modules",
-    "build-dev:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
+    "build-dev:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
+    "lint": "biome check app/javascript",
+    "fix": "biome check --write app/javascript"
   },
   "dependencies": {
     "@codemirror/commands": "^6.10.3",
@@ -17,6 +19,7 @@
     "bootstrap": "5.3.8"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.4.12",
     "esbuild": "^0.28.0",
     "sass": "^1.99.0"
   }
