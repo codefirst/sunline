@@ -17,6 +17,7 @@
     "bootstrap": "5.3.8"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.4.12",
     "esbuild": "^0.28.0",
     "sass": "^1.99.0"
   }
