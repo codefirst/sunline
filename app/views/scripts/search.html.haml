@@ -39,11 +39,5 @@
 .d-flex.justify-content-center
   = paginate @scripts
 
-:javascript
-  document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.script-area').forEach(function(el) {
-      const firstLineNumber = el.dataset.firstLineNumber;
-      editorFromTextArea(el, {readOnly: true, firstLineNumber: firstLineNumber});
-    });
-  });
-
+- content_for :javascript do
+  = javascript_include_tag "scripts-search"

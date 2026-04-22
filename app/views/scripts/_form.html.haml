@@ -30,20 +30,5 @@
         =t(:button_more_attachment)
   .actions
     = f.submit t(:button_save), class: 'btn btn-primary', data: { loading_text: 'Loading...' }
-:javascript
-  document.addEventListener('DOMContentLoaded', function() {
-    const attachmentMoreButton = document.querySelector('.attachment-more');
-    attachmentMoreButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      const fileinputs = document.querySelector('.fileinputs');
-      const fileinput = fileinputs.querySelector('.fileinput:first-child');
-      const lastupload = fileinputs.querySelector('.fileinput:last-child');
-      const clone = fileinput.cloneNode(true);
-      clone.style.display = '';
-      lastupload.after(clone);
-      return false;
-    });
-    document.querySelectorAll('.script-area').forEach(function(el) {
-      editorFromTextArea(el, {});
-    });
-  });
+- content_for :javascript do
+  = javascript_include_tag "scripts-form"
