@@ -2,8 +2,13 @@ Rails.application.routes.draw do
   get 'scripts/:guid.sh', to: 'scripts#sh'
   get 'scripts/wrapped/:guid.sh', to: 'scripts#wrapped_sh', as: :wrapped_sh
   get 'scripts/search', to: 'scripts#search', as: :search
-  get 'scripts/:id/logs.csv', to: 'scripts#csv', as: 'logs_csv'
-  resources :scripts
+  resources :scripts do
+    member do
+      get 'logs.csv', to: 'scripts#csv', as: :logs_csv
+      post 'archive'
+      post 'unarchive'
+    end
+  end
 
   get 'hosts', to: 'hosts#index', as: :hosts
   get 'hosts/:hostname', to: 'hosts#show', hostname: /.+/, as: :host
@@ -12,8 +17,6 @@ Rails.application.routes.draw do
 
   resources :logs
   post 'scripts/:guid/log', to: 'logs#create'
-  post 'scripts/archive/:id', to: 'scripts#archive', as: :archive_script
-  post 'scripts/unarchive/:id', to: 'scripts#unarchive', as: :unarchive_script
 
   devise_for :users, controllers: { omniauth_callbacks: 'authentication' }
   devise_scope :user do
