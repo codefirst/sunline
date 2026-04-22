@@ -9,7 +9,8 @@
 		"includes": ["app/javascript/**/*.js"]
 	},
 	"formatter": {
-		"enabled": false
+		"enabled": true,
+		"indentStyle": "space"
 	},
 	"linter": {
 		"enabled": true,
