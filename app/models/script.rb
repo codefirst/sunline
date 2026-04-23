@@ -21,24 +21,20 @@ class Script < ApplicationRecord
     self.guid = uuid
   end
 
-  def creater_name
-    return nil unless created_by
-    created_by.name
+  def creator_name
+    created_by&.name
   end
 
   def updater_name
-    return nil unless updated_by
-    updated_by.name
+    updated_by&.name
   end
 
   def formatted_created_at
-    return self.created_at.strftime("%Y-%m-%d %H:%M:%S") if self.created_at
-    ''
+    created_at&.strftime("%Y-%m-%d %H:%M:%S") || ''
   end
 
   def formatted_updated_at
-    return self.updated_at.strftime("%Y-%m-%d %H:%M:%S") if self.updated_at
-    ''
+    updated_at&.strftime("%Y-%m-%d %H:%M:%S") || ''
   end
 
   def remote_script(root_url)
