@@ -1,11 +1,11 @@
 - content_for :title do
   = @script.name
 
-%nav{"aria-label" => "breadcrumb"}
+%nav{"aria-label": "breadcrumb"}
   %ol.breadcrumb
     %li.breadcrumb-item
       = link_to t(:title_scripts), scripts_path
-    %li.breadcrumb-item.active{"aria-current" => "page"}= @script.name
+    %li.breadcrumb-item.active{"aria-current": "page"}= @script.name
 
 .page-title
   %h3= @script.name
