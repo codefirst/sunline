@@ -45,6 +45,7 @@ class ScriptsController < ApplicationController
     @script = Script.find(params[:id])
     @keyword = params[:keyword] || ''
     @highlights = @script.grep_logs(@keyword)
+    @log_count = @script.logs.count
     respond_to do |format|
       format.html { render action: 'show' }
     end
