@@ -29,11 +29,11 @@ describe Script do
   describe 'creater' do
     context 'user exists' do
       subject { Script.new(created_by: User.new(name: 'test user')) }
-      its(:creater_name) { is_expected.to eq 'test user' }
+      its(:creator_name) { is_expected.to eq 'test user' }
     end
     context 'user not exists' do
       subject { Script.new }
-      its(:creater_name) { is_expected.to be_blank }
+      its(:creator_name) { is_expected.to be_blank }
     end
   end
 
