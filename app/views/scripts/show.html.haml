@@ -62,36 +62,36 @@
 %pre.run.mb-3
   = @script.remote_script(root_url)
 
-- unless @script.logs.empty?
-  .page-title
-    %h4= t(:title_logs)
-    .page-title-right-menu.text-muted.logs-toolbar
-      %form.d-flex.flex-row.align-items-center.flex-wrap
-        %span#logs-count.me-1= @script.logs.size
-        = t(:logs_count)
-        .form-check.form-check-inline.ms-3
-          = check_box_tag(:logs_auto_reload, "1", false, class: 'form-check-input')
-          = label_tag(:logs_auto_reload, t(:auto_reload), class: 'form-check-label')
-        = form_with url: script_path(@script), method: 'get', class: 'd-inline-block ms-2' do
-          = text_field_tag :keyword, @keyword, class: 'form-control auto-width', placeholder: t(:grep_logs)
-          .dropdown.d-inline-block
-            = link_to '#', class: 'btn btn-outline-secondary ms-1', 'data-bs-toggle': 'dropdown', style: 'margin-top:0' do
-              %i.fa-solid.fa-ellipsis-vertical
-            .dropdown-menu.dropdown-menu-right
-              = link_to t(:button_export_csv), logs_csv_script_path(@script), class: 'dropdown-item'
-  .table-container
-    %table.table.table-striped.mt-2#logs-table
+.page-title
+  %h4= t(:title_logs)
+  .page-title-right-menu.text-muted.logs-toolbar
+    %form.d-flex.flex-row.align-items-center.flex-wrap
+      %span#logs-count.me-1= @log_count
+      = t(:logs_count)
+      .form-check.form-check-inline.ms-3
+        = check_box_tag(:logs_auto_reload, "1", false, class: 'form-check-input')
+        = label_tag(:logs_auto_reload, t(:auto_reload), class: 'form-check-label')
+      = form_with url: script_path(@script), method: 'get', class: 'd-inline-block ms-2' do
+        = text_field_tag :keyword, @keyword, class: 'form-control auto-width', placeholder: t(:grep_logs)
+        .dropdown.d-inline-block
+          = link_to '#', class: 'btn btn-outline-secondary ms-1', 'data-bs-toggle': 'dropdown', style: 'margin-top:0' do
+            %i.fa-solid.fa-ellipsis-vertical
+          .dropdown-menu.dropdown-menu-right
+            = link_to t(:button_export_csv), logs_csv_script_path(@script), class: 'dropdown-item'
+.table-container
+  %table.table.table-striped.mt-2#logs-table
+    - if @log_count > 0
       %thead
         %tr
           %th= t(:field_host)
           %th= t(:field_uploaded)
           %th= t(:field_log_size)
       %tbody
-      - @script.logs.select_without_result.order('created_at desc').each do |log|
-        %tr{id: "log-#{log.id}", class: "logs #{@highlights.include?(log.id) ? 'table-success' : ''}"}
-          %td= link_to log.host, log_path(log)
-          %td= log.formatted_created_at
-          %td= number_to_human_size log.result_bytes
+        - @script.logs.select_without_result.order('created_at desc').each do |log|
+          %tr{id: "log-#{log.id}", class: "logs #{@highlights.include?(log.id) ? 'table-success' : ''}"}
+            %td= link_to log.host, log_path(log)
+            %td= log.formatted_created_at
+            %td= number_to_human_size log.result_bytes
 
 - content_for :javascript do
   = javascript_include_tag "scripts-show"
