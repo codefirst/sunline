@@ -1,13 +1,13 @@
 - content_for :title do
   = "#{@log.script.name} - #{t(:title_log)}"
 
-%nav{"aria-label" => "breadcrumb"}
+%nav{"aria-label": "breadcrumb"}
   %ol.breadcrumb
     %li.breadcrumb-item
       = link_to t(:title_scripts), scripts_path
     %li.breadcrumb-item
       = link_to @log.script.name, script_path(@log.script)
-    %li.breadcrumb-item.active{"aria-current" => "page"}= t(:title_log)
+    %li.breadcrumb-item.active{"aria-current": "page"}= t(:title_log)
 
 .page-title
   %h3= t(:title_log)

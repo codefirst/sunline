@@ -1,11 +1,11 @@
 - content_for :title do
   = @hostname
 
-%nav{"aria-label" => "breadcrumb"}
+%nav{"aria-label": "breadcrumb"}
   %ol.breadcrumb
     %li.breadcrumb-item
       = link_to t(:title_hosts), hosts_path
-    %li.breadcrumb-item.active{"aria-current" => "page"}= @hostname
+    %li.breadcrumb-item.active{"aria-current": "page"}= @hostname
 
 .page-title
   %h4= @hostname
