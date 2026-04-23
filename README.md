@@ -46,6 +46,8 @@ $ export SLACK_WEBHOOK_URL=https://hooks.slack.com/services/xxx/yyy/zzz
 Run:
 
 ```shell
+$ export SECRET_KEY_BASE=$(bin/rails secret)
+$ export DEVISE_SECRET_KEY=$(bin/rails secret)
 $ export OMNIAUTH_GITHUB_CLIENT_ID=Client ID
 $ export OMNIAUTH_GITHUB_CLIENT_SECRET=Client Secret
 $ export OMNIAUTH_GITHUB_ORGANIZATION=Some Organization # optional
@@ -79,5 +81,5 @@ Run docker:
 
 ```shell
 $ docker build -t sunline .
-$ docker run -p 3000:3000 -e DATABASE_URL="postgresql://user:pass@localhost:5432/sunline_production?host=host.docker.internal" -e RAILS_FORCE_SSL=false -e RAILS_SERVE_STATIC_FILES=true -e OMNIAUTH_GITHUB_CLIENT_ID=xxx -e OMNIAUTH_GITHUB_CLIENT_SECRET=xxx sunline
+$ docker run -p 3000:3000 -e DATABASE_URL="postgresql://user:pass@localhost:5432/sunline_production?host=host.docker.internal" -e RAILS_FORCE_SSL=false -e RAILS_SERVE_STATIC_FILES=true -e SECRET_KEY_BASE=xxx -e DEVISE_SECRET_KEY=xxx -e OMNIAUTH_GITHUB_CLIENT_ID=xxx -e OMNIAUTH_GITHUB_CLIENT_SECRET=xxx sunline
 ```

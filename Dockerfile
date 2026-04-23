@@ -44,7 +44,7 @@ RUN bundle install && \
 # Copy application code
 COPY . .
 
-RUN bin/rails assets:precompile
+RUN SECRET_KEY_BASE_DUMMY=1 bin/rails assets:precompile
 
 
 
