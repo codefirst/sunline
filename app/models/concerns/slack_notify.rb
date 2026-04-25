@@ -2,7 +2,7 @@ module SlackNotify
   extend ActiveSupport::Concern
 
   included do
-    after_create :notify
+    after_create_commit :notify
   end
 
   def notify
