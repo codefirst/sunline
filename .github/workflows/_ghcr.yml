@@ -9,12 +9,13 @@ on:
         type: string
         default: app
 
-permissions:
-  contents: read
-  packages: write
+permissions: {}
 
 jobs:
   build-amd64:
+    permissions:
+      contents: read
+      packages: write
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
@@ -49,6 +50,9 @@ jobs:
           cache-from: type=gha
 
   build-arm64:
+    permissions:
+      contents: read
+      packages: write
     runs-on: ubuntu-24.04-arm
     timeout-minutes: 30
 
@@ -83,6 +87,9 @@ jobs:
           cache-from: type=gha
 
   merge:
+    permissions:
+      contents: read
+      packages: write
     runs-on: ubuntu-latest
     timeout-minutes: 5
     needs: [build-amd64, build-arm64]

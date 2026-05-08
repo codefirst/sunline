@@ -6,8 +6,7 @@ on:
       - master
   pull_request:
 
-permissions:
-  contents: read
+permissions: {}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -15,9 +14,13 @@ concurrency:
 
 jobs:
   ci-app:
+    permissions:
+      contents: read
     uses: ./.github/workflows/_ci-docker.yml
 
   ci-lambda:
+    permissions:
+      contents: read
     uses: ./.github/workflows/_ci-docker.yml
     with:
       target: lambda
