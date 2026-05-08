@@ -6,11 +6,12 @@ on:
         type: string
         default: app
 
-permissions:
-  contents: read
+permissions: {}
 
 jobs:
   docker-build:
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -33,6 +34,8 @@ jobs:
 
   hadolint:
     needs: docker-build
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -47,6 +50,8 @@ jobs:
 
   dockle:
     needs: docker-build
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -78,6 +83,8 @@ jobs:
 
   trivy:
     needs: docker-build
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:

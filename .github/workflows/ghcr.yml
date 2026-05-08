@@ -4,9 +4,7 @@ on:
   push:
     branches: [ "master" ]
 
-permissions:
-  contents: read
-  packages: write
+permissions: {}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -14,11 +12,17 @@ concurrency:
 
 jobs:
   ghcr-app:
+    permissions:
+      contents: read
+      packages: write
     uses: ./.github/workflows/_ghcr.yml
     with:
       image_name: ghcr.io/${{ github.repository_owner }}/sunline
 
   ghcr-lambda:
+    permissions:
+      contents: read
+      packages: write
     uses: ./.github/workflows/_ghcr.yml
     with:
       image_name: ghcr.io/${{ github.repository_owner }}/sunline-lambda
