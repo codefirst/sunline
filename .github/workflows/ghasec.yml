@@ -1,0 +1,27 @@
+name: CI ghasec
+
+on:
+  push:
+    paths:
+      - '.github/workflows/*.yml'
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+
+  ci-ghasec:
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - name: Run ghasec
+        uses: koki-develop/ghasec-action@16864d583b1146b22219d2e41b44e2d1f3f1357f # v1.0.2
