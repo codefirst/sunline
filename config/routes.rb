@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   get 'scripts/:guid.sh', to: 'scripts#sh'
   get 'scripts/wrapped/:guid.sh', to: 'scripts#wrapped_sh', as: :wrapped_sh
-  get 'scripts/search', to: 'scripts#search', as: :search
   resources :scripts do
+    collection do
+      get 'search'
+    end
     member do
       get 'logs.csv', to: 'scripts#csv', as: :logs_csv
       post 'archive'
