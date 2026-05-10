@@ -5,14 +5,14 @@
   %h3= t(:title_search)
   .page-title-right-menu
     - if params[:archived] == 'true'
-      = link_to search_path(keyword: @keyword), class: 'btn btn-outline-secondary active' do
+      = link_to search_scripts_path(keyword: @keyword), class: 'btn btn-outline-secondary active' do
         %i.fa.fa-box-open{title: t(:link_active_scripts)}
     - else
-      = link_to search_path(keyword: @keyword, archived: true), class: 'btn btn-outline-secondary' do
+      = link_to search_scripts_path(keyword: @keyword, archived: true), class: 'btn btn-outline-secondary' do
         %i.fa-solid.fa-box{title: t(:link_archived_scripts)}
 
 .mt-3.mb-3
-  %form{action: search_path, method: :get}
+  %form{action: search_scripts_path, method: :get}
     .d-flex.flex-row.align-items-center.flex-wrap
       .col-auto.me-1
         = text_field_tag :keyword, @keyword, class: 'form-control', autofocus: true
