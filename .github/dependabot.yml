@@ -33,8 +33,6 @@ updates:
 
   - package-ecosystem: "docker"
     directory: "/"
-    cooldown:
-      default-days: 3
     schedule:
       interval: "weekly"
       timezone: "Asia/Tokyo"
