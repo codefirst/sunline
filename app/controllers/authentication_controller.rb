@@ -32,9 +32,10 @@ class AuthenticationController < Devise::OmniauthCallbacksController
   private
 
   def organization_member?(oauth)
-    return true if Settings.omniauth.github.organization.blank?
+    organizations = Settings.omniauth.github.organization.split
+    return true if organizations.empty?
 
     client = Octokit::Client.new(access_token: oauth.credentials.token)
-    client.organization_member?(Settings.omniauth.github.organization, oauth.info.nickname)
+    organizations.any? { |org| client.organization_member?(org, oauth.info.nickname) }
   end
 end
