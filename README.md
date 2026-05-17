@@ -50,7 +50,7 @@ $ export SECRET_KEY_BASE=$(bin/rails secret)
 $ export DEVISE_SECRET_KEY=$(bin/rails secret)
 $ export OMNIAUTH_GITHUB_CLIENT_ID=Client ID
 $ export OMNIAUTH_GITHUB_CLIENT_SECRET=Client Secret
-$ export OMNIAUTH_GITHUB_ORGANIZATION=Some Organization # optional
+$ export OMNIAUTH_GITHUB_ORGANIZATION="org1 org2" # optional, space-separated for multiple orgs
 $ bin/rails s -e production
 ```
 
