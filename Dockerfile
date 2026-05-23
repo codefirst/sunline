@@ -3,7 +3,7 @@
 
 # For a containerized dev environment, see Dev Containers: https://guides.rubyonrails.org/getting_started_with_devcontainer.html
 
-FROM docker.io/library/ruby:4.0.4-slim@sha256:3fc7a33fb84ba3c876ceccafffc4151c6f2cbbb0c4adf9fd4dbe505130988a8a AS base
+FROM docker.io/library/ruby:4.0.5-slim@sha256:577dc71a969f4f7c5a4b1d43b815ecf6523950436a81ae6d84b25c4e87cf37d5 AS base
 
 # Rails app lives here
 WORKDIR /rails
