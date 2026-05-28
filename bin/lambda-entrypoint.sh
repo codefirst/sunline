@@ -24,6 +24,8 @@ if [ -n "$SECRETS_ARN" ]; then
   export_secret OMNIAUTH_GITHUB_CLIENT_SECRET
   export_secret OMNIAUTH_GITHUB_ORGANIZATION
   export_secret DATABASE_URL
+  export_secret SECRET_KEY_BASE
+  export_secret DEVISE_SECRET_KEY
 fi
 
 $(dirname $0)/rails server -b 0.0.0.0 -p 8080
