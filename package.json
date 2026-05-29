@@ -21,6 +21,6 @@
   "devDependencies": {
     "@biomejs/biome": "^2.4.15",
     "esbuild": "^0.28.0",
-    "sass": "^1.99.0"
+    "sass": "^1.100.0"
   }
 }
