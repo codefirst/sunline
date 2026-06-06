@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get 'search'
     end
     member do
+      get 'logs', to: 'scripts#logs'
       get 'logs.csv', to: 'scripts#csv', as: :logs_csv
       post 'archive'
       post 'unarchive'
