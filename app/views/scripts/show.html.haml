@@ -63,7 +63,9 @@
   = @script.remote_script(root_url)
 
 .page-title
-  %h4= t(:title_logs)
+  %h4
+    = t(:title_logs)
+    %span#logs-loading.spinner-border.spinner-border-sm.ms-2.d-none{role: "status"}
   .page-title-right-menu.text-muted.logs-toolbar
     .d-flex.flex-row.align-items-center.flex-wrap
       %span#logs-count.me-1 -

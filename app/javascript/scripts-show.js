@@ -27,6 +27,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const logsUrl = container.dataset.logsUrl;
 
+  function showLoadingIndicator() {
+    document.getElementById("logs-loading").classList.remove("d-none");
+  }
+
+  function hideLoadingIndicator() {
+    document.getElementById("logs-loading").classList.add("d-none");
+  }
+
   function buildTableRows(data) {
     const tbody = document.getElementById("logs-tbody");
     const fragment = document.createDocumentFragment();
@@ -59,9 +67,11 @@ document.addEventListener("DOMContentLoaded", () => {
     tbody.innerHTML = "";
     tbody.appendChild(fragment);
     document.getElementById("logs-count").textContent = data.count;
+    hideLoadingIndicator();
   }
 
   function fetchLogs(keyword) {
+    showLoadingIndicator();
     const url = new URL(logsUrl, window.location.origin);
     if (keyword) {
       url.searchParams.set("keyword", keyword);
@@ -77,6 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .catch(() => {
         document.getElementById("logs-tbody").innerHTML = "";
         document.getElementById("logs-count").textContent = "0";
+        hideLoadingIndicator();
       });
   }
 
