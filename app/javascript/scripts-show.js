@@ -22,36 +22,99 @@ document.addEventListener("DOMContentLoaded", () => {
     editorFromTextArea(el, { readOnly: true });
   });
 
+  const container = document.querySelector(".table-container");
+  if (!container) return;
+
+  const logsUrl = container.dataset.logsUrl;
+
+  function showLoadingIndicator() {
+    document.getElementById("logs-loading").classList.remove("d-none");
+  }
+
+  function hideLoadingIndicator() {
+    document.getElementById("logs-loading").classList.add("d-none");
+  }
+
+  function buildTableRows(data) {
+    const tbody = document.getElementById("logs-tbody");
+    const fragment = document.createDocumentFragment();
+
+    data.logs.forEach((log) => {
+      const tr = document.createElement("tr");
+      tr.id = `log-${log.id}`;
+      tr.className = data.highlights.includes(log.id)
+        ? "logs table-success"
+        : "logs";
+
+      const tdHost = document.createElement("td");
+      const link = document.createElement("a");
+      link.href = log.url;
+      link.textContent = log.host;
+      tdHost.appendChild(link);
+
+      const tdUploaded = document.createElement("td");
+      tdUploaded.textContent = log.uploaded;
+
+      const tdSize = document.createElement("td");
+      tdSize.textContent = log.size;
+
+      tr.appendChild(tdHost);
+      tr.appendChild(tdUploaded);
+      tr.appendChild(tdSize);
+      fragment.appendChild(tr);
+    });
+
+    tbody.innerHTML = "";
+    tbody.appendChild(fragment);
+    document.getElementById("logs-count").textContent = data.count;
+    hideLoadingIndicator();
+  }
+
+  function fetchLogs(keyword) {
+    showLoadingIndicator();
+    const url = new URL(logsUrl, window.location.origin);
+    if (keyword) {
+      url.searchParams.set("keyword", keyword);
+    }
+    fetch(url.toString(), { headers: { Accept: "application/json" } })
+      .then((response) => {
+        if (!response.ok) throw new Error("error");
+        return response.json();
+      })
+      .then((data) => {
+        buildTableRows(data);
+      })
+      .catch(() => {
+        document.getElementById("logs-tbody").innerHTML = "";
+        document.getElementById("logs-count").textContent = "0";
+        hideLoadingIndicator();
+      });
+  }
+
+  const keywordInput = document.getElementById("keyword-input");
+  fetchLogs(keywordInput ? keywordInput.value : "");
+
+  if (keywordInput) {
+    keywordInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" && !e.isComposing) {
+        e.preventDefault();
+        const keyword = keywordInput.value;
+        const pageUrl = new URL(window.location.href);
+        if (keyword) {
+          pageUrl.searchParams.set("keyword", keyword);
+        } else {
+          pageUrl.searchParams.delete("keyword");
+        }
+        history.replaceState(null, "", pageUrl.toString());
+        fetchLogs(keyword);
+      }
+    });
+  }
+
   setInterval(() => {
     const autoReload = document.getElementById("logs_auto_reload");
     if (autoReload?.checked) {
-      const url = window.location.href.split("#")[0];
-      fetch(url, { headers: { "X-Requested-With": "XMLHttpRequest" } })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("error");
-          }
-          return response.text();
-        })
-        .then((html) => {
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(html, "text/html");
-          const newTable = doc.querySelector("#logs-table");
-          const tableContainer = document.querySelector(".table-container");
-          if (newTable && tableContainer) {
-            const oldTable = tableContainer.querySelector("#logs-table");
-            oldTable.replaceWith(newTable);
-            const count = newTable.querySelectorAll("tbody tr").length;
-            const logsCount = document.getElementById("logs-count");
-            logsCount.textContent = count;
-          }
-        })
-        .catch(() => {
-          const logsTable = document.getElementById("logs-table");
-          logsTable.innerHTML = "";
-          const logsCount = document.getElementById("logs-count");
-          logsCount.textContent = 0;
-        });
+      fetchLogs(keywordInput ? keywordInput.value : "");
     }
   }, 15 * 1000);
 });

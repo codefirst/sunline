@@ -44,11 +44,31 @@ class ScriptsController < ApplicationController
   def show
     @script = Script.find(params[:id])
     @keyword = params[:keyword] || ''
-    @highlights = @script.grep_logs(@keyword)
-    @log_count = @script.logs.count
     respond_to do |format|
       format.html { render action: 'show' }
     end
+  end
+
+  # GET /scripts/1/logs
+  def logs
+    script = Script.find(params[:id])
+    keyword = params[:keyword] || ''
+    highlights = script.grep_logs(keyword)
+    logs = script.logs.select_without_result.order('created_at desc')
+
+    render json: {
+      logs: logs.map { |log|
+        {
+          id: log.id,
+          host: log.host,
+          uploaded: log.formatted_created_at,
+          size: ActionController::Base.helpers.number_to_human_size(log.result_bytes),
+          url: log_path(log)
+        }
+      },
+      highlights: highlights,
+      count: logs.size
+    }
   end
 
   def csv
