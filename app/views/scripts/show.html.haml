@@ -67,13 +67,13 @@
     = t(:title_logs)
     %span#logs-loading.spinner-border.spinner-border-sm.ms-2.d-none{role: "status"}
   .page-title-right-menu.text-muted.logs-toolbar
-    .d-flex.flex-row.align-items-center.flex-wrap
+    .d-flex.flex-row.align-items-center
       %span#logs-count.me-1 -
       = t(:logs_count)
       .form-check.form-check-inline.ms-3
         = check_box_tag(:logs_auto_reload, "1", false, class: 'form-check-input')
         = label_tag(:logs_auto_reload, t(:auto_reload), class: 'form-check-label')
-      .d-inline-block.ms-2
+      .d-flex.align-items-center.ms-2
         = text_field_tag :keyword, @keyword, class: 'form-control auto-width', placeholder: t(:grep_logs), id: 'keyword-input'
         .dropdown.d-inline-block
           = link_to '#', class: 'btn btn-outline-secondary ms-1', 'data-bs-toggle': 'dropdown', style: 'margin-top:0' do
