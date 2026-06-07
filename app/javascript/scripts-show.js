@@ -26,7 +26,12 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!container) return;
 
   const logsUrl = container.dataset.logsUrl;
+  const originalTitle = document.title;
   let lastSeenId = null;
+
+  function updateTitle(count) {
+    document.title = `(${count}) ${originalTitle}`;
+  }
 
   function showLoadingIndicator() {
     document.getElementById("logs-loading").classList.remove("d-none");
@@ -80,6 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
       tbody.appendChild(fragment);
     }
     document.getElementById("logs-count").textContent = data.count;
+    updateTitle(data.count);
     hideLoadingIndicator();
   }
 
@@ -105,6 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .catch(() => {
         document.getElementById("logs-tbody").innerHTML = "";
         document.getElementById("logs-count").textContent = "0";
+        document.title = originalTitle;
         hideLoadingIndicator();
       });
   }
