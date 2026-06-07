@@ -36,10 +36,10 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("logs-loading").classList.add("d-none");
   }
 
-  function buildRow(log, highlights) {
+  function buildRow(log) {
     const tr = document.createElement("tr");
     tr.id = `log-${log.id}`;
-    tr.className = highlights.includes(log.id) ? "logs table-success" : "logs";
+    tr.className = log.highlighted ? "logs table-success" : "logs";
 
     const tdHost = document.createElement("td");
     const link = document.createElement("a");
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     const fragment = document.createDocumentFragment();
     data.logs.forEach((log) => {
-      fragment.appendChild(buildRow(log, data.highlights));
+      fragment.appendChild(buildRow(log));
     });
     if (delta) {
       tbody.insertBefore(fragment, tbody.firstChild);

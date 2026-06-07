@@ -55,23 +55,22 @@ class ScriptsController < ApplicationController
     keyword = params[:keyword] || ''
     since_id = params[:since_id]&.to_i
 
-    logs = script.logs.select_without_result.order('created_at desc')
-    logs = logs.since(since_id) if since_id
-    highlights = script.grep_logs(keyword, since_id: since_id)
-    total_count = since_id ? script.logs.count : logs.size
+    log_scope = script.logs.with_highlight(keyword).order('created_at desc')
+    log_scope = log_scope.since(since_id) if since_id
+    loaded = log_scope.to_a
 
     render json: {
-      logs: logs.map { |log|
+      logs: loaded.map { |log|
         {
           id: log.id,
           host: log.host,
           uploaded: log.formatted_created_at,
           size: ActionController::Base.helpers.number_to_human_size(log.result_bytes),
-          url: log_path(log)
+          url: log_path(log),
+          highlighted: keyword.present? && log.highlighted.to_i == 1
         }
       },
-      highlights: highlights,
-      count: total_count
+      count: since_id ? script.logs.count : loaded.size
     }
   end
 

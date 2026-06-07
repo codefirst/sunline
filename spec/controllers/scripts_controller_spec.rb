@@ -78,7 +78,6 @@ describe ScriptsController, type: :controller  do
         get :logs, params: { id: @script.id }
         json = JSON.parse(response.body)
         expect(json['logs']).to eq([])
-        expect(json['highlights']).to eq([])
         expect(json['count']).to eq(0)
       end
     end
@@ -97,16 +96,16 @@ describe ScriptsController, type: :controller  do
         expect(json['logs'].first['url']).to eq("/logs/#{@log.id}")
       end
 
-      it 'returns highlights for matching keyword' do
+      it 'returns highlighted: true for matching keyword' do
         get :logs, params: { id: @script.id, keyword: 'output' }
         json = JSON.parse(response.body)
-        expect(json['highlights']).to include(@log.id)
+        expect(json['logs'].first['highlighted']).to eq(true)
       end
 
-      it 'returns empty highlights for non-matching keyword' do
+      it 'returns highlighted: false for non-matching keyword' do
         get :logs, params: { id: @script.id, keyword: 'nomatch' }
         json = JSON.parse(response.body)
-        expect(json['highlights']).to eq([])
+        expect(json['logs'].first['highlighted']).to eq(false)
       end
 
     end
@@ -129,17 +128,16 @@ describe ScriptsController, type: :controller  do
         expect(json['count']).to eq(2)
       end
 
-      it 'highlights only match within new logs' do
+      it 'highlights only new log that matches keyword' do
         get :logs, params: { id: @script.id, since_id: @log1.id, keyword: 'second' }
         json = JSON.parse(response.body)
-        expect(json['highlights']).to include(@log2.id)
-        expect(json['highlights']).not_to include(@log1.id)
+        expect(json['logs'].first['highlighted']).to eq(true)
       end
 
-      it 'returns no highlights when keyword matches only old log' do
+      it 'returns highlighted: false when keyword matches only old log' do
         get :logs, params: { id: @script.id, since_id: @log1.id, keyword: 'first' }
         json = JSON.parse(response.body)
-        expect(json['highlights']).to eq([])
+        expect(json['logs'].first['highlighted']).to eq(false)
       end
     end
   end
