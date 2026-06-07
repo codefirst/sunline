@@ -10,6 +10,7 @@ class Log < ApplicationRecord
   }
 
   scope :select_without_result, -> { select(Log.column_names.reject { |c| c == 'result' }) }
+  scope :since, ->(id) { where('id > ?', id) }
 
   def formatted_created_at
     return self.created_at.strftime("%Y-%m-%d %H:%M:%S") if self.created_at
