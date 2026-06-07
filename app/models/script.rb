@@ -58,13 +58,6 @@ class Script < ApplicationRecord
     body.gsub("\r", "")
   end
 
-  def grep_logs(keyword, since_id: nil)
-    return [] if keyword.blank?
-    scope = logs.where(Log.arel_table[:result].matches("%#{keyword}%"))
-    scope = scope.since(since_id) if since_id
-    scope.pluck(:id)
-  end
-
   def logs_as_csv
     headers = %W(#{I18n.t(:field_host)} #{I18n.t(:field_uploaded)} #{I18n.t(:field_log_size)})
     CSV.generate(headers: headers, write_headers: true) do |csv|

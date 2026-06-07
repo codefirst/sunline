@@ -73,26 +73,23 @@ describe Script do
     its(:body) { is_expected.to include "ls" }
   end
 
-  describe 'grep_logs' do
+  describe 'Log.with_highlight' do
     before do
-      @script = Script.new(name: 'name', body: 'ls -l', created_by: user, updated_by: user)
-      @script.save!
-      @log1 = Log.create!(script: @script, host: 'server1', result: 'match keyword here')
-      @log2 = Log.create!(script: @script, host: 'server2', result: 'match keyword here too')
+      script = Script.new(name: 'name', body: 'ls -l', created_by: user, updated_by: user)
+      script.save!
+      @log1 = Log.create!(script: script, host: 'server1', result: 'match keyword here')
+      @log2 = Log.create!(script: script, host: 'server2', result: 'no match here')
     end
 
-    it 'returns matching log ids' do
-      expect(@script.grep_logs('keyword')).to include(@log1.id, @log2.id)
+    it 'sets highlighted=1 for matching logs' do
+      logs = Log.with_highlight('keyword').where(id: [@log1.id, @log2.id])
+      expect(logs.find { |l| l.id == @log1.id }.highlighted.to_i).to eq(1)
+      expect(logs.find { |l| l.id == @log2.id }.highlighted.to_i).to eq(0)
     end
 
-    it 'returns only ids newer than since_id' do
-      result = @script.grep_logs('keyword', since_id: @log1.id)
-      expect(result).to include(@log2.id)
-      expect(result).not_to include(@log1.id)
-    end
-
-    it 'returns empty when keyword is blank' do
-      expect(@script.grep_logs('', since_id: @log1.id)).to eq([])
+    it 'sets highlighted=0 for all when keyword is blank' do
+      logs = Log.with_highlight('').where(id: [@log1.id, @log2.id])
+      expect(logs.map { |l| l.respond_to?(:highlighted) }).to all(be false)
     end
   end
 
