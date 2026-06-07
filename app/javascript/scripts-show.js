@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!container) return;
 
   const logsUrl = container.dataset.logsUrl;
+  let lastSeenId = null;
 
   function showLoadingIndicator() {
     document.getElementById("logs-loading").classList.remove("d-none");
@@ -35,46 +36,62 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("logs-loading").classList.add("d-none");
   }
 
-  function buildTableRows(data) {
+  function buildRow(log, highlights) {
+    const tr = document.createElement("tr");
+    tr.id = `log-${log.id}`;
+    tr.className = highlights.includes(log.id) ? "logs table-success" : "logs";
+
+    const tdHost = document.createElement("td");
+    const link = document.createElement("a");
+    link.href = log.url;
+    link.textContent = log.host;
+    tdHost.appendChild(link);
+
+    const tdUploaded = document.createElement("td");
+    tdUploaded.textContent = log.uploaded;
+
+    const tdSize = document.createElement("td");
+    tdSize.textContent = log.size;
+
+    tr.appendChild(tdHost);
+    tr.appendChild(tdUploaded);
+    tr.appendChild(tdSize);
+    return tr;
+  }
+
+  function updateLastSeenId(logs) {
+    if (logs.length > 0) lastSeenId = logs[0].id;
+  }
+
+  function renderTableRows(data, delta) {
     const tbody = document.getElementById("logs-tbody");
+    if (delta && data.logs.length === 0) {
+      hideLoadingIndicator();
+      return;
+    }
     const fragment = document.createDocumentFragment();
-
     data.logs.forEach((log) => {
-      const tr = document.createElement("tr");
-      tr.id = `log-${log.id}`;
-      tr.className = data.highlights.includes(log.id)
-        ? "logs table-success"
-        : "logs";
-
-      const tdHost = document.createElement("td");
-      const link = document.createElement("a");
-      link.href = log.url;
-      link.textContent = log.host;
-      tdHost.appendChild(link);
-
-      const tdUploaded = document.createElement("td");
-      tdUploaded.textContent = log.uploaded;
-
-      const tdSize = document.createElement("td");
-      tdSize.textContent = log.size;
-
-      tr.appendChild(tdHost);
-      tr.appendChild(tdUploaded);
-      tr.appendChild(tdSize);
-      fragment.appendChild(tr);
+      fragment.appendChild(buildRow(log, data.highlights));
     });
-
-    tbody.innerHTML = "";
-    tbody.appendChild(fragment);
+    if (delta) {
+      tbody.insertBefore(fragment, tbody.firstChild);
+    } else {
+      tbody.innerHTML = "";
+      tbody.appendChild(fragment);
+    }
     document.getElementById("logs-count").textContent = data.count;
     hideLoadingIndicator();
   }
 
-  function fetchLogs(keyword) {
+  function fetchLogs(keyword, { delta = false } = {}) {
     showLoadingIndicator();
     const url = new URL(logsUrl, window.location.origin);
     if (keyword) {
       url.searchParams.set("keyword", keyword);
+    }
+    const isDelta = delta && lastSeenId !== null;
+    if (isDelta) {
+      url.searchParams.set("since_id", lastSeenId);
     }
     fetch(url.toString(), { headers: { Accept: "application/json" } })
       .then((response) => {
@@ -82,7 +99,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return response.json();
       })
       .then((data) => {
-        buildTableRows(data);
+        updateLastSeenId(data.logs);
+        renderTableRows(data, isDelta);
       })
       .catch(() => {
         document.getElementById("logs-tbody").innerHTML = "";
@@ -106,6 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
           pageUrl.searchParams.delete("keyword");
         }
         history.replaceState(null, "", pageUrl.toString());
+        lastSeenId = null;
         fetchLogs(keyword);
       }
     });
@@ -114,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(() => {
     const autoReload = document.getElementById("logs_auto_reload");
     if (autoReload?.checked) {
-      fetchLogs(keywordInput ? keywordInput.value : "");
+      fetchLogs(keywordInput ? keywordInput.value : "", { delta: true });
     }
   }, 15 * 1000);
 });

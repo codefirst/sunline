@@ -53,8 +53,12 @@ class ScriptsController < ApplicationController
   def logs
     script = Script.find(params[:id])
     keyword = params[:keyword] || ''
-    highlights = script.grep_logs(keyword)
+    since_id = params[:since_id]&.to_i
+
     logs = script.logs.select_without_result.order('created_at desc')
+    logs = logs.since(since_id) if since_id
+    highlights = script.grep_logs(keyword, since_id: since_id)
+    total_count = since_id ? script.logs.count : logs.size
 
     render json: {
       logs: logs.map { |log|
@@ -67,7 +71,7 @@ class ScriptsController < ApplicationController
         }
       },
       highlights: highlights,
-      count: logs.size
+      count: total_count
     }
   end
 

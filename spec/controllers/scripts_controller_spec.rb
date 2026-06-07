@@ -108,6 +108,39 @@ describe ScriptsController, type: :controller  do
         json = JSON.parse(response.body)
         expect(json['highlights']).to eq([])
       end
+
+    end
+
+    context 'with delta mode' do
+      before do
+        @log1 = Log.create!(script: @script, host: 'server1', result: 'first log')
+        @log2 = Log.create!(script: @script, host: 'server2', result: 'second log')
+      end
+
+      it 'returns only logs newer than since_id' do
+        get :logs, params: { id: @script.id, since_id: @log1.id }
+        json = JSON.parse(response.body)
+        expect(json['logs'].map { |l| l['id'] }).to eq([@log2.id])
+      end
+
+      it 'returns total count not delta count' do
+        get :logs, params: { id: @script.id, since_id: @log1.id }
+        json = JSON.parse(response.body)
+        expect(json['count']).to eq(2)
+      end
+
+      it 'highlights only match within new logs' do
+        get :logs, params: { id: @script.id, since_id: @log1.id, keyword: 'second' }
+        json = JSON.parse(response.body)
+        expect(json['highlights']).to include(@log2.id)
+        expect(json['highlights']).not_to include(@log1.id)
+      end
+
+      it 'returns no highlights when keyword matches only old log' do
+        get :logs, params: { id: @script.id, since_id: @log1.id, keyword: 'first' }
+        json = JSON.parse(response.body)
+        expect(json['highlights']).to eq([])
+      end
     end
   end
 
