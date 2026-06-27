@@ -3,7 +3,12 @@ class SlackNotifyJob < ApplicationJob
   include ActionView::Helpers::NumberHelper
 
   def perform(log)
-    return if ENV['SLACK_WEBHOOK_URL'].blank?
+    Rails.logger.info "[SlackNotifyJob] Log##{log.id} (host=#{log.host}): job started"
+
+    if ENV['SLACK_WEBHOOK_URL'].blank?
+      Rails.logger.info "[SlackNotifyJob] Log##{log.id}: SLACK_WEBHOOK_URL is blank, skipping"
+      return
+    end
 
     lines = []
     lines << "Sunline registered a log. Last 3 lines are:"
@@ -12,8 +17,9 @@ class SlackNotifyJob < ApplicationJob
     lines << '```'
 
     begin
+      Rails.logger.info "[SlackNotifyJob] Log##{log.id}: sending Slack notification"
       notifier = Slack::Notifier.new ENV['SLACK_WEBHOOK_URL']
-      notifier.ping lines.join("\n"), attachments: [{
+      responses = notifier.ping lines.join("\n"), attachments: [{
         color: "#8daec2",
         fields: [
           {
@@ -38,8 +44,13 @@ class SlackNotifyJob < ApplicationJob
           }
         ]
       }]
+      responses.each do |response|
+        Rails.logger.info "[SlackNotifyJob] Log##{log.id}: Slack API response HTTP #{response.code} #{response.body}"
+      end
+      Rails.logger.info "[SlackNotifyJob] Log##{log.id}: successfully sent"
     rescue => e
-      Rails.logger.error e
+      Rails.logger.error "[SlackNotifyJob] Log##{log.id}: failed with #{e.class}: #{e.message}"
+      Rails.logger.error "[SlackNotifyJob] Log##{log.id}: backtrace #{e.backtrace&.first(5)&.join(' | ')}"
     end
   end
 end
