@@ -10,10 +10,10 @@
     "fix": "biome check --write app/javascript"
   },
   "dependencies": {
-    "@codemirror/commands": "^6.10.3",
-    "@codemirror/language": "^6.12.3",
+    "@codemirror/commands": "^6.10.4",
+    "@codemirror/language": "^6.12.4",
     "@codemirror/legacy-modes": "^6.5.3",
-    "@codemirror/view": "6.43.1",
+    "@codemirror/view": "6.43.4",
     "@fortawesome/fontawesome-free": "7.3.0",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "5.3.8"
