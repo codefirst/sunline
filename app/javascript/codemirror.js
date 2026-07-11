@@ -19,7 +19,8 @@ export const editorFromTextArea = (textarea, options) => {
   if (options.firstLineNumber) {
     extensions.push(
       lineNumbers({
-        formatNumber: (n) => (n + options.firstLineNumber - 1).toString(),
+        formatNumber: (n) =>
+          (n + Number(options.firstLineNumber) - 1).toString(),
       }),
     );
   } else {
