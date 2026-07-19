@@ -111,9 +111,15 @@ jobs:
       - name: Create manifest list and push
         run: |
           docker buildx imagetools create -t "$REPO:latest" \
+            --annotation "index:org.opencontainers.image.source=$SOURCE" \
+            --annotation "index:org.opencontainers.image.description=$DESCRIPTION" \
+            --annotation "index:org.opencontainers.image.licenses=$LICENSES" \
             "$REPO@$AMD_DIGEST" \
             "$REPO@$ARM_DIGEST"
         env:
           REPO: ${{ inputs.image_name }}
           AMD_DIGEST: ${{ needs.build-amd64.outputs.digest }}
           ARM_DIGEST: ${{ needs.build-arm64.outputs.digest }}
+          SOURCE: https://github.com/codefirst/sunline
+          DESCRIPTION: A lightweight script and log management tool for DevOps
+          LICENSES: MIT
