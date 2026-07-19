@@ -50,6 +50,10 @@ jobs:
           tags: ${{ inputs.image_name }}:amd64
           push: true
           cache-from: type=gha
+          annotations: |
+            org.opencontainers.image.source=https://github.com/codefirst/sunline
+            org.opencontainers.image.description=A lightweight script and log management tool for DevOps
+            org.opencontainers.image.licenses=MIT
 
   build-arm64:
     permissions:
@@ -89,6 +93,10 @@ jobs:
           tags: ${{ inputs.image_name }}:arm64
           push: true
           cache-from: type=gha
+          annotations: |
+            org.opencontainers.image.source=https://github.com/codefirst/sunline
+            org.opencontainers.image.description=A lightweight script and log management tool for DevOps
+            org.opencontainers.image.licenses=MIT
 
   merge:
     permissions:
