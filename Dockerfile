@@ -5,6 +5,10 @@
 
 FROM docker.io/library/ruby:4.0.6-slim@sha256:abd7528c4df35d151e2643d5efb845e442a26e36a4babc6459bee508619137a2 AS base
 
+LABEL org.opencontainers.image.source="https://github.com/codefirst/sunline" \
+      org.opencontainers.image.description="A lightweight script and log management tool for DevOps" \
+      org.opencontainers.image.licenses="MIT"
+
 # Rails app lives here
 WORKDIR /rails
 
