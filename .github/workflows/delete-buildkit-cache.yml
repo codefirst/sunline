@@ -1,0 +1,20 @@
+name: Delete buildkit cache
+
+on:
+  schedule:
+    - cron: '0 14 * * 5' # JST Fri 23:00
+  workflow_dispatch: {}
+
+permissions: {}
+
+jobs:
+  delete-buildkit-cache:
+    permissions:
+      actions: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Delete buildkit blob cache
+        uses: suer/gh-delete-actions-caches@514affb4860b0ddce45688976680ad6281a8eca0 # v0.0.4
+        with:
+          key-prefix: buildkit-blob-1-
