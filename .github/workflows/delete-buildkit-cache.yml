@@ -2,7 +2,7 @@ name: Delete buildkit cache
 
 on:
   schedule:
-    - cron: '0 14 * * 5' # JST Fri 23:00
+    - cron: '0 14 * * 4' # JST Thu 23:00
   workflow_dispatch: {}
 
 permissions: {}
