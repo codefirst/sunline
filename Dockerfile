@@ -76,7 +76,7 @@ FROM public.ecr.aws/awsguru/aws-lambda-adapter:1.0.0@sha256:b4da35991627bdac98a8
 # Final stage for Lambda
 FROM app AS lambda
 
-USER root
+USER 0
 COPY --from=aws-lambda-adapter /lambda-adapter /opt/extensions/lambda-adapter
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y awscli jq && \
