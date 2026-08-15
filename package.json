@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.7",
-    "esbuild": "^0.28.1",
+    "esbuild": "^0.28.2",
     "sass": "^1.102.0"
   }
 }
