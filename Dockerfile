@@ -3,7 +3,7 @@
 
 # For a containerized dev environment, see Dev Containers: https://guides.rubyonrails.org/getting_started_with_devcontainer.html
 
-FROM docker.io/library/ruby:4.0.6-slim@sha256:58479f164d5947f852da27a4436c89bb986a811f959c40552bc7f6ccaabcc9c9 AS base
+FROM docker.io/library/ruby:4.0.7-slim@sha256:d10bdb076bb10d2261773ea20eadf4cdbde3346fc8f8db409856608b2d01b9c9 AS base
 
 LABEL org.opencontainers.image.source="https://github.com/codefirst/sunline" \
       org.opencontainers.image.description="A lightweight script and log management tool for DevOps" \
