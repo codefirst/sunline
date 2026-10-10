@@ -227,7 +227,7 @@ GEM
       actionpack (>= 4.2)
       omniauth (~> 2.0)
     orm_adapter (0.5.0)
-    pg (1.6.3)
+    pg (1.7.0)
     pp (0.6.4)
       prettyprint
     prettyprint (0.2.0)
@@ -364,7 +364,7 @@ DEPENDENCIES
   octokit (~> 10.0)
   omniauth-github (~> 2.0.1)
   omniauth-rails_csrf_protection (~> 2.0.1)
-  pg (~> 1.6)
+  pg (~> 1.7)
   propshaft
   puma
   rails (= 8.1.4)
