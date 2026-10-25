@@ -49,16 +49,39 @@ jobs:
           DEST_IMAGE: ghcr.io/${{ github.repository_owner }}/aws-lambda-adapter
         run: |
           tags=$(gh api "repos/${UPSTREAM_REPO}/releases?per_page=10" \
-            --jq '.[] | select(.draft == false and .prerelease == false) | .tag_name | ltrimstr("v") | select(contains("-") | not)')
+            --jq '.[] | select(.draft == false and .prerelease == false) | .tag_name | ltrimstr("v") | select(contains("-") | not)' | tac)
 
+          # Retry on anything but "not found" so that a 429 from public.ecr.aws is not mistaken for a missing tag.
+          source_exists() {
+            local out
+            for i in 1 2 3 4 5; do
+              if out=$(docker buildx imagetools inspect "$1" 2>&1); then
+                return 0
+              fi
+              case "${out}" in
+                *"not found"*) return 1 ;;
+              esac
+              echo "retrying ($i): ${out}" >&2
+              sleep $((i * 10))
+            done
+            return 2
+          }
+
+          # Oldest first, so that the newest release is pushed last and shown as the latest in GHCR.
           for tag in $tags; do
             if docker buildx imagetools inspect "${DEST_IMAGE}:${tag}" > /dev/null 2>&1; then
               echo "${tag}: already mirrored"
               continue
             fi
-            if ! docker buildx imagetools inspect "${SOURCE_IMAGE}:${tag}" > /dev/null 2>&1; then
+            rc=0
+            source_exists "${SOURCE_IMAGE}:${tag}" || rc=$?
+            if [ "${rc}" -eq 1 ]; then
               echo "${tag}: not found upstream, skipped"
               continue
+            elif [ "${rc}" -ne 0 ]; then
+              echo "${tag}: failed to read upstream" >&2
+              exit 1
             fi
             docker buildx imagetools create --tag "${DEST_IMAGE}:${tag}" "${SOURCE_IMAGE}:${tag}"
+            sleep 2
           done
