@@ -1,0 +1,64 @@
+# Mirror aws-lambda-adapter from Amazon Public ECR to GHCR.
+#
+# Why:
+# - Anonymous pulls from public.ecr.aws are limited to 1 request/sec per region, and CI
+#   started failing with 429 Too Many Requests. Authenticating needs an AWS account,
+#   which we don't want to tie to this OSS project.
+# - Dependabot can't read public.ecr.aws (RegistryAuthenticationException), so the image
+#   was ignored in dependabot.yml and never updated. Pointing the Dockerfile at the GHCR
+#   mirror lets Dependabot detect new versions, and this workflow brings new upstream
+#   releases into the mirror.
+name: Mirror aws-lambda-adapter to GHCR
+
+on:
+  schedule:
+    - cron: '0 0 * * 4' # JST Thu 09:00 (before Dependabot on Friday)
+  workflow_dispatch: {}
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+env:
+  SOURCE_IMAGE: public.ecr.aws/awsguru/aws-lambda-adapter
+  UPSTREAM_REPO: awslabs/aws-lambda-web-adapter
+
+jobs:
+  mirror:
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@594f3bf4285d9ea8dc53c9a0c9c4092420091003 # v4.4.0
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Mirror recent releases
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEST_IMAGE: ghcr.io/${{ github.repository_owner }}/aws-lambda-adapter
+        run: |
+          tags=$(gh api "repos/${UPSTREAM_REPO}/releases?per_page=10" \
+            --jq '.[] | select(.draft == false and .prerelease == false) | .tag_name | ltrimstr("v") | select(contains("-") | not)')
+
+          for tag in $tags; do
+            if docker buildx imagetools inspect "${DEST_IMAGE}:${tag}" > /dev/null 2>&1; then
+              echo "${tag}: already mirrored"
+              continue
+            fi
+            if ! docker buildx imagetools inspect "${SOURCE_IMAGE}:${tag}" > /dev/null 2>&1; then
+              echo "${tag}: not found upstream, skipped"
+              continue
+            fi
+            docker buildx imagetools create --tag "${DEST_IMAGE}:${tag}" "${SOURCE_IMAGE}:${tag}"
+          done
