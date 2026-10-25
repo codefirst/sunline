@@ -51,8 +51,11 @@ $ export DEVISE_SECRET_KEY=$(bin/rails secret)
 $ export OMNIAUTH_GITHUB_CLIENT_ID=Client ID
 $ export OMNIAUTH_GITHUB_CLIENT_SECRET=Client Secret
 $ export OMNIAUTH_GITHUB_ORGANIZATION="org1 org2" # optional, space-separated for multiple orgs
+$ export SUNLINE_HOSTS="sunline.example.com" # recommended, space-separated for multiple hosts
 $ bin/rails s -e production
 ```
+
+`SUNLINE_HOSTS` limits the accepted `Host` / `X-Forwarded-Host` values. Sunline embeds the request host in the scripts that runners execute, so set it to the host name your runners use. If it is unset, any host is accepted.
 
 and access to http://localhost:3000/
 
