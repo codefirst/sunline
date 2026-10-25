@@ -70,8 +70,8 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 CMD ["./bin/rails", "server"]
 
-# LWA
-FROM public.ecr.aws/awsguru/aws-lambda-adapter:1.0.0@sha256:b4da35991627bdac98a81c377d0cc28e6989687359576dfda9f0b64be835d648 AS aws-lambda-adapter
+# LWA (mirrored from public.ecr.aws by .github/workflows/mirror-aws-lambda-adapter.yml to avoid 429)
+FROM ghcr.io/codefirst/aws-lambda-adapter:1.0.0@sha256:b4da35991627bdac98a81c377d0cc28e6989687359576dfda9f0b64be835d648 AS aws-lambda-adapter
 
 # Final stage for Lambda
 FROM app AS lambda

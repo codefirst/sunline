@@ -37,6 +37,3 @@ updates:
       interval: "weekly"
       timezone: "Asia/Tokyo"
       day: "friday"
-    ignore:
-      # Dependabot raises DockerRegistry2::RegistryAuthenticationException for Amazon Public ECR images.
-      - dependency-name: "awsguru/aws-lambda-adapter"
