@@ -15,6 +15,6 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Delete buildkit blob cache
-        uses: suer/gh-delete-actions-caches@d34f555da0b66ae9aaa6f3c963ed3e30cb7a87e9 # v0.0.5
+        uses: suer/gh-delete-actions-caches@57dd49a39064ffbb5ae03bee211f39159580ed0a # v0.0.7
         with:
           key-prefix: buildkit-blob-1-
