@@ -108,7 +108,7 @@ GEM
     crass (1.0.8)
     cssbundling-rails (1.4.3)
       railties (>= 6.0.0)
-    csv (3.3.6)
+    csv (3.3.7)
     date (3.5.1)
     devise (5.0.4)
       bcrypt (~> 3.0)
