@@ -6,6 +6,8 @@ class Script < ApplicationRecord
   has_many :logs
   has_many :attachments, dependent: :destroy
 
+  CURL_OPTIONS = "-fsS --retry 3".freeze
+
   before_create :generate_guid
 
   validates :name, presence: true
@@ -39,8 +41,8 @@ class Script < ApplicationRecord
 
   def remote_script(root_url)
     [
-      "curl -s #{root_url}scripts/#{guid}.sh | sh 2>&1 | tee sunline.log",
-      "curl -s #{root_url}scripts/#{guid}/log -X POST -F host=`hostname` -F log_file=@sunline.log"
+      "curl #{CURL_OPTIONS} #{root_url}scripts/#{guid}.sh | sh 2>&1 | tee sunline.log",
+      "curl #{CURL_OPTIONS} #{root_url}scripts/#{guid}/log -X POST -F host=`hostname` -F log_file=@sunline.log"
     ].join(";")
   end
 

@@ -12,7 +12,7 @@ describe Script do
 
     subject { @script.remote_script("http://localhost:3000/") }
 
-    it { is_expected.to eq "curl -s http://localhost:3000/scripts/#{@guid}.sh | sh 2>&1 | tee sunline.log;curl -s http://localhost:3000/scripts/#{@guid}/log -X POST -F host=`hostname` -F log_file=@sunline.log" }
+    it { is_expected.to eq "curl -fsS --retry 3 http://localhost:3000/scripts/#{@guid}.sh | sh 2>&1 | tee sunline.log;curl -fsS --retry 3 http://localhost:3000/scripts/#{@guid}/log -X POST -F host=`hostname` -F log_file=@sunline.log" }
   end
 
   describe 'save' do
