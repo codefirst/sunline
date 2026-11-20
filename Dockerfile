@@ -76,6 +76,8 @@ FROM ghcr.io/codefirst/aws-lambda-adapter:1.1.0@sha256:17cfd08eff1dfea3f6a9a1e9c
 # Final stage for Lambda
 FROM app AS lambda
 
+ENV AWS_LWA_READINESS_CHECK_PATH="/up"
+
 USER 0
 COPY --from=aws-lambda-adapter /lambda-adapter /opt/extensions/lambda-adapter
 RUN apt-get update -qq && \

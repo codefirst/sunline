@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'up', to: 'rails/health#show', as: :rails_health_check
+
   get 'scripts/:guid.sh', to: 'scripts#sh'
   get 'scripts/wrapped/:guid.sh', to: 'scripts#wrapped_sh', as: :wrapped_sh
   resources :scripts do
